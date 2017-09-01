@@ -1,6 +1,7 @@
 package com.example.android.project_tourguideapp;
 
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -10,8 +11,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listing_container);
-        getSupportFragmentManager().beginTransaction().replace(R.id.listing_container, new ParksListFragment()).commit();
+        // Inflate the layout with a container view (which will be replaced by the fragments)
+        setContentView(R.layout.activity_main);
+
+//        // Get a FragmentManager instance and use it to replace the Activity's container view with the first fragment
+//        getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, new ParksListFragment()).commit();
+
+        // Get a ViewPager instance and assign to a variable
+        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+        KidThingFragmentPagerAdapter adapter = new KidThingFragmentPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
+
 
 //        final ArrayList<KidThing> kidThings = new ArrayList<KidThing>();
 //        kidThings.add(new KidThing(getString(R.string.park_westmorland_listing_title), R.drawable.westmorland_park_01_thumbnail, getString(R.string.park_westmorland_description), getString(R.string.park_westmorland_address), getString(R.string.park_westmorland_hours_dates), getString(R.string.park_westmorland_website)));

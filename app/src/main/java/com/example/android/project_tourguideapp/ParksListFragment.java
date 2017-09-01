@@ -35,12 +35,13 @@ public class ParksListFragment extends Fragment {
 
         final ArrayList<KidThing> kidThings = new ArrayList<KidThing>();
         kidThings.add(new KidThing(getString(R.string.park_westmorland_listing_title), R.drawable.westmorland_park_01_thumbnail, getString(R.string.park_westmorland_description), getString(R.string.park_westmorland_address), getString(R.string.park_westmorland_hours_dates), getString(R.string.park_westmorland_website)));
+        kidThings.add(new KidThing("Nakoma Park", R.drawable.park_nakoma_01_thumbnail,
+                "Medium-sized playground with swingset (including baby swings), play structure (steps, climber, etc), and slide. Drinking fountain. Ball courts/fields. Ice skating.", "3801 Cherokee Dr, Madison, WI 53711",
+                "4am - 10pm", "http://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1270"));
         kidThings.add(new KidThing("Odana Hills East Park", R.drawable.westmorland_park_01_thumbnail,
                 "String_description", "String_address",
                 "String_hours and dates", "String_web address"));
-        kidThings.add(new KidThing("String_KidThing02", R.drawable.westmorland_park_01_thumbnail,
-                "String_description", "String_address",
-                "String_hours and dates", "String_web address"));
+
 
         ListView listView = (ListView) rootView.findViewById(R.id.list_view);
 
