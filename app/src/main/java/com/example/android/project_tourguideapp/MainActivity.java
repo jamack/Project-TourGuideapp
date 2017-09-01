@@ -1,6 +1,7 @@
 package com.example.android.project_tourguideapp;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
@@ -14,13 +15,16 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the layout with a container view (which will be replaced by the fragments)
         setContentView(R.layout.activity_main);
 
-//        // Get a FragmentManager instance and use it to replace the Activity's container view with the first fragment
-//        getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, new ParksListFragment()).commit();
-
-        // Get a ViewPager instance and assign to a variable
+        // Get the xml layout's ViewPager widget and assign to a variable
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+        // Create a new KidThingFragmentAdapter instance via its constructor, passing it a FragmentManager instance
         KidThingFragmentPagerAdapter adapter = new KidThingFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
+
+        // Get the xml layout's TabLayout widget and assign to a variable
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        // Set the ViewPager on the TabLayout to connect the pager with the tabs
+        tabLayout.setupWithViewPager(viewPager);
 
 
 //        final ArrayList<KidThing> kidThings = new ArrayList<KidThing>();

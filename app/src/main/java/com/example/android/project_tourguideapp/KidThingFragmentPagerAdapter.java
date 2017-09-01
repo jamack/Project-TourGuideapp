@@ -23,6 +23,7 @@ public class KidThingFragmentPagerAdapter extends FragmentPagerAdapter {
         super(fm);
     }
 
+    // TODO: UPDATE once all category Fragments are included below
     @Override
     public Fragment getItem(int position) {
         switch (position) {
@@ -30,6 +31,19 @@ public class KidThingFragmentPagerAdapter extends FragmentPagerAdapter {
                 return new ParksListFragment();
             case 1:
                 return new RestaurantsListFragment();
+        }
+
+        return null;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+
+        switch (position) {
+            case 0:
+                return "Playgrounds";
+            case 1:
+                return "Food";
         }
 
         return null;
