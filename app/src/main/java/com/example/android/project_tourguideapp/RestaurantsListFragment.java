@@ -39,7 +39,7 @@ public class RestaurantsListFragment extends Fragment {
                 "555 S Midvale Blvd, Madison, WI 53711", "11:00am – 10:00pm", "http://www.chocolateshoppeicecream.com", 6084415248L));
         kidThings.add(new KidThing("Ella's Deli & Ice Cream Parlor", R.drawable.restaurant_ellas_deli_01_thumbnail,
                 "Kid-oriented eatery with colorful, animated decor & a carousel offering American food & desserts. ",
-                "2902 E Washington Ave, Madison, WI 53704 ", "M-Th 11:00am – 10:00pm, F-Sat 11:00am – 11:00pm", "http://www.ellasdeli.com", 6082415291L));
+                "2902 E Washington Ave, Madison, WI 53704 ", "Sun-Th 11:00am – 10:00pm, F-Sat 11:00am – 11:00pm", "http://www.ellasdeli.com", 6082415291L));
         kidThings.add(new KidThing("Yola's Cafe and Coffee Shop", R.drawable.restaurant_yolas_cafe_01_thumbnail,
                 "Mellow coffeehouse offering java, pastries & savory dishes plus WiFi, a fireplace & a big patio. Kid's play area. Diaper changing station(s). High chairs. Kids menu.",
                 "494 Commerce Dr, Madison, WI 53719", "Tues-Sat 7:00am – 4:30pm", "http://www.yolascafe.com", 6088275800L));

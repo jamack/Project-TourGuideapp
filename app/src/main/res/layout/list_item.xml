@@ -3,19 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
-    android:layout_marginTop="2dp"
     android:layout_marginBottom="2dp"
+    android:layout_marginTop="2dp"
     android:background="@android:color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/listing_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium"
         android:layout_marginBottom="4dp"
-        tools:text="Westmorland Park"/>
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold"
+        tools:text="Westmorland Park" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,15 +43,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="4dp"
-                tools:text="Open: 4am - 10pm"
-                android:textAppearance="?android:textAppearanceSmall" />
+                android:textAppearance="?android:textAppearanceSmall"
+                tools:text="Open: 4am - 10pm" />
 
             <TextView
                 android:id="@+id/listing_description_snippet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="Medium-sized playground. Baby swings. Restrooms. Drinking fountain."
-                android:textAppearance="?android:textAppearanceSmall" />
+                android:textAppearance="?android:textAppearanceSmall"
+                tools:text="Medium-sized playground. Baby swings. Restrooms. Drinking fountain." />
 
         </LinearLayout>
 

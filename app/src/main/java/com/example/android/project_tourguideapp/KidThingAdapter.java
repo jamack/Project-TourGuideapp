@@ -1,9 +1,9 @@
 package com.example.android.project_tourguideapp;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,11 +39,18 @@ public class KidThingAdapter extends ArrayAdapter<KidThing> {
 
         // Check if the current view is being reused or needs to be inflated
         View listItemView = convertView;
-        Log.v("*TESTING*", "convertView assigned to listItemView...");
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
-        Log.v("*TESTING*", "Layout should have successfully been inflated and error is in setting values on the Views...");
+
+        // TODO: Figure out how to load color resources (in a way that works down to my minimum API 16 setting).
+        listItemView.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        if (position % 2 == 0) {
+//            listItemView.setBackgroundColor(getContext().getColor(R.color.colorAccent)); THIS ONLY WORKS FOR API 23 +...
+            listItemView.setBackgroundColor(Color.parseColor("#E3F2FD"));
+        } else {
+            listItemView.setBackgroundColor(Color.parseColor("#FFE0B2"));
+        }
 
         // Find the TextView in the list_item layout with the ID listing_title
         TextView listingTitle = (TextView) listItemView.findViewById(R.id.listing_title);
