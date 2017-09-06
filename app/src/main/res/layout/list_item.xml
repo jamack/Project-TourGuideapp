@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/textDark"
         android:textStyle="bold"
         tools:text="Westmorland Park" />
 
@@ -44,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="4dp"
                 android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/textDark"
                 tools:text="Open: 4am - 10pm" />
 
             <TextView
@@ -51,6 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/textDark"
                 tools:text="Medium-sized playground. Baby swings. Restrooms. Drinking fountain." />
 
         </LinearLayout>
