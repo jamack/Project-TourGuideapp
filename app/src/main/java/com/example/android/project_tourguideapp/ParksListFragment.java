@@ -1,12 +1,13 @@
 package com.example.android.project_tourguideapp;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -14,12 +15,12 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ParksListFragment.OnFragmentInteractionListener} interface
+ * {@link ParksListFragment.OnParksFragmentInteractionListener} interface
  * to handle interaction events.
  */
 public class ParksListFragment extends Fragment {
 
-//    private OnFragmentInteractionListener mListener;
+    private OnParksFragmentInteractionListener mParksListener;
 
     public ParksListFragment() {
         // Required empty public constructor
@@ -32,6 +33,7 @@ public class ParksListFragment extends Fragment {
 
         // inflate our list_view ListView and assign the instance to a variable
         View rootView = inflater.inflate(R.layout.kidthing_list, container, false);
+
 
         final ArrayList<KidThing> kidThings = new ArrayList<KidThing>();
         kidThings.add(new KidThing(getString(R.string.park_westmorland_listing_title), R.drawable.westmorland_park_01_thumbnail, getString(R.string.park_westmorland_description), getString(R.string.park_westmorland_address), getString(R.string.park_westmorland_hours_dates), getString(R.string.park_westmorland_website)));
@@ -69,45 +71,59 @@ public class ParksListFragment extends Fragment {
         // Attach the newly instantiated KidThingAdapter on the ListView
         listView.setAdapter(kidThingAdapter);
 
+        // TODO: This sorta (Log does; toast doesn't) works. But - don't know that it is the way to go to another fragment...
+        // TODO: Finish coding this OnItemClickListener so that it either opens the detail fragment (w/ correct item)
+        // or passes that item to the already displayed detail fragment...
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Toast.makeText(getActivity(),"You've made a selection from the list!",Toast.LENGTH_LONG).show();
+                Log.v("***TESTING***", "onItemClickListener is registering!");
+                if (mParksListener != null) {
+                    mParksListener.onParksFragmentInteraction(position);
+                }
+            }
+        });
+
         return rootView;
     }
 
-//    // TODO: Rename method, update argument and hook method into UI event
+//    // TODO: Can i just delete this now? [Rename method, update argument and hook method into UI event]
 //    public void onButtonPressed(Uri uri) {
-//        if (mListener != null) {
-//            mListener.onFragmentInteraction(uri);
+//        if (mParksListener != null) {
+//            mParksListener.onParksFragmentInteraction(uri);
 //        }
 //    }
-//
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-//    }
-//
-//    @Override
-//    public void onDetach() {
-//        super.onDetach();
-//        mListener = null;
-//    }
-//
-//    /**
-//     * This interface must be implemented by activities that contain this
-//     * fragment to allow an interaction in this fragment to be communicated
-//     * to the activity and potentially other fragments contained in that
-//     * activity.
-//     * <p>
-//     * See the Android Training lesson <a href=
-//     * "http://developer.android.com/training/basics/fragments/communicating.html"
-//     * >Communicating with Other Fragments</a> for more information.
-//     */
-//    public interface OnFragmentInteractionListener {
-//        // TODO: Update argument type and name
-//        void onFragmentInteraction(Uri uri);
-//    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnParksFragmentInteractionListener) {
+            mParksListener = (OnParksFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnParksFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mParksListener = null;
+    }
+
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnParksFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onParksFragmentInteraction(int position);
+    }
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_listing_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.example.android.tourguideapp_detailfragment.MainActivity">
+
+        <ImageView
+            android:id="@+id/detail_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="1dp"
+            android:scaleType="fitStart"
+            tools:src="@drawable/park_nakoma_01_3to2" />
+
+        <TextView
+            android:id="@+id/detail_listing_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            tools:text="Nakoma Park"
+            tools:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/detail_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_image"
+            android:textAppearance="?android:textAppearanceSmall"
+            tools:text="3801 Cherokee Dr, Madison, WI 53711" />
+
+        <TextView
+            android:id="@+id/detail_hours_dates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_address"
+            android:textAppearance="?android:textAppearanceSmall"
+            tools:text="4am - 10pm" />
+
+        <TextView
+            android:id="@+id/detail_description_full"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_hours_dates"
+            android:textAppearance="?android:textAppearanceSmall"
+            tools:text="Medium-sized playground with swingset (including baby swings), play structure (steps, climber, etc), and slide. Drinking fountain. Ball courts/fields. Ice skating." />
+
+        <TextView
+            android:id="@+id/detail_description_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_description_full"
+            android:textAppearance="?android:textAppearanceSmall"
+            tools:text="(555) 555-5555" />
+
+    </RelativeLayout>
+</ScrollView>
