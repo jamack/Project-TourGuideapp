@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity
             // TODO: Do I need to check whether ListingDetailFragment instance exists?
             // Create ListingDetailFragment instance and assign to global variable
             listingDetailFragment = new ListingDetailFragment();
+            listingDetailFragment.setArguments(getDataBundle(0));
 
             // Add fragment to the container
             fragmentManager.beginTransaction().add(R.id.detail_container, listingDetailFragment).commit();
@@ -104,19 +105,23 @@ public class MainActivity extends AppCompatActivity
 //            detailFrag.updateListingDetails(position);
 //            Log.v("***TESTING***", "detailFrag is present and is NOT null...");
 //            getSupportFragmentManager().beginTransaction().add(R.id.detail_container, detailFrag).commit();
-        if (listingDetailFragment != null) {
-            // If listingDetailFragment is not null, then a detail fragment already exists and we're in two-pane layout.
+
+//        if (listingDetailFragment != null) {
+        // If listingDetailFragment is not null, then a detail fragment already exists and we're in two-pane layout.
+
+        if (isDualPane) {
+            // If isDualPane is true, then from our previous check we already know that a detail fragment already exists and we're in two-pane layout.
             Log.v("***TESTING***", "In onParksFragmentInteraction method. Existing detail fragment's existence has been recognized!");
 
-            // Call a method in the ListingDetailFragment to update its content
-            listingDetailFragment.updateListingDetails(position);
-
+            // TODO: Call a method in the ListingDetailFragment to update its content
+//            listingDetailFragment.updateListingDetails(position);
         } else {
-            Log.v("***TESTING***", "detailFrag is IS null - so it was NOT located...");
+            Log.v("***TESTING***", "isDualPane is false - so an existing detail fragment was NOT located...");
             // Otherwise, we're in the one-pane layout and must swap frags...
 
             // Create fragment and give it an argument for the selected listing
             ListingDetailFragment newFragment = new ListingDetailFragment();
+            // TODO: CREATE A METHOD TO HANDLE THIS OPERATION SINCE IT WILL ENTAIL MANY ARGUMENTS & WE'LL USE IT IN SEVERAL CONTEXTS...
             Bundle args = new Bundle();
             args.putInt(ListingDetailFragment.ARG_POSITION, position);
             newFragment.setArguments(args);
@@ -131,11 +136,23 @@ public class MainActivity extends AppCompatActivity
             // Commit the transaction
             transaction.commit();
         }
-
-
-//        if (isDualPane) {
-//            ListingDetailFragment detailFragment = (ListingDetailFragment) fragmentManager.findFragmentById(R.id.fragment_listing_detail);
-//            detailFragment.updateListingDetails(position);
-//        }
     }
+
+    // TODO: CREATE METHOD TO QUERY LISTING(MASTER) FRAGMENT'S ARRAYLIST TO GET DATA. PASS THAT DATA TO DETAIL FRAGMENT'S UPDATELISTING METHOD...
+    // Pass fields from selected KidThing object to ListingDetailFragment's updateListingDetails method
+
+    void passDataViaMethod(int position) {
+    }
+
+    // TODO: CREATE METHOD TO QUERY LISTING(MASTER) FRAGMENT'S ARRAYLIST TO GET DATA. PUT THAT DATA INTO A BUNDLE & RETURN TO THE CALLING METHOD...
+    // Pass fields from selected KidThing object to ListingDetailFragment's updateListingDetails method
+//    void createDataBundle(int position) {
+//        Bundle args = new Bundle();
+//        ArrayList arrayList = ParksListFragment.getArrayList();
+//        args.putInt(ListingDetailFragment.ARG_LISTING_NAME, arrayList.get(position).g);
+//    }
+    Bundle getDataBundle(int position) {
+        return ParksListFragment.getBundle(position);
+    }
+
 }

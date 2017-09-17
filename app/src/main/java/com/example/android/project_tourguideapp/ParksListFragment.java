@@ -20,12 +20,41 @@ import java.util.ArrayList;
  */
 public class ParksListFragment extends Fragment {
 
+    // TODO: IN PROCESS OF TWEAKING A GLOBAL REFERENCE TO ARRAYLIST SO IT CAN BE ACCESSED BY MAINACTIVITY'S CREATE BUNDLE METHOD...
+    private static ArrayList parksArrayList = null;
+    //    final ArrayList<KidThing> kidThings = new ArrayList<KidThing>();
+    private static ArrayList<KidThing> kidThings = null;
+
     private OnParksFragmentInteractionListener mParksListener;
 
     public ParksListFragment() {
         // Required empty public constructor
     }
 
+    // TODO: TESTING METHODS TO DELIVER INFO TO MAINACTIVITY FOR UPDATING DETAIL FRAGMENT...
+    public static ArrayList getArrayList() {
+        return kidThings;
+    } // This method works, but I can't access info once back in MainActivity...
+
+//    // TODO: Can i just delete this now? [Rename method, update argument and hook method into UI event]
+//    public void onButtonPressed(Uri uri) {
+//        if (mParksListener != null) {
+//            mParksListener.onParksFragmentInteraction(uri);
+//        }
+//    }
+
+    public static Bundle getBundle(int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString(ListingDetailFragment.ARG_LISTING_NAME, kidThings.get(position).getListingName());
+        bundle.putInt(ListingDetailFragment.ARG_IMAGE_RESOURCE, kidThings.get(position).getImageResourceId());
+        bundle.putString(ListingDetailFragment.ARG_FULL_DESCRIPTION, kidThings.get(position).getDescription());
+        bundle.putString(ListingDetailFragment.ARG_ADDRESS, kidThings.get(position).getAddress());
+        bundle.putString(ListingDetailFragment.ARG_HOURS_DATES, kidThings.get(position).getHoursDates());
+        bundle.putString(ListingDetailFragment.ARG_WEBSITE, kidThings.get(position).getWebsite());
+        bundle.putLong(ListingDetailFragment.ARG_PHONE_NUMBER, kidThings.get(position).getPhoneNumber());
+
+        return bundle;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,11 +64,12 @@ public class ParksListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.kidthing_list, container, false);
 
 
-        final ArrayList<KidThing> kidThings = new ArrayList<KidThing>();
-        kidThings.add(new KidThing(getString(R.string.park_westmorland_listing_title), R.drawable.westmorland_park_01_thumbnail, getString(R.string.park_westmorland_description), getString(R.string.park_westmorland_address), getString(R.string.park_westmorland_hours_dates), getString(R.string.park_westmorland_website)));
+        //final ArrayList<KidThing> kidThings = new ArrayList<KidThing>();
+        kidThings = new ArrayList<KidThing>();
         kidThings.add(new KidThing("Nakoma Park", R.drawable.park_nakoma_01_thumbnail,
                 "Medium-sized playground with swingset (including baby swings), play structure (steps, climber, etc), and slide. Drinking fountain. Ball courts/fields. Ice skating.", "3801 Cherokee Dr, Madison, WI 53711",
                 "4am - 10pm", "http://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1270"));
+        kidThings.add(new KidThing(getString(R.string.park_westmorland_listing_title), R.drawable.westmorland_park_01_thumbnail, getString(R.string.park_westmorland_description), getString(R.string.park_westmorland_address), getString(R.string.park_westmorland_hours_dates), getString(R.string.park_westmorland_website)));
         kidThings.add(new KidThing("Odana Hills East Park", R.drawable.park_odana_hills_east_01_thumbnail,
                 "Mini playground with play structure (climber, etc.), slide, and swings (including baby swings). Drinking fountain. Ball courts.",
                 "4627 Odana Rd, Madison, WI 53711", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1277"));
@@ -62,6 +92,7 @@ public class ParksListFragment extends Fragment {
                 "Mini park with play structure (climber, tunnel, etc.), slide, and  swings. Picnic table.",
                 "950 Pontiac Trail, Madison, WI 53711", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1398"));
 
+//        parksArrayList = kidThings;
 
         ListView listView = (ListView) rootView.findViewById(R.id.list_view);
 
@@ -88,13 +119,6 @@ public class ParksListFragment extends Fragment {
         return rootView;
     }
 
-//    // TODO: Can i just delete this now? [Rename method, update argument and hook method into UI event]
-//    public void onButtonPressed(Uri uri) {
-//        if (mParksListener != null) {
-//            mParksListener.onParksFragmentInteraction(uri);
-//        }
-//    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -111,6 +135,7 @@ public class ParksListFragment extends Fragment {
         super.onDetach();
         mParksListener = null;
     }
+
 
     /**
      * This interface must be implemented by activities that contain this

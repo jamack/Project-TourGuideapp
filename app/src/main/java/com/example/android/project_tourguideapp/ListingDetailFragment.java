@@ -11,6 +11,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import static android.R.attr.description;
+import static android.R.attr.name;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,8 +25,19 @@ import android.widget.TextView;
  */
 public class ListingDetailFragment extends Fragment {
 
+    public static String ARG_LISTING_NAME = "ARG_LISTING_NAME";
+    public static String ARG_IMAGE_RESOURCE = "ARG_IMAGE_RESOURCE";
+    public static String ARG_FULL_DESCRIPTION = "ARG_FULL_DESCRIPTION";
+    public static String ARG_ADDRESS = "ARG_ADDRESS";
+    public static String ARG_HOURS_DATES = "ARG_HOURS_DATES";
+    public static String ARG_WEBSITE = "ARG_WEBSITE";
+    public static String ARG_PHONE_NUMBER = "ARG_PHONE_NUMBER";
+    // Create constant values for keys that would be expected in Bundle used to create Fragment
     static String ARG_POSITION = "position";
-    private OnDetailFragmentInteractionListener mListener;
+    private Bundle mBundle = null;
+
+//    private OnDetailFragmentInteractionListener mListener;
+
     // Create fields that will later hold references to Views
     private TextView mListingName;
     private ImageView mImage;
@@ -40,23 +56,23 @@ public class ListingDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_listing_detail, container, false);
-
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        updateListingDetails(1);
+        mBundle = this.getArguments();
+        updateListingDetails(mBundle);
 
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+//    // TODO: Rename method, update argument and hook method into UI event
+//    public void onButtonPressed(Uri uri) {
+//        if (mListener != null) {
+//            mListener.onFragmentInteraction(uri);
+//        }
+//    }
 
 //    @Override
 //    public void onAttach(Context context) {
@@ -72,7 +88,7 @@ public class ListingDetailFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+//        mListener = null;
 
         mListingName = null;
         mImage = null;
@@ -83,39 +99,41 @@ public class ListingDetailFragment extends Fragment {
         mPhoneNumber = null;
     }
 
-    public void updateListingDetails(int position) {
+    public void updateListingDetails(Bundle bundle) {
         // TODO: This method is called from MainActivity. The below message IS printed to the log, but then there's a null pointer excception & app crashes...
         // Using "this" before fields does not solve the problem.
         Log.v("***TESTING***", "We have entered the updateListingDetails method prior to crashing.");
 
-
         // TODO: ADD CODE TO DYNAMICALLY POPULATE THE VIEWS. [THIS IS A TESTING PLACEHOLDER]...
-        mListingName = (TextView) getActivity().findViewById(R.id.detail_listing_name);
-        mListingName.setText("Listing Title");
+        // Ensure that required data has been passed via the Bundle before proceeding
+        if (bundle != null) {
+            mListingName = (TextView) getActivity().findViewById(R.id.detail_listing_name);
+            mListingName.setText(bundle.getString(ARG_LISTING_NAME));
 
-        // TODO: ADD IF STATEMENT LATER TO CHECK IF SELECTED ITEM HAS AN IMAGE BEFORE SETTING IT...
-        mImage = (ImageView) getActivity().findViewById(R.id.detail_image);
-        mImage.setImageResource(R.drawable.park_nakoma_01_3to2);
+            // TODO: ADD IF STATEMENT LATER TO CHECK IF SELECTED ITEM HAS AN IMAGE BEFORE SETTING IT...
+            mImage = (ImageView) getActivity().findViewById(R.id.detail_image);
+            mImage.setImageResource(bundle.getInt(ARG_IMAGE_RESOURCE));
 
-        mDescription = (TextView) getActivity().findViewById(R.id.detail_description_full);
-        mDescription.setText("This is where the full description text would go...");
+            mDescription = (TextView) getActivity().findViewById(R.id.detail_description_full);
+            mDescription.setText(bundle.getString(ARG_FULL_DESCRIPTION));
 
-        mHoursDates = (TextView) getActivity().findViewById(R.id.detail_hours_dates);
-        mHoursDates.setText("Sun, Sat 11am - 9pm, M-F 9am - 7pm");
+            mHoursDates = (TextView) getActivity().findViewById(R.id.detail_hours_dates);
+            mHoursDates.setText(bundle.getString(ARG_HOURS_DATES));
+        }
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnDetailFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+//    /**
+//     * This interface must be implemented by activities that contain this
+//     * fragment to allow an interaction in this fragment to be communicated
+//     * to the activity and potentially other fragments contained in that
+//     * activity.
+//     * <p>
+//     * See the Android Training lesson <a href=
+//     * "http://developer.android.com/training/basics/fragments/communicating.html"
+//     * >Communicating with Other Fragments</a> for more information.
+//     */
+//    public interface OnDetailFragmentInteractionListener {
+//        // TODO: Update argument type and name
+//        void onFragmentInteraction(Uri uri);
+//    }
 }
