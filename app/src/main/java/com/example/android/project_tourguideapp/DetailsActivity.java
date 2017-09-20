@@ -22,12 +22,11 @@ public class DetailsActivity extends AppCompatActivity {
 //        fragmentManager.beginTransaction().add(R.id.detail_container, listingDetailFragment).commit();
 
         ListingDetailFragment listingDetailFragment = new ListingDetailFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.detail_container_activity, listingDetailFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.detail_container_activity, listingDetailFragment).commit();
 
         // TODO: GET THE BUNDLE OF DATA PASSED WITH INTENT...
         Intent callingIntent = getIntent();
         Bundle bundle = callingIntent.getExtras();
-
         listingDetailFragment.setArguments(bundle);
 
         // TODO: THE BELOW CODE IS JUST FOR TESTING. IT SHOWS THAT BUNDLE IS BEING RECEIVED FINE.
