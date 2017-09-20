@@ -62,8 +62,18 @@ public class ListingDetailFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mBundle = this.getArguments();
-        updateListingDetails(mBundle);
+        // TODO: FIGURE OUT HOW TO HANDLE SAVED INSTANCE STATE VS. PASSED BUNDLE WHEN STARTED BY MY DETAILSACTIVITY...
+        if (savedInstanceState != null) {
+            mBundle = savedInstanceState;
+            updateListingDetails(mBundle);
+        } else if (getArguments() != null) {
+            Log.v("***TESTING***", "In ListingDetailFragment's onViewCreated method; savedInstanceState is null, but getArguments bundle is NOT!");
+            mBundle = getArguments();
+            updateListingDetails(mBundle);
+        } else {
+            Log.v("***TESTING***", "In ListingDetailFragment's onViewCreated method; savedInstanceState and getArguments bundles are BOTH null...");
+            updateListingDetails(ParksListFragment.getBundle(0));
+        }
 
     }
 
@@ -102,12 +112,16 @@ public class ListingDetailFragment extends Fragment {
     public void updateListingDetails(Bundle bundle) {
         // TODO: This method is called from MainActivity. The below message IS printed to the log, but then there's a null pointer excception & app crashes...
         // Using "this" before fields does not solve the problem.
-        Log.v("***TESTING***", "We have entered the updateListingDetails method prior to crashing.");
+        Log.v("***TESTING***", "We have entered the updateListingDetails method.");
+        Log.v("***TESTING***", bundle.toString());
 
         // TODO: ADD CODE TO DYNAMICALLY POPULATE THE VIEWS. [THIS IS A TESTING PLACEHOLDER]...
         // Ensure that required data has been passed via the Bundle before proceeding
         if (bundle != null) {
             mListingName = (TextView) getActivity().findViewById(R.id.detail_listing_name);
+            if (mListingName != null) {
+                Log.v("***TESTING***", "mListingName is NOT null, so we've found the listing name TextView to update!");
+            }
             mListingName.setText(bundle.getString(ARG_LISTING_NAME));
 
             // TODO: ADD IF STATEMENT LATER TO CHECK IF SELECTED ITEM HAS AN IMAGE BEFORE SETTING IT...

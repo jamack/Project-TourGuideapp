@@ -1,9 +1,9 @@
 package com.example.android.project_tourguideapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,8 +15,10 @@ public class MainActivity extends AppCompatActivity
 
     // Create global variable to later hold reference to a FragmentManager instance
     FragmentManager fragmentManager;
+
     // Global variable to hold reference to a ListingDetailFragment (if present)
-    ListingDetailFragment listingDetailFragment;
+    ListingDetailFragment listingDetailFragment = null;
+
     // Track whether a ListingDetailFragment is being displayed alongside the listing
     private boolean isDualPane;
 
@@ -28,6 +30,10 @@ public class MainActivity extends AppCompatActivity
 
         // Get a FragmentManager instance to be used throughout Activity and assign to the global variable.
         fragmentManager = getSupportFragmentManager();
+
+//        // TODO: TRYING TO GET VIEWPAGER + TABS WORKING AS A FRAGMENT I CAN REPLACE...
+//        ListingViewPagerFragment listingViewPagerFragment = new ListingViewPagerFragment();
+//        fragmentManager.beginTransaction().add(R.id.fragment_container, listingViewPagerFragment).commit();
 
         // Get the xml layout's ViewPager widget and assign to a variable
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
@@ -116,22 +122,28 @@ public class MainActivity extends AppCompatActivity
             Log.v("***TESTING***", "isDualPane is false - so an existing detail fragment was NOT located...");
             // Otherwise, we're in the one-pane layout and must swap frags...
 
-            // Create fragment and give it an argument for the selected listing
-            ListingDetailFragment newFragment = new ListingDetailFragment();
-            // TODO: CREATE A METHOD TO HANDLE THIS OPERATION SINCE IT WILL ENTAIL MANY ARGUMENTS & WE'LL USE IT IN SEVERAL CONTEXTS...
-            Bundle args = new Bundle();
-            args.putInt(ListingDetailFragment.ARG_POSITION, position);
-            newFragment.setArguments(args);
+//            // TODO: Check whether a prior instance of ListingDetailFragment exists in memory.
+//            // If not, create a new instance.
+//                listingDetailFragment = new ListingDetailFragment();
+//
+//            listingDetailFragment.setArguments(ParksListFragment.getBundle(position));
+//
+//            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//
+//            // Replace whatever is in the fragment_container view with this fragment,
+//            // and add the transaction to the back stack so the user can navigate back
+//            transaction.replace(R.id.fragment_container, listingDetailFragment);
+//            transaction.addToBackStack(null);
+//
+//            // Commit the transaction
+//            transaction.commit();
 
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            // TODO: CREATE NEW ACTIVITY INTENT, GET BUNDLE W/ DATA, CHAIN BUNDLE TO INTENT, START INTENT...
+            Intent detailIntent = new Intent(this, DetailsActivity.class);
+            Bundle bundle = ParksListFragment.getBundle(position);
+            detailIntent.putExtras(bundle);
+            startActivity(detailIntent);
 
-            // Replace whatever is in the fragment_container view with this fragment,
-            // and add the transaction to the back stack so the user can navigate back
-            transaction.replace(R.id.detail_container, newFragment);
-            transaction.addToBackStack(null);
-
-            // Commit the transaction
-            transaction.commit();
         }
     }
 
