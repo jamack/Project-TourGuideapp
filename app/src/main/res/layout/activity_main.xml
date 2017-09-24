@@ -6,12 +6,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- Add Toolbar (aka Action Bar). This overrides the default toolbar & allows styling + icons/actions -->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_list"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <!-- Works with ViewPager to create tabs across top, populate their titles, and enable them to switch the current Fragment -->
     <android.support.design.widget.TabLayout
         android:id="@+id/sliding_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabMode="fixed" />
+        android:background="@color/colorAccent"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/colorPrimaryDark" />
 
+    <!-- Enables the user to swipe left/right between related Fragments. Works with the TabLayout above. -->
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
