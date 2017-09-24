@@ -6,11 +6,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
+        // Implement the OnFragmentInteractionListener interfaces in each listing's fragment.
+        // This requires overriding & implementing the method signatures in each interface.
         implements ParksListFragment.OnParksFragmentInteractionListener {
 
     // Create global variable to later hold reference to a FragmentManager instance
@@ -31,14 +31,11 @@ public class MainActivity extends AppCompatActivity
         // Get a FragmentManager instance to be used throughout Activity and assign to the global variable.
         fragmentManager = getSupportFragmentManager();
 
-//        // TODO: TRYING TO GET VIEWPAGER + TABS WORKING AS A FRAGMENT I CAN REPLACE...
-//        ListingViewPagerFragment listingViewPagerFragment = new ListingViewPagerFragment();
-//        fragmentManager.beginTransaction().add(R.id.fragment_container, listingViewPagerFragment).commit();
-
         // Get the xml layout's ViewPager widget and assign to a variable
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         // Create a new KidThingFragmentAdapter instance via its constructor, passing it a FragmentManager instance
         KidThingFragmentPagerAdapter adapter = new KidThingFragmentPagerAdapter(fragmentManager);
+        // Hook the adapter up to the viewpager
         viewPager.setAdapter(adapter);
 
         // Get the xml layout's TabLayout widget and assign to a variable
@@ -51,19 +48,26 @@ public class MainActivity extends AppCompatActivity
         // then landscape xml layout is being used. If not present, then we are in portrait orientation.
         FrameLayout detailContainer = (FrameLayout) findViewById(R.id.detail_container);
         if (detailContainer != null) {
-            Log.v("***TESTING***", "We have found the FrameLayout!!");
+
+            // If the detail_container view exists, we need to update the global variable to reflect two-pane mode
             isDualPane = true;
 
             // TODO: Do I need to check whether ListingDetailFragment instance exists?
             // Create ListingDetailFragment instance and assign to global variable
             listingDetailFragment = new ListingDetailFragment();
+            // Get data for the first list item from the fragment with that arraylist, in the form of a bundle,
+            // and pass that bundle to the detail fragment.
             listingDetailFragment.setArguments(ParksListFragment.getBundle(0));
 
             // Add fragment to the container
             fragmentManager.beginTransaction().add(R.id.detail_container, listingDetailFragment).commit();
 
         } else {
+
+            // If the detail container view does NOT exist, we need to update the global variable to reflect one-pane mode
             isDualPane = false;
+
+            // Nullify any previously created and now unused references to a detail fragment
             listingDetailFragment = null;
         }
 
@@ -90,67 +94,26 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    // TODO: Add code implementing the onParksFragmentInteraction method...
+    // TODO: Add/Tweak code to implement the other onXXXFragmentInteraction method to my other Fragments...
+
     public void onParksFragmentInteraction(int position) {
-        Toast.makeText(this, "Item #" + Integer.toString(position) + " selected - making toast!", Toast.LENGTH_LONG).show();
 
-        // The user selected a listing from one of the *ListFragments
-        // Do something here to display that listing's details
-
-//        ListingDetailFragment detailFrag = (ListingDetailFragment)
-//                getSupportFragmentManager().findFragmentById(R.id.fragment_listing_detail);
-//
-////        if (detailFrag != null) {
-//            // If article frag is available, we're in two-pane layout...
-//
-//            // Call a method in the ListingDetailFragment to update its content
-//            detailFrag.updateListingDetails(position);
-//            Log.v("***TESTING***", "detailFrag is present and is NOT null...");
-//            getSupportFragmentManager().beginTransaction().add(R.id.detail_container, detailFrag).commit();
-
-//        if (listingDetailFragment != null) {
-        // If listingDetailFragment is not null, then a detail fragment already exists and we're in two-pane layout.
-
+        // If isDualPane is true, then from our previous check we already know that a detail fragment already exists and we're in two-pane layout.
         if (isDualPane) {
-            // If isDualPane is true, then from our previous check we already know that a detail fragment already exists and we're in two-pane layout.
-            Log.v("***TESTING***", "In onParksFragmentInteraction method. Existing detail fragment's existence has been recognized!");
 
             // Call a method in the ListingDetailFragment to update its content.
             // We will pass it a Bundle generated via the ParksListFragment's getBundle method, for item the user has just clicked on.
             listingDetailFragment.updateListingDetails(ParksListFragment.getBundle(position));
-        } else {
-            Log.v("***TESTING***", "isDualPane is false - so an existing detail fragment was NOT located...");
-            // Otherwise, we're in the one-pane layout and must swap frags...
+        } else { // Otherwise, we're in the one-pane layout and must swap frags...
 
-//            // TODO: Check whether a prior instance of ListingDetailFragment exists in memory.
-//            // If not, create a new instance.
-//                listingDetailFragment = new ListingDetailFragment();
-//
-//            listingDetailFragment.setArguments(ParksListFragment.getBundle(position));
-//
-//            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//
-//            // Replace whatever is in the fragment_container view with this fragment,
-//            // and add the transaction to the back stack so the user can navigate back
-//            transaction.replace(R.id.fragment_container, listingDetailFragment);
-//            transaction.addToBackStack(null);
-//
-//            // Commit the transaction
-//            transaction.commit();
-
-            // TODO: CREATE NEW ACTIVITY INTENT, GET BUNDLE W/ DATA, CHAIN BUNDLE TO INTENT, START INTENT...
+            // Create a new Activity Intent that will show a listing's details
             Intent detailIntent = new Intent(this, DetailsActivity.class);
+            // Create a new bundle and fill it with data for a selected listing by calling the listing fragment's getBundle()
             Bundle bundle = ParksListFragment.getBundle(position);
+            // Pass the selected listing's data to the Activity Intent in form of a bundle
             detailIntent.putExtras(bundle);
+            // Start the detail activity
             startActivity(detailIntent);
-
         }
     }
-
-    // TODO: CREATE METHOD TO QUERY LISTING(MASTER) FRAGMENT'S ARRAYLIST TO GET DATA. PASS THAT DATA TO DETAIL FRAGMENT'S UPDATELISTING METHOD...
-    // Pass fields from selected KidThing object to ListingDetailFragment's updateListingDetails method
-
-    void passDataViaMethod(int position) {
-    }
-
 }

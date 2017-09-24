@@ -26,7 +26,7 @@ import static android.R.attr.name;
 public class ListingDetailFragment extends Fragment {
 
     public static String ARG_LISTING_NAME = "ARG_LISTING_NAME";
-    public static String ARG_IMAGE_RESOURCE = "ARG_IMAGE_RESOURCE";
+    public static String ARG_IMAGE_RESOURCE_BANNER = "ARG_IMAGE_RESOURCE_BANNER";
     public static String ARG_FULL_DESCRIPTION = "ARG_FULL_DESCRIPTION";
     public static String ARG_ADDRESS = "ARG_ADDRESS";
     public static String ARG_HOURS_DATES = "ARG_HOURS_DATES";
@@ -118,15 +118,16 @@ public class ListingDetailFragment extends Fragment {
         // TODO: ADD CODE TO DYNAMICALLY POPULATE THE VIEWS. [THIS IS A TESTING PLACEHOLDER]...
         // Ensure that required data has been passed via the Bundle before proceeding
         if (bundle != null) {
+
+            // TODO: ADD IF STATEMENT LATER TO CHECK IF SELECTED ITEM HAS AN IMAGE BEFORE SETTING IT...
+            mImage = (ImageView) getActivity().findViewById(R.id.detail_image);
+            mImage.setImageResource(bundle.getInt(ARG_IMAGE_RESOURCE_BANNER));
+
             mListingName = (TextView) getActivity().findViewById(R.id.detail_listing_name);
             if (mListingName != null) {
                 Log.v("***TESTING***", "mListingName is NOT null, so we've found the listing name TextView to update!");
             }
             mListingName.setText(bundle.getString(ARG_LISTING_NAME));
-
-            // TODO: ADD IF STATEMENT LATER TO CHECK IF SELECTED ITEM HAS AN IMAGE BEFORE SETTING IT...
-            mImage = (ImageView) getActivity().findViewById(R.id.detail_image);
-            mImage.setImageResource(bundle.getInt(ARG_IMAGE_RESOURCE));
 
             mDescription = (TextView) getActivity().findViewById(R.id.detail_description_full);
             mDescription.setText(bundle.getString(ARG_FULL_DESCRIPTION));

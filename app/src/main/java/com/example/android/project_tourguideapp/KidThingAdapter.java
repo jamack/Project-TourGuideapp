@@ -56,13 +56,13 @@ public class KidThingAdapter extends ArrayAdapter<KidThing> {
         TextView listingTitle = (TextView) listItemView.findViewById(R.id.listing_title);
         listingTitle.setText(currentKidThing.getListingName());
 
-        // Check whether the current item has an associated image.
+        // Check whether the current item has an associated thumbnail image. (Banner image isn't used here).
         // If so, find the ImageView in the list_item layout with the ID listing listing_image
         // & assign image to the ImageView.
         // If no associated image, turn the ImageView off.
         ImageView listingImage = (ImageView) listItemView.findViewById(R.id.listing_image);
         if (currentKidThing.hasImage()) {
-            listingImage.setImageResource(currentKidThing.getImageResourceId());
+            listingImage.setImageResource(currentKidThing.getThumbnailImageResourceId());
             listingImage.setVisibility(View.VISIBLE);
         } else {
             listingImage.setVisibility(View.GONE);
