@@ -1,20 +1,21 @@
 package com.example.android.project_tourguideapp;
 
-import android.net.Uri;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-
-import static android.R.attr.description;
-import static android.R.attr.name;
 
 
 /**
@@ -25,6 +26,7 @@ import static android.R.attr.name;
  */
 public class ListingDetailFragment extends Fragment {
 
+    // Create constant values for keys that would be expected in Bundle used to create Fragment
     public static String ARG_LISTING_NAME = "ARG_LISTING_NAME";
     public static String ARG_IMAGE_RESOURCE_BANNER = "ARG_IMAGE_RESOURCE_BANNER";
     public static String ARG_FULL_DESCRIPTION = "ARG_FULL_DESCRIPTION";
@@ -32,12 +34,13 @@ public class ListingDetailFragment extends Fragment {
     public static String ARG_HOURS_DATES = "ARG_HOURS_DATES";
     public static String ARG_WEBSITE = "ARG_WEBSITE";
     public static String ARG_PHONE_NUMBER = "ARG_PHONE_NUMBER";
-    // Create constant values for keys that would be expected in Bundle used to create Fragment
-    static String ARG_POSITION = "position";
+    // Global variable to track whether ListingDetailFragment is being shown in one- or two-pane mode
+    boolean isDualPane;
+
+    // private OnDetailFragmentInteractionListener mListener;
+    // Globar variable to store reference to fragment's view hierarchy
+    View rootView = null;
     private Bundle mBundle = null;
-
-//    private OnDetailFragmentInteractionListener mListener;
-
     // Create fields that will later hold references to Views
     private TextView mListingName;
     private ImageView mImage;
@@ -55,12 +58,23 @@ public class ListingDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_listing_detail, container, false);
+        rootView = inflater.inflate(R.layout.fragment_listing_detail, container, false);
+        return rootView;
+//        return inflater.inflate(R.layout.fragment_listing_detail, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        LinearLayout listContainer = (LinearLayout) getActivity().findViewById(R.id.listing_container);
+        if (listContainer != null) {
+            isDualPane = true;
+            Log.v("***TESTING***", "Per ListingDetailFragment's listContainer check, isDualPane is currently: TRUE!");
+        } else {
+            isDualPane = false;
+            Log.v("***TESTING***", "Per ListingDetailFragment's listContainer check,  isDualPane is currently: FALSE!");
+        }
 
         // TODO: [seems to be working!] FIGURE OUT HOW TO HANDLE SAVED INSTANCE STATE VS. PASSED BUNDLE WHEN STARTED BY MY DETAILSACTIVITY...
         if (savedInstanceState != null) {
@@ -73,6 +87,26 @@ public class ListingDetailFragment extends Fragment {
         } else {
             Log.v("***TESTING***", "In ListingDetailFragment's onViewCreated method; savedInstanceState and getArguments bundles are BOTH null...");
             updateListingDetails(ParksListFragment.getBundle(0));
+        }
+
+        // TODO: SETUP MY APPBAR. (FOLLOWING STEPS IN ANDROID DEVELOPERS GUIDE...)
+        if (!isDualPane) {
+            Log.v("***TESTING***", "In ListingDetailFragment's actionbar setup, and  isDualPane is currently: FALSE!");
+            //Set the toolbar_list as the app bar for this Activity (via this Fragment)
+            android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) getActivity().findViewById(R.id.toolbar_detail);
+            ((AppCompatActivity) getActivity()).setSupportActionBar(myToolbar);
+            ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+            actionBar.setTitle("Details");
+
+
+            // TODO: SET MY STATUS BAR COLOR. (IS IT THE BEST PLACE TO PLACE THIS CODE?)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Window window = getActivity().getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(Color.BLUE);
+            }
+        } else {
+            Log.v("***TESTING***", "In ListingDetailFragment's actionbar setup, and isDualPane is currently: TRUE!");
         }
 
     }

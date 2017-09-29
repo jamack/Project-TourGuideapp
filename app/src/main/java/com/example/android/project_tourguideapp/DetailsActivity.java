@@ -13,6 +13,7 @@ public class DetailsActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_details);
         setContentView(R.layout.activity_details);
 
+
 //        // TODO: Do I need to check whether ListingDetailFragment instance exists?
 //        // Create ListingDetailFragment instance and assign to global variable
 //        listingDetailFragment = new ListingDetailFragment();

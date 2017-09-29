@@ -11,7 +11,10 @@ import android.widget.FrameLayout;
 public class MainActivity extends AppCompatActivity
         // Implement the OnFragmentInteractionListener interfaces in each listing's fragment.
         // This requires overriding & implementing the method signatures in each interface.
-        implements ParksListFragment.OnParksFragmentInteractionListener {
+        implements ParksListFragment.OnParksFragmentInteractionListener,
+        StoresListFragment.OnStoresFragmentInteractionListener,
+        RestaurantsListFragment.OnRestaurantsFragmentInteractionListener,
+        AttractionsListFragment.OnAttractionsFragmentInteractionListener {
 
     // Create global variable to later hold reference to a FragmentManager instance
     FragmentManager fragmentManager;
@@ -110,6 +113,69 @@ public class MainActivity extends AppCompatActivity
             Intent detailIntent = new Intent(this, DetailsActivity.class);
             // Create a new bundle and fill it with data for a selected listing by calling the listing fragment's getBundle()
             Bundle bundle = ParksListFragment.getBundle(position);
+            // Pass the selected listing's data to the Activity Intent in form of a bundle
+            detailIntent.putExtras(bundle);
+            // Start the detail activity
+            startActivity(detailIntent);
+        }
+    }
+
+    public void onStoresFragmentInteraction(int position) {
+
+        // If isDualPane is true, then from our previous check we already know that a detail fragment already exists and we're in two-pane layout.
+        if (isDualPane) {
+
+            // Call a method in the ListingDetailFragment to update its content.
+            // We will pass it a Bundle generated via the StoresListFragment's getBundle method, for item the user has just clicked on.
+            listingDetailFragment.updateListingDetails(StoresListFragment.getBundle(position));
+        } else { // Otherwise, we're in the one-pane layout and must swap frags...
+
+            // Create a new Activity Intent that will show a listing's details
+            Intent detailIntent = new Intent(this, DetailsActivity.class);
+            // Create a new bundle and fill it with data for a selected listing by calling the listing fragment's getBundle()
+            Bundle bundle = StoresListFragment.getBundle(position);
+            // Pass the selected listing's data to the Activity Intent in form of a bundle
+            detailIntent.putExtras(bundle);
+            // Start the detail activity
+            startActivity(detailIntent);
+        }
+    }
+
+    public void onRestaurantsFragmentInteraction(int position) {
+
+        // If isDualPane is true, then from our previous check we already know that a detail fragment already exists and we're in two-pane layout.
+        if (isDualPane) {
+
+            // Call a method in the ListingDetailFragment to update its content.
+            // We will pass it a Bundle generated via the RestaurantsListFragment's getBundle method, for item the user has just clicked on.
+            listingDetailFragment.updateListingDetails(RestaurantsListFragment.getBundle(position));
+        } else { // Otherwise, we're in the one-pane layout and must swap frags...
+
+            // Create a new Activity Intent that will show a listing's details
+            Intent detailIntent = new Intent(this, DetailsActivity.class);
+            // Create a new bundle and fill it with data for a selected listing by calling the listing fragment's getBundle()
+            Bundle bundle = RestaurantsListFragment.getBundle(position);
+            // Pass the selected listing's data to the Activity Intent in form of a bundle
+            detailIntent.putExtras(bundle);
+            // Start the detail activity
+            startActivity(detailIntent);
+        }
+    }
+
+    public void onAttractionsFragmentInteraction(int position) {
+
+        // If isDualPane is true, then from our previous check we already know that a detail fragment already exists and we're in two-pane layout.
+        if (isDualPane) {
+
+            // Call a method in the ListingDetailFragment to update its content.
+            // We will pass it a Bundle generated via the AttractionsListFragment's getBundle method, for item the user has just clicked on.
+            listingDetailFragment.updateListingDetails(AttractionsListFragment.getBundle(position));
+        } else { // Otherwise, we're in the one-pane layout and must swap frags...
+
+            // Create a new Activity Intent that will show a listing's details
+            Intent detailIntent = new Intent(this, DetailsActivity.class);
+            // Create a new bundle and fill it with data for a selected listing by calling the listing fragment's getBundle()
+            Bundle bundle = AttractionsListFragment.getBundle(position);
             // Pass the selected listing's data to the Activity Intent in form of a bundle
             detailIntent.putExtras(bundle);
             // Start the detail activity

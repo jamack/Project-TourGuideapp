@@ -1,11 +1,17 @@
 package com.example.android.project_tourguideapp;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -60,6 +66,20 @@ public class ParksListFragment extends Fragment {
 
         // inflate our list_view ListView and assign the instance to a variable
         View rootView = inflater.inflate(R.layout.kidthing_list, container, false);
+
+        // TODO: SETUP MY APPBAR. (FOLLOWING STEPS IN ANDROID DEVELOPERS GUIDE...)
+        // Set the toolbar_list as the app bar for this Activity (via this Fragment)
+        android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) getActivity().findViewById(R.id.toolbar_list);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(myToolbar);
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        actionBar.setTitle("Parks & Playgrounds");
+
+        // TODO: SET MY STATUS BAR COLOR. (IS IT THE BEST PLACE TO PLACE THIS CODE?)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getActivity().getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.BLUE);
+        }
 
 
         // Take our global variable and initialize it with a new ArrayList of KidThings
@@ -146,7 +166,8 @@ public class ParksListFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnParksFragmentInteractionListener {
-        // TODO: Update argument type and name
+        // Method signature to be executed when user clicks on the ListView.
+        // This interface will need to be implemented by MainActivity and have the method completed.
         void onParksFragmentInteraction(int position);
     }
 }

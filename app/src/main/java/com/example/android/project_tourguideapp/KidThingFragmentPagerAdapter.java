@@ -12,7 +12,7 @@ public class KidThingFragmentPagerAdapter extends FragmentPagerAdapter {
 
     // TODO: UPDATE FOR FINAL # OF SCREENS
     // Create constant value for the number of screens
-    private static final int NUMBER_OF_SCREENS = 3;
+    private static final int NUMBER_OF_SCREENS = 4;
 
     /**
      * Constructor method for {@KidThingFragmentPagerAdapter}
@@ -30,8 +30,10 @@ public class KidThingFragmentPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return new ParksListFragment();
             case 1:
-                return new RestaurantsListFragment();
+                return new AttractionsListFragment();
             case 2:
+                return new RestaurantsListFragment();
+            case 3:
                 return new StoresListFragment();
         }
 
@@ -45,8 +47,10 @@ public class KidThingFragmentPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return "Play";
             case 1:
-                return "Eat";
+                return "Do";
             case 2:
+                return "Eat";
+            case 3:
                 return "Shop";
         }
 
