@@ -26,6 +26,7 @@ public class KidThingFragmentPagerAdapter extends FragmentPagerAdapter {
     // TODO: UPDATE once all category Fragments are included below
     @Override
     public Fragment getItem(int position) {
+        // Construct and return a Fragment
         switch (position) {
             case 0:
                 return new ParksListFragment();
@@ -43,6 +44,7 @@ public class KidThingFragmentPagerAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
 
+        // Update TabLayout's tab titles
         switch (position) {
             case 0:
                 return "Play";

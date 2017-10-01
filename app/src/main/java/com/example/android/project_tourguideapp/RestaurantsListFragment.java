@@ -116,6 +116,15 @@ public class RestaurantsListFragment extends Fragment {
         mRestaurantsListener = null;
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            // Your fragment is visible
+            // Caller setter method in MainActivity to update ActionBar's title for this fragment
+            MainActivity.setActionBarTitle("Child-Friendly Restaurants");
+        }
+    }
 
     /**
      * This interface must be implemented by activities that contain this

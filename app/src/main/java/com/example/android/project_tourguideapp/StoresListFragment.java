@@ -123,6 +123,15 @@ public class StoresListFragment extends Fragment {
         mStoresListener = null;
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            // Your fragment is visible
+            // Caller setter method in MainActivity to update ActionBar's title for this fragment
+            MainActivity.setActionBarTitle("Stores with Children's Items");
+        }
+    }
 
     /**
      * This interface must be implemented by activities that contain this

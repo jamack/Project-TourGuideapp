@@ -37,10 +37,14 @@ public class ListingDetailFragment extends Fragment {
     // Global variable to track whether ListingDetailFragment is being shown in one- or two-pane mode
     boolean isDualPane;
 
-    // private OnDetailFragmentInteractionListener mListener;
-    // Globar variable to store reference to fragment's view hierarchy
+//    private OnDetailFragmentInteractionListener mListener;
+
+    // Global variable to store reference to fragment's view hierarchy
     View rootView = null;
+
+    // Global variable to store reference to any applicable Bundle used within this Fragment
     private Bundle mBundle = null;
+
     // Create fields that will later hold references to Views
     private TextView mListingName;
     private ImageView mImage;

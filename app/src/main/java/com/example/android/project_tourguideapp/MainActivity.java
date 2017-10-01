@@ -1,11 +1,16 @@
 package com.example.android.project_tourguideapp;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity
@@ -16,14 +21,19 @@ public class MainActivity extends AppCompatActivity
         RestaurantsListFragment.OnRestaurantsFragmentInteractionListener,
         AttractionsListFragment.OnAttractionsFragmentInteractionListener {
 
+    // Declare global variable to hold reference to the Activity's ActionBar
+    private static ActionBar actionBar = null;
     // Create global variable to later hold reference to a FragmentManager instance
-    FragmentManager fragmentManager;
-
+    FragmentManager fragmentManager = null;
     // Global variable to hold reference to a ListingDetailFragment (if present)
     ListingDetailFragment listingDetailFragment = null;
 
     // Track whether a ListingDetailFragment is being displayed alongside the listing
     private boolean isDualPane;
+
+    public static void setActionBarTitle(String title) {
+        actionBar.setTitle(title);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +56,19 @@ public class MainActivity extends AppCompatActivity
         // Set the ViewPager on the TabLayout to connect the pager with the tabs
         tabLayout.setupWithViewPager(viewPager);
 
+        // TODO: SETUP MY APPBAR. (FOLLOWING STEPS IN ANDROID DEVELOPERS GUIDE...)
+        // Set the toolbar_list as the app bar for this Activity (via this Fragment)
+        android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_list);
+        setSupportActionBar(myToolbar);
+        actionBar = getSupportActionBar();
+//        actionBar.setTitle("Parks & Playgrounds");
+
+        // TODO: SET MY STATUS BAR COLOR. (IS IT THE BEST PLACE TO PLACE THIS CODE?)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.BLUE);
+        }
 
         // Check for current orientation: if R.id.detail_container is present in view hierarchy,
         // then landscape xml layout is being used. If not present, then we are in portrait orientation.
@@ -96,8 +119,6 @@ public class MainActivity extends AppCompatActivity
 //        listView.setAdapter(kidThingAdapter);
 
     }
-
-    // TODO: Add/Tweak code to implement the other onXXXFragmentInteraction method to my other Fragments...
 
     public void onParksFragmentInteraction(int position) {
 

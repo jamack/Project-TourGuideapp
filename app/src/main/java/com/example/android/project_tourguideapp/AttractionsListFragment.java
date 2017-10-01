@@ -134,6 +134,15 @@ public class AttractionsListFragment extends Fragment {
         mAttractionsListener = null;
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            // Your fragment is visible
+            // Caller setter method in MainActivity to update ActionBar's title for this fragment
+            MainActivity.setActionBarTitle("Attractions");
+        }
+    }
 
     /**
      * This interface must be implemented by activities that contain this
