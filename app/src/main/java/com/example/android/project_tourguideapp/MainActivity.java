@@ -23,8 +23,10 @@ public class MainActivity extends AppCompatActivity
 
     // Declare global variable to hold reference to the Activity's ActionBar
     private static ActionBar actionBar = null;
+
     // Create global variable to later hold reference to a FragmentManager instance
     FragmentManager fragmentManager = null;
+
     // Global variable to hold reference to a ListingDetailFragment (if present)
     ListingDetailFragment listingDetailFragment = null;
 
@@ -61,7 +63,6 @@ public class MainActivity extends AppCompatActivity
         android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_list);
         setSupportActionBar(myToolbar);
         actionBar = getSupportActionBar();
-//        actionBar.setTitle("Parks & Playgrounds");
 
         // TODO: SET MY STATUS BAR COLOR. (IS IT THE BEST PLACE TO PLACE THIS CODE?)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

@@ -35,6 +35,10 @@ public class KidThing {
     private String mDescription;
     /** Address for the venue/event */
     private String mAddress;
+    /**
+     * Address for the venue/event - in geographical coordinate format
+     */
+    private String mGeocoordinates;
     /** Hours (& possibly days of the week) that a venue is open -OR- dates (& possibly hours) that an event is occurring. */
     private String mHoursDates = NO_HOURS_DATES_PROVIDED;
     /** IF APPLICABLE, website where user can find more information. */
@@ -50,16 +54,18 @@ public class KidThing {
      * @param imageIdBanner - image resource id for representative banner image
      * @param description - overview of event/venue
      * @param address - where event/venue is located
+     * @param geocoordinates - address, in geographical coordinate format
      * @param hoursDates - times when venue is open -or- date(s)/times that event is occurring.
      * @param website - url for more detailed info
      * @param phoneNum - phone number to contact
      */
-    public KidThing(String name, int imageIdThumbnail, int imageIdBanner, String description, String address, String hoursDates, String website, long phoneNum) {
+    public KidThing(String name, int imageIdThumbnail, int imageIdBanner, String description, String address, String geocoordinates, String hoursDates, String website, long phoneNum) {
         mListingName = name;
         mImageThumbnailResourceId = imageIdThumbnail;
         mImageBannerResourceId = imageIdBanner;
         mDescription = description;
         mAddress = address;
+        mGeocoordinates = geocoordinates;
         mHoursDates = hoursDates;
         mWebsite = website;
         mPhoneNumber = phoneNum;
@@ -71,14 +77,16 @@ public class KidThing {
      * @param name - event/venue title
      * @param description - overview of event/venue
      * @param address - where event/venue is located
+     * @param geocoordinates - address, in geographical coordinate format
      * @param hoursDates - times when venue is open -or- date(s)/times that event is occurring.
      * @param website - url for more detailed info
      * @param phoneNum - phone number to contact
      */
-    public KidThing(String name, String description, String address, String hoursDates, String website, long phoneNum) {
+    public KidThing(String name, String description, String address, String geocoordinates, String hoursDates, String website, long phoneNum) {
         mListingName = name;
         mDescription = description;
         mAddress = address;
+        mGeocoordinates = geocoordinates;
         mHoursDates = hoursDates;
         mWebsite = website;
         mPhoneNumber = phoneNum;
@@ -92,15 +100,17 @@ public class KidThing {
      * @param imageIdBanner - image resource id for representative banner image
      * @param description - overview of event/venue
      * @param address - where event/venue is located
+     * @param geocoordinates - address, in geographical coordinate format
      * @param hoursDates - times when venue is open -or- date(s)/times that event is occurring.
      * @param website - url for more detailed info
      */
-    public KidThing(String name, int imageIdThumbnail, int imageIdBanner, String description, String address, String hoursDates, String website) {
+    public KidThing(String name, int imageIdThumbnail, int imageIdBanner, String description, String address, String geocoordinates, String hoursDates, String website) {
         mListingName = name;
         mImageThumbnailResourceId = imageIdThumbnail;
         mImageBannerResourceId = imageIdBanner;
         mDescription = description;
         mAddress = address;
+        mGeocoordinates = geocoordinates;
         mHoursDates = hoursDates;
         mWebsite = website;
     }
@@ -111,13 +121,15 @@ public class KidThing {
      * @param name - event/venue title
      * @param description - overview of event/venue
      * @param address - where event/venue is located
+     * @param geocoordinates - address, in geographical coordinate format
      * @param hoursDates - times when venue is open -or- date(s)/times that event is occurring.
      * @param website - url for more detailed info
      */
-    public KidThing(String name, String description, String address, String hoursDates, String website) {
+    public KidThing(String name, String description, String address, String geocoordinates, String hoursDates, String website) {
         mListingName = name;
         mDescription = description;
         mAddress = address;
+        mGeocoordinates = geocoordinates;
         mHoursDates = hoursDates;
         mWebsite = website;
     }
@@ -154,6 +166,10 @@ public class KidThing {
         return mAddress;
     }
 
+    public String getGeocoordinates() {
+        return mGeocoordinates;
+    }
+
     /** Returns whether or not there are hours/dates for this venue/event */
     public boolean hasHoursDates() {
         return mHoursDates != NO_HOURS_DATES_PROVIDED;
@@ -184,6 +200,7 @@ public class KidThing {
                 "mImageBannerResourceID: " + mImageBannerResourceId + "; " +
                 "mDescription: " + mDescription + "; " +
                 "mAddress: " + mAddress + "; " +
+                "mGeocoordinates: " + mGeocoordinates + "; " +
                 "mHoursDates: " + mHoursDates + "; " +
                 "mWebsite: " + mWebsite + "; " +
                 "mPhoneNumber: " + mPhoneNumber;

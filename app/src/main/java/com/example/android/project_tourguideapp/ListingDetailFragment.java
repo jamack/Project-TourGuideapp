@@ -1,6 +1,8 @@
 package com.example.android.project_tourguideapp;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +11,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -31,6 +36,7 @@ public class ListingDetailFragment extends Fragment {
     public static String ARG_IMAGE_RESOURCE_BANNER = "ARG_IMAGE_RESOURCE_BANNER";
     public static String ARG_FULL_DESCRIPTION = "ARG_FULL_DESCRIPTION";
     public static String ARG_ADDRESS = "ARG_ADDRESS";
+    public static String ARG_GEOCOORDINATES = "ARG_GEOCOORDINATES";
     public static String ARG_HOURS_DATES = "ARG_HOURS_DATES";
     public static String ARG_WEBSITE = "ARG_WEBSITE";
     public static String ARG_PHONE_NUMBER = "ARG_PHONE_NUMBER";
@@ -63,6 +69,11 @@ public class ListingDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_listing_detail, container, false);
+
+        // Report that this fragment would like to participate in populating the options menu by receiving a call to
+        // onCreateOptionsMenu and related methods.
+        setHasOptionsMenu(true);
+
         return rootView;
 //        return inflater.inflate(R.layout.fragment_listing_detail, container, false);
     }
@@ -145,6 +156,56 @@ public class ListingDetailFragment extends Fragment {
         mHoursDates = null;
         mWebsite = null;
         mPhoneNumber = null;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+
+        inflater.inflate(R.menu.action_bar_details, menu);
+
+        // Hide Call_the_Listing action if Listing has no associated phone number
+        if (mBundle.getLong(ARG_PHONE_NUMBER) == 0) {
+            MenuItem item = menu.findItem(R.id.call_the_listing);
+            item.setVisible(false);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.call_the_listing:
+                // User chose the "Call the Listing" item - launch dialer intent
+                // with phone number from the currently displayed listing details.
+                Intent dialerIntent = new Intent(Intent.ACTION_DIAL);
+                String dialerIntentString = "tel:" + Long.toString(mBundle.getLong(ARG_PHONE_NUMBER));
+                dialerIntent.setData(Uri.parse(dialerIntentString));
+                startActivity(dialerIntent);
+
+            case R.id.open_in_browser:
+                // User chose the "Open in Browser" item - launch browser
+                // with the website address from the currently displayed listing details.
+                Intent websiteIntent = new Intent(Intent.ACTION_VIEW);
+                String websiteIntentString = mBundle.getString(ARG_WEBSITE);
+                websiteIntent.setData(Uri.parse(websiteIntentString));
+                startActivity(websiteIntent);
+
+            case R.id.navigate_to_listing:
+                // User chose the "Navigate to Listing" item - launch navigation
+                // with the address from the currently displayed listing details.
+                String geocoordString = "google.navigation:q=" + mBundle.getString(ARG_GEOCOORDINATES);
+                Uri gmmIntentUri = Uri.parse(geocoordString);
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 
     public void updateListingDetails(Bundle bundle) {

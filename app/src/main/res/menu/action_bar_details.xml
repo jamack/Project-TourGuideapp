@@ -4,14 +4,21 @@
     <!-- "Call the Listing", should appear as action button if possible -->
     <item
         android:id="@+id/call_the_listing"
-        android:icon="@drawable/ic_phone_black_24dp"
+        android:icon="@drawable/ic_phone_white_24dp"
         android:title="action_call_listing"
         app:showAsAction="ifRoom" />
 
     <!-- "Open Listing in Browser", should appear as action button if possible -->
     <item
         android:id="@+id/open_in_browser"
-        android:icon="@drawable/ic_open_in_browser_black_24dp"
+        android:icon="@drawable/ic_open_in_browser_white_24dp"
         android:title="action_open_in_browser"
+        app:showAsAction="ifRoom" />
+
+    <!-- "Navigate to Listing", should appear as action button if possible  -->
+    <item
+        android:id="@+id/navigate_to_listing"
+        android:icon="@drawable/ic_directions_white_24dp"
+        android:title="navigate_to_listing"
         app:showAsAction="ifRoom" />
 </menu>

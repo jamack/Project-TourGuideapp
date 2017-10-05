@@ -47,6 +47,7 @@ public class ParksListFragment extends Fragment {
         bundle.putInt(ListingDetailFragment.ARG_IMAGE_RESOURCE_BANNER, kidThings.get(position).getBannerImageResourceId());
         bundle.putString(ListingDetailFragment.ARG_FULL_DESCRIPTION, kidThings.get(position).getDescription());
         bundle.putString(ListingDetailFragment.ARG_ADDRESS, kidThings.get(position).getAddress());
+        bundle.putString(ListingDetailFragment.ARG_GEOCOORDINATES, kidThings.get(position).getGeocoordinates());
         bundle.putString(ListingDetailFragment.ARG_HOURS_DATES, kidThings.get(position).getHoursDates());
         bundle.putString(ListingDetailFragment.ARG_WEBSITE, kidThings.get(position).getWebsite());
         bundle.putLong(ListingDetailFragment.ARG_PHONE_NUMBER, kidThings.get(position).getPhoneNumber());
@@ -61,51 +62,36 @@ public class ParksListFragment extends Fragment {
         // inflate our list_view ListView and assign the instance to a variable
         View rootView = inflater.inflate(R.layout.kidthing_list, container, false);
 
-//        // TODO: SETUP MY APPBAR. (FOLLOWING STEPS IN ANDROID DEVELOPERS GUIDE...)
-//        // Set the toolbar_list as the app bar for this Activity (via this Fragment)
-//        android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) getActivity().findViewById(R.id.toolbar_list);
-//        ((AppCompatActivity) getActivity()).setSupportActionBar(myToolbar);
-//        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-//        actionBar.setTitle("Parks & Playgrounds");
-//
-//        // TODO: SET MY STATUS BAR COLOR. (IS IT THE BEST PLACE TO PLACE THIS CODE?)
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            Window window = getActivity().getWindow();
-//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-//            window.setStatusBarColor(Color.BLUE);
-//        }
-
-
         // Take our global variable and initialize it with a new ArrayList of KidThings
         kidThings = new ArrayList<KidThing>();
 
         // Populate our ArrayList by constructing and adding new KidThings
         kidThings.add(new KidThing("Nakoma Park", R.drawable.park_nakoma_01_thumbnail, R.drawable.park_nakoma_01_3to2,
                 "Medium-sized playground with swingset (including baby swings), play structure (steps, climber, etc), and slide. Drinking fountain. Ball courts/fields. Ice skating.", "3801 Cherokee Dr, Madison, WI 53711",
-                "4am - 10pm", "http://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1270"));
+                "43.0468182,-89.44156470000001", "4am - 10pm", "http://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1270"));
         kidThings.add(new KidThing(getString(R.string.park_westmorland_listing_title), R.drawable.westmorland_park_01_thumbnail, R.drawable.westmorland_park_01_3to2,
-                getString(R.string.park_westmorland_description), getString(R.string.park_westmorland_address), getString(R.string.park_westmorland_hours_dates), getString(R.string.park_westmorland_website)));
+                getString(R.string.park_westmorland_description), getString(R.string.park_westmorland_address), "43.0547939,-89.44500260000001", getString(R.string.park_westmorland_hours_dates), getString(R.string.park_westmorland_website)));
         kidThings.add(new KidThing("Odana Hills East Park", R.drawable.park_odana_hills_east_01_thumbnail, R.drawable.park_odana_hills_east_01_3to2,
                 "Mini playground with play structure (climber, etc.), slide, and swings (including baby swings). Drinking fountain. Ball courts.",
-                "4627 Odana Rd, Madison, WI 53711", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1277"));
+                "4627 Odana Rd, Madison, WI 53711", "43.048906,-89.454655", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1277"));
         kidThings.add(new KidThing("Glenwood Children's Park", R.drawable.park_glenwood_childrens_01_thumbnail, R.drawable.park_glenwood_childrens_01_3to2,
                 "Mini park with play structure (climber, tunnel, etc.), slides, swings, and seesaw. Drinking fountain (a short walk from playground). Ball court.",
-                "602 Glenway St, Madison, WI 53711", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/history.cfm?id=1213"));
+                "602 Glenway St, Madison, WI 53711", "43.0547398,-89.4376067", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/history.cfm?id=1213"));
         kidThings.add(new KidThing("Lucia Crest Park", R.drawable.park_lucia_crest_01_thumbnail, R.drawable.park_lucia_crest_01_3to2,
                 "Medium-sized playground with play structure (climber, tunnel, etc.), slides, swings (including baby swings), and merry-go-round. Picnic shelter. Drinking fountain. Ball courts.",
-                "514 N Owen Dr, Madison, WI 53705", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1236"));
+                "514 N Owen Dr, Madison, WI 53705", "43.0725766,-89.44821589999998", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1236"));
         kidThings.add(new KidThing("Oak Park Heights Park", R.drawable.park_oak_park_heights_01_thumbnail, R.drawable.park_oak_park_heights_01_3to2,
                 "Mini park with play structure (climber, etc.), slides, swings, and jungle gym. Picnic shelter. Drinking fountain. Ball court.",
-                "641 Hilltop Dr, Madison, WI 53711", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1263"));
+                "641 Hilltop Dr, Madison, WI 53711", "43.0513007,-89.4579812", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1263"));
         kidThings.add(new KidThing("William Slater Park", R.drawable.park_william_slater_01_thumbnail, R.drawable.park_william_slater_01_3to2,
                 "Mini park with play structure (climber, etc.), slide, and swings. Ball court.",
-                "561 S Segoe Rd, Madison, WI 53711", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1342"));
+                "561 S Segoe Rd, Madison, WI 53711", "43.05390449999999,-89.46402569999998", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1342"));
         kidThings.add(new KidThing("Segoe Park", R.drawable.park_segoe_01_thumbnail, R.drawable.park_segoe_01_3to2,
                 "Mini park with play structure (climber, etc.), slide, and swings. Picnic shelter. Drinking fountain. Ball court.",
-                "502 S Segoe Rd, Madison, WI 53711", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1327"));
+                "502 S Segoe Rd, Madison, WI 53711", "43.0562481,-89.4618845", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1327"));
         kidThings.add(new KidThing("Zook Park", R.drawable.park_zook_01_thumbnail, R.drawable.park_zook_01_3to2,
                 "Mini park with play structure (climber, tunnel, etc.), slide, and  swings. Picnic table.",
-                "950 Pontiac Trail, Madison, WI 53711", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1398"));
+                "950 Pontiac Trail, Madison, WI 53711", "43.04206500000001,-89.45710400000002", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1398"));
 
         // Find instance of the list_view ListView and assign to a variable
         ListView listView = (ListView) rootView.findViewById(R.id.list_view);
