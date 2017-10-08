@@ -47,7 +47,7 @@
                     android:layout_marginBottom="16dp"
                     android:layout_marginLeft="16dp"
                     android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/textLight"
                     android:textStyle="bold"
                     tools:text="Nakoma Park" />
 

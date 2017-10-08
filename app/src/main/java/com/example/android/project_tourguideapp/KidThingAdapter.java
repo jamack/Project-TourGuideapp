@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,9 +48,9 @@ public class KidThingAdapter extends ArrayAdapter<KidThing> {
         listItemView.setBackgroundColor(Color.parseColor("#FFFFFF"));
         if (position % 2 == 0) {
 //            listItemView.setBackgroundColor(getContext().getColor(R.color.colorAccent)); THIS ONLY WORKS FOR API 23 +...
-            listItemView.setBackgroundColor(Color.parseColor("#E3F2FD"));
+            listItemView.setBackgroundColor(Color.parseColor("#" + Integer.toHexString(ContextCompat.getColor(getContext(), R.color.colorPrimaryLight))));
         } else {
-            listItemView.setBackgroundColor(Color.parseColor("#FFE0B2"));
+            listItemView.setBackgroundColor(Color.parseColor("#" + Integer.toHexString(ContextCompat.getColor(getContext(), R.color.colorAccentLight))));
         }
 
         // Find the TextView in the list_item layout with the ID listing_title
