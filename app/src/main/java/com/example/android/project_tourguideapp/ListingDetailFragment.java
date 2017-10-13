@@ -22,6 +22,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,7 +36,7 @@ import android.widget.TextView;
  * {@link ListingDetailFragment.OnDetailFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class ListingDetailFragment extends Fragment {
+public class ListingDetailFragment extends Fragment implements OnMapReadyCallback {
 
     // Create constant values for keys that would be expected in Bundle used to create Fragment
     public static String ARG_LISTING_NAME = "ARG_LISTING_NAME";
@@ -74,6 +81,10 @@ public class ListingDetailFragment extends Fragment {
         // onCreateOptionsMenu and related methods.
         setHasOptionsMenu(true);
 
+//        // TODO: FIGURE OUT HOW TO GET MAP GOING...ADD A CHILD FRAGMENT HERE?
+//        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_container);
+//        mapFragment.getMapAsync(this);
+
         return rootView;
 //        return inflater.inflate(R.layout.fragment_listing_detail, container, false);
     }
@@ -81,6 +92,12 @@ public class ListingDetailFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Get the SupportMapFragment and request notification
+        // when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
         LinearLayout listContainer = (LinearLayout) getActivity().findViewById(R.id.listing_container);
         if (listContainer != null) {
@@ -206,6 +223,33 @@ public class ListingDetailFragment extends Fragment {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        // Add a marker in Sydney, Australia,
+        // and move the map's camera to the same location.
+//        LatLng sydney = new LatLng(-33.852, 151.211);
+//        googleMap.addMarker(new MarkerOptions().position(sydney)
+//                .title("Marker in Sydney"));
+//        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        // Get geocoordinates from the listing's Bundle, and process that into a Double for latitude & for longitude.
+        String stringLatLong = mBundle.getString(ARG_GEOCOORDINATES);
+        String[] stringArrayLatLong = stringLatLong.split(",");
+        double latitude = Double.parseDouble(stringArrayLatLong[0]);
+        double longitude = Double.parseDouble(stringArrayLatLong[1]);
+
+        // Construct a LatLng object for the listing using its latitude & longitude.
+        LatLng listingLatLng = new LatLng(latitude, longitude);
+
+        // Add a marker at the listing's location,
+        // and move the map's camera to the same location.
+        googleMap.addMarker(new MarkerOptions().position(listingLatLng)
+                .title("Location X"));
+        Float zoomLevel = (float) 12;
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(listingLatLng));
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(zoomLevel));
     }
 
     public void updateListingDetails(Bundle bundle) {

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Project - Tour Guide app</string>
+
+    <string name="google_maps_key">AIzaSyCTO5oJfc1ufvZqGjh49BLeAbBvNFsuGB0</string>
+
     <string name="park_westmorland_description">Located on Madison\'s near west side, Westmorland Park has a medium-sized children\'s playground with swingsets (including baby swings), play structure (steps, bridge, climbers, tunnel, etc), slides, merry-go-round, and more. Also features a rock garden, reservable shelter, volleyball court, tennis courts and softball field. Restrooms. Drinking fountain.</string>
     <string name="park_westmorland_address">4114 Tokay Blvd, Madison, WI 53711</string>
     <string name="park_westmorland_hours_dates">4am - 10pm</string>

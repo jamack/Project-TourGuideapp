@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/detail_address"
                 android:layout_marginLeft="16dp"
-                android:drawableLeft="@drawable/ic_query_builder_black_24dp"
+                android:drawableLeft="@drawable/ic_access_time_white_24dp"
                 android:drawablePadding="16dp"
                 android:textAppearance="?android:textAppearanceSmall"
                 tools:text="4am - 10pm" />
@@ -77,19 +77,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/detail_hours_dates"
+                android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
-                android:drawableLeft="@drawable/ic_info_black_24dp"
+                android:layout_marginRight="16dp"
+                android:drawableLeft="@drawable/ic_info_outline_white_24dp"
                 android:drawablePadding="16dp"
                 android:textAppearance="?android:textAppearanceSmall"
                 tools:text="Medium-sized playground with swingset (including baby swings), play structure (steps, climber, etc), and slide. Drinking fountain. Ball courts/fields. Ice skating." />
 
-            <TextView
-                android:id="@+id/detail_description_phone_number"
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/detail_description_full"
-                android:textAppearance="?android:textAppearanceSmall"
-                tools:text="(555) 555-5555" />
+                android:layout_height="300dp"
+                android:layout_below="@id/detail_description_full"></fragment>
+
+            <!--<TextView-->
+            <!--android:id="@+id/detail_description_phone_number"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/detail_description_full"-->
+            <!--android:textAppearance="?android:textAppearanceSmall"-->
+            <!--tools:text="(555) 555-5555" />-->
+
+            <!--<fragment-->
+            <!--android:id="@+id/map"-->
+            <!--android:layout_below="@id/detail_description_full"-->
+            <!--android:name="com.google.android.gms.maps.SupportMapFragment"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+            <!--tools:context="com.example.android.project_tourguideapp.DetailsActivity"-->
+
 
         </RelativeLayout>
     </ScrollView>
