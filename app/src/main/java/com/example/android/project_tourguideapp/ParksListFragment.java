@@ -137,10 +137,12 @@ public class ParksListFragment extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-            // Your fragment is visible
-            // Caller setter method in MainActivity to update ActionBar's title for this fragment
+        if (isVisibleToUser) { // Your fragment is visible
+            // Call setter method in MainActivity to update ActionBar's title for this fragment
             MainActivity.setActionBarTitle("Parks & Playgrounds");
+//            // Call setter method in MainActivity to update global variable and set this fragment as the currently displayed listings category
+//            Activity mainActivity = getActivity();
+//            mainActivity.setListingCategory("ParksListFragment");
         }
     }
 

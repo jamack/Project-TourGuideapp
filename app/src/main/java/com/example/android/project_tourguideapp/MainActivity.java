@@ -23,10 +23,11 @@ public class MainActivity extends AppCompatActivity
 
     // Declare global variable to hold reference to the Activity's ActionBar
     private static ActionBar actionBar = null;
-
+    // Create global variable to hold reference to which fragment / category of listings
+    // is currently displayed in the FragmentViewPager.
+    private static String mListingCategory = null;
     // Create global variable to later hold reference to a FragmentManager instance
     FragmentManager fragmentManager = null;
-
     // Global variable to hold reference to a ListingDetailFragment (if present)
     ListingDetailFragment listingDetailFragment = null;
 
@@ -35,6 +36,26 @@ public class MainActivity extends AppCompatActivity
 
     public static void setActionBarTitle(String title) {
         actionBar.setTitle(title);
+    }
+
+    public static void setListingCategory(String ListingCategory) {
+        // Sets the global variable to reflect the currently displayed fragment / listing category.
+        // Called from the setUserVisibleHint method in the listing category fragments.
+        MainActivity.mListingCategory = ListingCategory;
+
+        // TODO: FIGURE OUT HOW TO UPDATE THE INITIALLY-DISPLAYED DETAILS IN DUAL PANE MODE WHEN USER SWIPES TO A DIFFERENT CATEGORY/FRAGMENT...
+//        if (R.id.detail_container != 0) {
+//            if (ListingCategory == "ParksListFragment") {
+//                getSupportFragmentManager().getFragmentById(R.id.fragment_listing_detail).updateListingDetails(ParksListFragment.getBundle(0));
+//            } else if (ListingCategory == "AttractionsListFragment") {
+//                this.listingDetailFragment.updateListingDetails(AttractionsListFragment.getBundle(0));
+//            } else if (ListingCategory == "RestaurantsListFragment") {
+//                listingDetailFragment.updateListingDetails(RestaurantsListFragment.getBundle(0));
+//            } else if (ListingCategory == "StoresListFragment") {
+//                listingDetailFragment.updateListingDetails(StoresListFragment.getBundle(0));
+//            } else {
+//                Log.v("***TESTING***","In the setListingCategory method & none of the if statements match up!!");}
+//        }
     }
 
     @Override
@@ -82,6 +103,7 @@ public class MainActivity extends AppCompatActivity
             // TODO: Do I need to check whether ListingDetailFragment instance exists?
             // Create ListingDetailFragment instance and assign to global variable
             listingDetailFragment = new ListingDetailFragment();
+
             // Get data for the first list item from the fragment with that arraylist, in the form of a bundle,
             // and pass that bundle to the detail fragment.
             listingDetailFragment.setArguments(ParksListFragment.getBundle(0));

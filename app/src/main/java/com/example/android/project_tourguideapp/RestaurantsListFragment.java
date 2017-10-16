@@ -47,6 +47,7 @@ public class RestaurantsListFragment extends Fragment {
         bundle.putInt(ListingDetailFragment.ARG_IMAGE_RESOURCE_BANNER, kidThings.get(position).getBannerImageResourceId());
         bundle.putString(ListingDetailFragment.ARG_FULL_DESCRIPTION, kidThings.get(position).getDescription());
         bundle.putString(ListingDetailFragment.ARG_ADDRESS, kidThings.get(position).getAddress());
+        bundle.putString(ListingDetailFragment.ARG_GEOCOORDINATES, kidThings.get(position).getGeocoordinates());
         bundle.putString(ListingDetailFragment.ARG_HOURS_DATES, kidThings.get(position).getHoursDates());
         bundle.putString(ListingDetailFragment.ARG_WEBSITE, kidThings.get(position).getWebsite());
         bundle.putLong(ListingDetailFragment.ARG_PHONE_NUMBER, kidThings.get(position).getPhoneNumber());
@@ -119,10 +120,11 @@ public class RestaurantsListFragment extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-            // Your fragment is visible
+        if (isVisibleToUser) { // Your fragment is visible
             // Caller setter method in MainActivity to update ActionBar's title for this fragment
             MainActivity.setActionBarTitle("Child-Friendly Restaurants");
+            // Call setter method in MainActivity to update global variable and set this fragment as the currently displayed listings category
+            MainActivity.setListingCategory("RestaurantsListFragment");
         }
     }
 
