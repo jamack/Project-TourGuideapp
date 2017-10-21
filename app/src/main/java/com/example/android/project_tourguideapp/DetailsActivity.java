@@ -22,10 +22,6 @@ public class DetailsActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.detail_container_activity, listingDetailFragment).commit();
 
-//        // TODO: SEE ABOUT ADDING THE GOOGLE MAP FRAGMENT TO THE LAYOUT...
-//        MapFragment mapFragment = new MapFragment();
-//        fragmentManager.beginTransaction().add(R.id.map_container, mapFragment).commit();
-
         // TODO: GET THE BUNDLE OF DATA PASSED WITH INTENT...
         Intent callingIntent = getIntent();
         Bundle bundle = callingIntent.getExtras();

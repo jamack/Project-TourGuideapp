@@ -92,6 +92,9 @@ public class ParksListFragment extends Fragment {
         kidThings.add(new KidThing("Zook Park", R.drawable.park_zook_01_thumbnail, R.drawable.park_zook_01_3to2,
                 "Mini park with play structure (climber, tunnel, etc.), slide, and  swings. Picnic table.",
                 "950 Pontiac Trail, Madison, WI 53711", "43.04206500000001,-89.45710400000002", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1398"));
+        kidThings.add(new KidThing("Spring Harbor Park", R.drawable.placeholder_thumbnail, R.drawable.placeholder_3to2,
+                "Neighborhood park with play structure (climber, tunnel, etc.), slide, and  swings. Restrooms. Drinking fountain. Picnic table. Ball courts. On-leash dog area.",
+                "5218 Lake Mendota Dr, Madison, WI 53705", "43.080969,-89.47008599999998", "4am - 10pm", "http://www.cityofmadison.com/parks/springharbor/"));
 
         // Find instance of the list_view ListView and assign to a variable
         ListView listView = (ListView) rootView.findViewById(R.id.list_view);

@@ -79,7 +79,6 @@ public class MainActivity extends AppCompatActivity
         // Set the ViewPager on the TabLayout to connect the pager with the tabs
         tabLayout.setupWithViewPager(viewPager);
 
-        // TODO: SETUP MY APPBAR. (FOLLOWING STEPS IN ANDROID DEVELOPERS GUIDE...)
         // Set the toolbar_list as the app bar for this Activity (via this Fragment)
         android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_list);
         setSupportActionBar(myToolbar);

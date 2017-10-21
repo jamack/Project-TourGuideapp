@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class KidThingFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    // TODO: UPDATE FOR FINAL # OF SCREENS
     // Create constant value for the number of screens
     private static final int NUMBER_OF_SCREENS = 4;
 
@@ -23,7 +22,6 @@ public class KidThingFragmentPagerAdapter extends FragmentPagerAdapter {
         super(fm);
     }
 
-    // TODO: UPDATE once all category Fragments are included below
     @Override
     public Fragment getItem(int position) {
         // Construct and return a Fragment

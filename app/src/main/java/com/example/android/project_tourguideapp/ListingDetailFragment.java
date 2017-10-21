@@ -1,6 +1,7 @@
 package com.example.android.project_tourguideapp;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -9,7 +10,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,8 +29,12 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import static android.R.attr.width;
 
 
 /**
@@ -66,9 +73,22 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
     private TextView mHoursDates;
     private TextView mWebsite;
     private TextView mPhoneNumber;
+    private SupportMapFragment mMapFragment;
+    private GoogleMap mGoogleMap;
+    private Marker mMarker;
 
     public ListingDetailFragment() {
         // Required empty public constructor
+    }
+
+    public static int pxToDp(int px) {
+        return (int) (px / Resources.getSystem().getDisplayMetrics().density);
+    }
+
+    public static int dpToPx(int dp) {
+        DisplayMetrics displayMetrics = Resources.getSystem().getDisplayMetrics();
+        int px = Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+        return px;
     }
 
     @Override
@@ -81,12 +101,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
         // onCreateOptionsMenu and related methods.
         setHasOptionsMenu(true);
 
-//        // TODO: FIGURE OUT HOW TO GET MAP GOING...ADD A CHILD FRAGMENT HERE?
-//        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_container);
-//        mapFragment.getMapAsync(this);
-
         return rootView;
-//        return inflater.inflate(R.layout.fragment_listing_detail, container, false);
     }
 
     @Override
@@ -95,9 +110,9 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
 
         // Get the SupportMapFragment and request notification
         // when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
+        mMapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        mMapFragment.getMapAsync(this);
 
         LinearLayout listContainer = (LinearLayout) getActivity().findViewById(R.id.listing_container);
         if (listContainer != null) {
@@ -140,6 +155,35 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
         } else {
             Log.v("***TESTING***", "In ListingDetailFragment's actionbar setup, and isDualPane is currently: TRUE!");
         }
+
+        // Get pixels for current screen and save in a DisplayMetrics object
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        // Check whether display is in portrait or landscape mode. (X & Y will be swapped if in landscape).
+        int height;
+        int width;
+        if (!isDualPane) {
+            height = displayMetrics.heightPixels;
+            width = displayMetrics.widthPixels;
+        } else {
+            height = displayMetrics.widthPixels;
+            width = displayMetrics.heightPixels;
+        }
+
+        // TODO: I DON'T ACTUALLY NEED THIS FOR MY BANNER IMAGE...BUT MIGHT USE IT FOR THE GOOGLE MAP
+//        // Set width & height (3:2) for banner image based on whether device is in portrait or landscape orientation
+//        if (!isDualPane) {
+//            mImage.getLayoutParams().width = width;
+//            mImage.getLayoutParams().height = (int) (width * 2f/3f);
+//            Log.v("***STRING***", "Trying to set actual height in portrait. Expression evaluates to: " + Integer.toString((int) (width * 2f/3f)));
+//            mImage.setScaleType(ImageView.ScaleType.FIT_XY);
+//        } else {
+//            mImage.getLayoutParams().width = width;
+//            mImage.getLayoutParams().height = (int) (width * 2f/3f);
+//            Log.v("***STRING***", "Trying to set actual height in dual display. Expression evaluates to: " + Integer.toString((int) (width * 2f/3f)));
+//            mImage.setScaleType(ImageView.ScaleType.FIT_XY);
+//        }
+
 
     }
 
@@ -227,29 +271,42 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        // Add a marker in Sydney, Australia,
-        // and move the map's camera to the same location.
-//        LatLng sydney = new LatLng(-33.852, 151.211);
-//        googleMap.addMarker(new MarkerOptions().position(sydney)
-//                .title("Marker in Sydney"));
-//        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
-        // Get geocoordinates from the listing's Bundle, and process that into a Double for latitude & for longitude.
-        String stringLatLong = mBundle.getString(ARG_GEOCOORDINATES);
+        // Make the Google Map's zoom level controls visible
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
+
+        // Initialize global variable with reference to this map, for use by other methods
+        mGoogleMap = googleMap;
+
+        // Get geocoordinates from the listing's Bundle, and pass that String to the
+        // mapListing method to process and handle marker placement / zoom level
+        mapListing(mBundle.getString(ARG_GEOCOORDINATES));
+    }
+
+    private void mapListing(String stringLatLong) {
+
+        // Process latitude, longitude String into separate doubles
         String[] stringArrayLatLong = stringLatLong.split(",");
         double latitude = Double.parseDouble(stringArrayLatLong[0]);
         double longitude = Double.parseDouble(stringArrayLatLong[1]);
 
-        // Construct a LatLng object for the listing using its latitude & longitude.
+        // Construct a LatLng object for the listing using the latitude & longitude doubles created above.
         LatLng listingLatLng = new LatLng(latitude, longitude);
 
+        // Check whether mMarker is non-null and thus has already been used to add a Marker to the map (i.e. in dualPane mode)
+        // Remove the previous marker if one exists.
+        if (mMarker != null) {
+            mMarker.remove();
+        }
+
         // Add a marker at the listing's location,
-        // and move the map's camera to the same location.
-        googleMap.addMarker(new MarkerOptions().position(listingLatLng)
+        mMarker = mGoogleMap.addMarker(new MarkerOptions().position(listingLatLng)
                 .title("Location X"));
+        // Set the desired zoom level
         Float zoomLevel = (float) 12;
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(listingLatLng));
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(zoomLevel));
+        // Update the Google Map with the above marker location and zoom level
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(listingLatLng));
+        mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(zoomLevel));
     }
 
     public void updateListingDetails(Bundle bundle) {
@@ -267,9 +324,20 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
             mImage.setImageResource(bundle.getInt(ARG_IMAGE_RESOURCE_BANNER));
 
             mListingName = (TextView) getActivity().findViewById(R.id.detail_listing_name);
-            if (mListingName != null) {
-                Log.v("***TESTING***", "mListingName is NOT null, so we've found the listing name TextView to update!");
+            // TODO: If displayed in dual pane mode, reduce text size slightly so it doesn't wrap
+            if (isDualPane) {
+                float initialTextSize = mListingName.getTextSize();
+//                mListingName.setTextSize(initialTextSize);
+//                initialTextSize = (float) pxToDp((int) initialTextSize);
+
+//                // getTextSize returns actual pixels, so convert that into scaled pixels,
+//                // which is what setTextSize takes as an argument
+//                initialTextSize = initialTextSize / getResources().getDisplayMetrics().scaledDensity;
+//                mListingName.setTextSize(TypedValue.COMPLEX_UNIT_SP, initialTextSize * ((float) 0.67));
+
+//                mListingName.setTextSize(initialTextSize * 2f / 3f);
             }
+            // Get listing name from bundle and set it on the appropriate TextView
             mListingName.setText(bundle.getString(ARG_LISTING_NAME));
 
             mDescription = (TextView) getActivity().findViewById(R.id.detail_description_full);
@@ -277,6 +345,13 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
 
             mHoursDates = (TextView) getActivity().findViewById(R.id.detail_hours_dates);
             mHoursDates.setText(bundle.getString(ARG_HOURS_DATES));
+
+            // TODO: THE CODE BELOW ADDS A MARKER INSTEAD OF REPLACING THE MARKER!!
+            // Replace mBundle's geocoordinates with the geocoordinates passed into this method
+            mBundle.putString(ARG_GEOCOORDINATES, bundle.getString(ARG_GEOCOORDINATES));
+            // Refresh the map with the new geocoordinates
+            mMapFragment.getMapAsync(this);
+            ;
         }
     }
 
