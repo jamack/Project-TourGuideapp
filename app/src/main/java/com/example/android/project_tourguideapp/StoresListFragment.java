@@ -67,21 +67,36 @@ public class StoresListFragment extends Fragment {
         kidThings = new ArrayList<KidThing>();
 
         // Populate our ArrayList by constructing and adding new KidThings
-        kidThings.add(new KidThing("Once Upon A Child", R.drawable.store_once_upon_a_child_01_thumbnail, R.drawable.park_segoe_01_3to2,
+        kidThings.add(new KidThing("Once Upon A Child", R.drawable.store_once_upon_a_child_01_thumbnail, R.drawable.placeholder_3to2,
                 "Chain operation that buys & sells gently used items for children, including clothes, shoes & toys.",
                 "7475 Mineral Point Rd, Madison, WI 53717", "43.0586202,-89.5122609", "Sun 10:00am - 5:00pm, M-Sat 10:00am - 7:00pm", "http://www.onceuponachildmadisonwest.com", 6082039105L));
-        kidThings.add(new KidThing("Learning Shop", R.drawable.store_satara_01_thumbnail, R.drawable.park_segoe_01_3to2,
+        kidThings.add(new KidThing("Learning Shop", R.drawable.store_learning_shop_01_thumbnail, R.drawable.store_learning_shop_01_3to2,
                 "Toy store.",
                 "714 S Gammon Rd, Madison, WI 53719", "43.0493042,-89.50413420000001", "Sun 11:00am - 5:00pm, M-F 9:00am - 7:00pm, Sat 10:00am - 5:00 pm", "http://www.learningshop.com", 6082778747L));
-        kidThings.add(new KidThing("Happy Bambino", R.drawable.store_happy_bambino_01_thumbnail, R.drawable.park_segoe_01_3to2,
+        kidThings.add(new KidThing("Capitol Kids", R.drawable.store_capitol_kids_01_thumbnail, R.drawable.store_capitol_kids_01_thumbnail,
+                "X",
+                "8 S Carroll St, Madison, WI 53703", "43.0734921,-89.38518060000001", "Sun 11am-4pm, M-Thurs 10am-5:30pm, F 10am-6pm, Sat 8am-6pm", "http://capitolkids.com/", 6082800744L));
+        kidThings.add(new KidThing("Playthings", R.drawable.store_playthings_01_thumbnail, R.drawable.store_playthings_01_3to2,
+                "X",
+                "726 N Midvale Blvd, Madison, WI 53705", "43.07417780000001,-89.45248579999998", "Sun 11am-6pm, M-Sat 10am-9pm", "http://www.playthingstoystore.com/", 6082332124L));
+        kidThings.add(new KidThing("Barnes & Noble", R.drawable.store_barnes_noble_01_thumbnail, R.drawable.store_barnes_noble_01_3to2,
+                "X",
+                "7433 Mineral Point Rd, Madison, WI 53717", "43.058767,-89.51040699999999", "Sun 10am-8pm, M-Sat 9am-10pm", "https://stores.barnesandnoble.com/store/2720", 6088270809L));
+        kidThings.add(new KidThing("Happy Bambino", R.drawable.store_happy_bambino_01_thumbnail, R.drawable.placeholder_3to2,
                 "Local shop offering eco-friendly baby products, maternity needs & classes for parents & infants.",
                 "4116 Monona Dr, Madison, WI 53716", "43.0788178,-89.32384289999999", "Sat,Sun 11:00am – 4:00pm, M-W 9:00am – 6:00pm, Thur,F 9:00am - 5:00pm", "https://www.happybambino.com", 6082236261L));
-        kidThings.add(new KidThing("Satara Home and Baby", R.drawable.store_satara_01_thumbnail, R.drawable.park_segoe_01_3to2,
-                "Simple shop for mattresses, bedding & towels made from organic materials, plus baby cribs & toys.",
-                "6333 University Ave, Middleton, WI 53562", "43.0927139,-89.49167310000001", "M-F 10:00am - 6:00pm, Sat 10:00am - 5:00pm", "https://www.satarahome.com", 6082514905L));
-        kidThings.add(new KidThing("Toys R Us", R.drawable.store_satara_01_thumbnail, R.drawable.park_segoe_01_3to2,
+        kidThings.add(new KidThing("Toys R Us", R.drawable.placeholder_thumbnail, R.drawable.placeholder_3to2,
                 "Chain retailer providing an assortment of brand-name children's toys, games, electronics & gear.",
                 "7309 W Towne Way, Madison, WI 53719", "43.054222,-89.50847929999998", "Sun-M 10:00am - 8:00pm, Tues 10:00am - 9:00pm, W-Thur 10:00am - 9:30pm, F 10:00am - 10:00pm, Sat 9:00am - 10:00pm", "https://www.toysrus.com", 6088290910L));
+        kidThings.add(new KidThing("T.J. Maxx", R.drawable.placeholder_thumbnail, R.drawable.placeholder_3to2,
+                "X",
+                "510 Westgate Mall, Madison, WI 53711", "43.052048,-89.47171300000002", "Sun 11am-8pm, M-Sat 9:30am-9:30pm", "https://tjmaxx.tjx.com/store/stores/Madison-WI-53711/233/aboutstore/", 6082732153L));
+        kidThings.add(new KidThing("HomeGoods", R.drawable.placeholder_thumbnail, R.drawable.placeholder_3to2,
+                "X",
+                "1661 Deming Way #120, Middleton, WI 53562", "43.0919203,-89.52527829999997", "Sun 11am-8pm, M-Sat 9:30am-9:30pm", "https://www.homegoods.com/tjx/store.aspx?id=596", 6088360020L));
+        kidThings.add(new KidThing("Satara Home and Baby", R.drawable.store_satara_01_thumbnail, R.drawable.placeholder_3to2,
+                "Simple shop for mattresses, bedding & towels made from organic materials, plus baby cribs & toys.",
+                "6333 University Ave, Middleton, WI 53562", "43.0927139,-89.49167310000001", "M-F 10:00am - 6:00pm, Sat 10:00am - 5:00pm", "https://www.satarahome.com", 6082514905L));
 
 
         ListView listView = (ListView) rootView.findViewById(R.id.list_view);
@@ -130,8 +145,12 @@ public class StoresListFragment extends Fragment {
         if (isVisibleToUser) { // Your fragment is visible
             // Caller setter method in MainActivity to update ActionBar's title for this fragment
             MainActivity.setActionBarTitle("Stores with Children's Items");
-            // Call setter method in MainActivity to update global variable and set this fragment as the currently displayed listings category
-            MainActivity.setListingCategory("StoresListFragment");
+
+            // If in dual pane mode, call method (in MainActivity) to make sure details fragment is updated to show default (first) Stores listing.
+            // Pass method an integer corresponding to this category's value in the KidThingFragmentPagerAdapter's getItem() method.
+            if (getActivity().findViewById(R.id.listing_container) != null) {
+                ((MainActivity) getActivity()).displayDefaultDetails(3);
+            }
         }
     }
 

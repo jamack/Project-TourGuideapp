@@ -44,10 +44,8 @@ public class KidThingAdapter extends ArrayAdapter<KidThing> {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
 
-        // TODO: Figure out how to load color resources (in a way that works down to my minimum API 16 setting).
-        listItemView.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        // Set the background color, alternating colors based upon items position in the arraylist
         if (position % 2 == 0) {
-//            listItemView.setBackgroundColor(getContext().getColor(R.color.colorAccent)); THIS ONLY WORKS FOR API 23 +...
             listItemView.setBackgroundColor(Color.parseColor("#" + Integer.toHexString(ContextCompat.getColor(getContext(), R.color.colorPrimaryLight))));
         } else {
             listItemView.setBackgroundColor(Color.parseColor("#" + Integer.toHexString(ContextCompat.getColor(getContext(), R.color.colorAccentLight))));

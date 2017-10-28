@@ -1,7 +1,7 @@
 package com.example.android.project_tourguideapp;
 
 /**
- * {@link KidThing} represents a listing for a child-friendly location (park, playground, store, restaurant, etc.)
+ * {@link KidThing} represents a listing for a child-friendly place (park, playground, store, restaurant, etc.)
  * or event (storytelling, farmers market, music series, etc.)
  */
 
@@ -11,38 +11,49 @@ public class KidThing {
      * Will be overridden if new com.example.android.project_tourguideapp.KidThing object is constructed with an associated image.
      */
      private static final int NO_IMAGE_PROVIDED = -1;
+
     /**
      * Constant value denoting default state of no associated hours/dates.
      * Will be overridden if new com.example.android.project_tourguideapp.KidThing object is constructed with associated hours/dates.
      */
     private static final String NO_HOURS_DATES_PROVIDED = null;
+
     /**
      * Constant value denoting default state of no associated phone number.
      * Will be overridden if new com.example.android.project_tourguideapp.KidThing object is constructed with an associated phone number.
      */
     private static final long NO_PHONE_NUMBER_PROVIDED = 0;
+
     /**
      * Title for the listing
      */
     private String mListingName;
+
     /** IF APPLICABLE, Image Resource ID for a representative image. May not be applicable to some categories. */
     private int mImageThumbnailResourceId = NO_IMAGE_PROVIDED;
+
     /**
      * IF APPLICABLE, Image Resource ID for a representative image. May not be applicable to some categories.
      */
     private int mImageBannerResourceId = NO_IMAGE_PROVIDED;
+
     /** Overview of the listing. May describe available play equipment, what features make the venue especially child-friendly, etc. */
     private String mDescription;
+
     /** Address for the venue/event */
     private String mAddress;
+
     /**
      * Address for the venue/event - in geographical coordinate format
      */
     private String mGeocoordinates;
+
     /** Hours (& possibly days of the week) that a venue is open -OR- dates (& possibly hours) that an event is occurring. */
     private String mHoursDates = NO_HOURS_DATES_PROVIDED;
+
     /** IF APPLICABLE, website where user can find more information. */
     private String mWebsite;
+
     /** IF APPLICABLE, phone number to contact for more information, reservations, etc. */
     private long mPhoneNumber = NO_PHONE_NUMBER_PROVIDED;
 
@@ -158,14 +169,23 @@ public class KidThing {
         return mImageBannerResourceId;
     }
 
+    /**
+     * Getter method for description of venue/event
+     */
     public String getDescription() {
         return mDescription;
     }
 
+    /**
+     * Getter method for venue/event's physical address
+     */
     public String getAddress() {
         return mAddress;
     }
 
+    /**
+     * Getter method for geocoordinates of venue/event's physical address
+     */
     public String getGeocoordinates() {
         return mGeocoordinates;
     }
@@ -175,10 +195,16 @@ public class KidThing {
         return mHoursDates != NO_HOURS_DATES_PROVIDED;
     }
 
+    /**
+     * Getter method for any associated hours/dates
+     */
     public String getHoursDates() {
         return mHoursDates;
     }
 
+    /**
+     * Getter method for venue/event's web address
+     */
     public String getWebsite() {
         return mWebsite;
     }
@@ -188,6 +214,9 @@ public class KidThing {
         return mPhoneNumber != NO_PHONE_NUMBER_PROVIDED;
     }
 
+    /**
+     * Getter method for any associated phone number
+     */
     public long getPhoneNumber() {
         return mPhoneNumber;
     }

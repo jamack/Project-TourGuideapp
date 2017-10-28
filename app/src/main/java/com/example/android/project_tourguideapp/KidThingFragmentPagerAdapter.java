@@ -61,4 +61,5 @@ public class KidThingFragmentPagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return NUMBER_OF_SCREENS;
     }
+
 }

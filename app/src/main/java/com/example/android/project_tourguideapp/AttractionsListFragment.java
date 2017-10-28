@@ -170,8 +170,12 @@ public class AttractionsListFragment extends Fragment {
         if (isVisibleToUser) { // Your fragment is visible
             // Caller setter method in MainActivity to update ActionBar's title for this fragment
             MainActivity.setActionBarTitle("Activities");
-            // Call setter method in MainActivity to update global variable and set this fragment as the currently displayed listings category
-            MainActivity.setListingCategory("AttractionsListFragment");
+
+            // If in dual pane mode, call method (in MainActivity) to make sure details fragment is updated to show default (first) Attractions listing.
+            // Pass method an integer corresponding to this category's value in the KidThingFragmentPagerAdapter's getItem() method.
+            if (getActivity().findViewById(R.id.listing_container) != null) {
+                ((MainActivity) getActivity()).displayDefaultDetails(1);
+            }
         }
     }
 
@@ -190,4 +194,5 @@ public class AttractionsListFragment extends Fragment {
         // This interface will need to be implemented by MainActivity and have the method completed.
         void onAttractionsFragmentInteraction(int position);
     }
+
 }

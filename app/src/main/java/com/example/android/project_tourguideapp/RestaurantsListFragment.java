@@ -66,10 +66,10 @@ public class RestaurantsListFragment extends Fragment {
         kidThings = new ArrayList<KidThing>();
 
         // Populate our ArrayList by constructing and adding new KidThings
-        kidThings.add(new KidThing("Chocolate Shoppe Ice Cream Co.", R.drawable.restaurant_chocolateshoppe_midvale_01_thumbnail, R.drawable.park_segoe_01_3to2,
+        kidThings.add(new KidThing("Chocolate Shoppe Ice Cream Co.", R.drawable.restaurant_chocolateshoppe_midvale_01_thumbnail, R.drawable.restaurant_chocolateshoppe_midvale_01_3to2,
                 "Old-fashioned, family-owned store serving up more than 100 flavors of ice cream since 1962. Small play area with toys, child tables/chairs, toy food carts, kitchen set, etc. Jelly beans. Restrooms. Drinking fountain. Indoor & outdoor seating.",
                 "555 S Midvale Blvd, Madison, WI 53711", "43.0542777,-89.45083069999998", "11:00am – 10:00pm", "http://www.chocolateshoppeicecream.com", 6084415248L));
-        kidThings.add(new KidThing("Ella's Deli & Ice Cream Parlor", R.drawable.restaurant_ellas_deli_01_thumbnail, R.drawable.park_segoe_01_3to2,
+        kidThings.add(new KidThing("Ella's Deli & Ice Cream Parlor", R.drawable.restaurant_ellas_deli_01_thumbnail, R.drawable.restaurant_ellas_deli_01_3to2,
                 "Kid-oriented eatery with colorful, animated decor & a carousel offering American food & desserts. ",
                 "2902 E Washington Ave, Madison, WI 53704", "43.1035133,-89.34459809999998", "Sun-Th 11:00am – 10:00pm, F-Sat 11:00am – 11:00pm", "http://www.ellasdeli.com", 6082415291L));
         kidThings.add(new KidThing("Yola's Cafe and Coffee Shop", R.drawable.restaurant_yolas_cafe_01_thumbnail, R.drawable.park_segoe_01_3to2,
@@ -84,16 +84,16 @@ public class RestaurantsListFragment extends Fragment {
         kidThings.add(new KidThing("ZuZu Cafe", R.drawable.restaurant_zuzu_cafe_01_thumbnail, R.drawable.restaurant_zuzu_cafe_01_3to2,
                 "X",
                 "1336 Drake St, Madison, WI 53715", "43.0623639,-89.40875219999998", "Sun 8:30am-5pm, M 7:30am-3pm, Tues-W 7am-7pm, Thurs-F 7am-9:30pm, Sat 8:30am-9:30pm", "https://www.yelp.com/biz/zuzu-cafe-and-market-madison", 6082609898L));
-        kidThings.add(new KidThing("Michael's Frozen Custard - Monroe Street", R.drawable.restaurant_michaels_custard_monroe_01_thumbnail, R.drawable.restaurant_michaels_custard_monroe_01_3to2,
+        kidThings.add(new KidThing("Michael's Frozen Custard - Monroe St", R.drawable.restaurant_michaels_custard_monroe_01_thumbnail, R.drawable.restaurant_michaels_custard_monroe_01_3to2,
                 "X",
                 "2531 Monroe St, Madison, WI 53711", "43.0576451,-89.42760579999998", "Sun-Thurs 11am-10pm, F-Sat 11am-10:30pm", "http://www.ilovemichaels.com/", 6082313500L));
-        kidThings.add(new KidThing("Michael's Frozen Custard - Schroeder Road", R.drawable.restaurant_michaels_custard_schroeder_01_thumbnail, R.drawable.restaurant_michaels_custard_schroeder_01_3to2,
+        kidThings.add(new KidThing("Michael's Frozen Custard - Schroeder Rd", R.drawable.restaurant_michaels_custard_schroeder_01_thumbnail, R.drawable.restaurant_michaels_custard_schroeder_01_3to2,
                 "X",
                 "5602 Schroeder Rd, Madison, WI 53711", "43.04674259999999,-89.47580849999997", "Sun-Thurs 11am-10pm, F-Sat 11am-10:30pm", "http://www.ilovemichaels.com/", 6082768100L));
         kidThings.add(new KidThing("Monona Bait & Ice Cream Shop", R.drawable.restaurant_bait_ice_cream_01_thumbnail, R.drawable.restaurant_bait_ice_cream_01_thumbnail,
                 "X",
                 "4516 Winnequah Rd, Monona, WI 53716", "43.0712896,-89.3337962", "Sun-Sat 11am-9pm", "http://mononabaiticecream.yolasite.com/", 6082221944L));
-        kidThings.add(new KidThing("Chuck E. Cheese's", R.drawable.placeholder_thumbnail, R.drawable.placeholder_3to2,
+        kidThings.add(new KidThing("Chuck E. Cheese's", R.drawable.restaurants_chuck_e_cheese_01_thumbnail, R.drawable.restaurants_chuck_e_cheese_01_3to2,
                 "X",
                 "438 Grand Canyon Dr, Madison, WI 53719", "43.0585402,-89.49731209999999", "Sun-Thurs 11am-9pm, F 11am-10pm, Sat 10am-10pm", "https://www.chuckecheese.com/storedetails/wi/madison/604", 6088292000L));
 
@@ -144,8 +144,12 @@ public class RestaurantsListFragment extends Fragment {
         if (isVisibleToUser) { // Your fragment is visible
             // Caller setter method in MainActivity to update ActionBar's title for this fragment
             MainActivity.setActionBarTitle("Child-Friendly Restaurants");
-            // Call setter method in MainActivity to update global variable and set this fragment as the currently displayed listings category
-            MainActivity.setListingCategory("RestaurantsListFragment");
+
+            // If in dual pane mode, call method (in MainActivity) to make sure details fragment is updated to show default (first) Restaurants listing.
+            // Pass method an integer corresponding to this category's value in the KidThingFragmentPagerAdapter's getItem() method.
+            if (getActivity().findViewById(R.id.listing_container) != null) {
+                ((MainActivity) getActivity()).displayDefaultDetails(2);
+            }
         }
     }
 

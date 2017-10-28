@@ -2,7 +2,6 @@ package com.example.android.project_tourguideapp;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,19 +27,16 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import static android.R.attr.width;
-
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ListingDetailFragment.OnDetailFragmentInteractionListener} interface
- * to handle interaction events.
+ * A {@link Fragment} subclass to display the full details of a KidThing object.
+ * Adapts display according to whether fragment is displayed in single pane or dual pane mode.
+ * Adapts to display according to which fields have been initialized for a particular KidThing object.
+ * Implements {@link OnMapReadyCallback} interface for SupportMapFragment utilized within.
  */
 public class ListingDetailFragment extends Fragment implements OnMapReadyCallback {
 
@@ -54,10 +49,9 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
     public static String ARG_HOURS_DATES = "ARG_HOURS_DATES";
     public static String ARG_WEBSITE = "ARG_WEBSITE";
     public static String ARG_PHONE_NUMBER = "ARG_PHONE_NUMBER";
+
     // Global variable to track whether ListingDetailFragment is being shown in one- or two-pane mode
     boolean isDualPane;
-
-//    private OnDetailFragmentInteractionListener mListener;
 
     // Global variable to store reference to fragment's view hierarchy
     View rootView = null;
@@ -81,10 +75,12 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
         // Required empty public constructor
     }
 
+    // Convert dimensions in pixel format into density-independent-pixel format
     public static int pxToDp(int px) {
         return (int) (px / Resources.getSystem().getDisplayMetrics().density);
     }
 
+    // Convert dimensions in density-independent-pixel format into pixel format
     public static int dpToPx(int dp) {
         DisplayMetrics displayMetrics = Resources.getSystem().getDisplayMetrics();
         int px = Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
@@ -92,8 +88,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_listing_detail, container, false);
 
@@ -108,22 +103,22 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Get the SupportMapFragment and request notification
-        // when the map is ready to be used.
-        mMapFragment = (SupportMapFragment) getChildFragmentManager()
-                .findFragmentById(R.id.map);
+        // Initialize field/global variable with reference to layout's SupportMapFragment.
+        mMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+        // Initialize the maps system and view (in a separate thread).
+        // Provides OnMapReady callback when process has finished in the other thread and map object is ready.
         mMapFragment.getMapAsync(this);
 
+        // Check whether a viewgroup with the ID listContainer is present in the view hierarchy.
+        // If so, then we are in dual pane mode.
         LinearLayout listContainer = (LinearLayout) getActivity().findViewById(R.id.listing_container);
         if (listContainer != null) {
             isDualPane = true;
-            Log.v("***TESTING***", "Per ListingDetailFragment's listContainer check, isDualPane is currently: TRUE!");
         } else {
             isDualPane = false;
-            Log.v("***TESTING***", "Per ListingDetailFragment's listContainer check,  isDualPane is currently: FALSE!");
         }
 
-        // TODO: [seems to be working!] FIGURE OUT HOW TO HANDLE SAVED INSTANCE STATE VS. PASSED BUNDLE WHEN STARTED BY MY DETAILSACTIVITY...
+        // TODO: MOSTLY WORKING...BUT I STILL HAVE CRASHES WHEN GOING FROM LANDSCAPE ORIENTATION TO PORTRAIT ORIENTATION
         if (savedInstanceState != null) {
             mBundle = savedInstanceState;
             updateListingDetails(mBundle);
@@ -136,7 +131,8 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
             updateListingDetails(ParksListFragment.getBundle(0));
         }
 
-        // TODO: SETUP MY APPBAR. (FOLLOWING STEPS IN ANDROID DEVELOPERS GUIDE...)
+        // Check to see whether we are in dual pane mode. If we are, then MainActivity has already an ActionBar.
+        // If not in dual pane mode, we are in the DetailsActivity and we need to obtain an ActionBar instance.
         if (!isDualPane) {
             Log.v("***TESTING***", "In ListingDetailFragment's actionbar setup, and  isDualPane is currently: FALSE!");
             //Set the toolbar_list as the app bar for this Activity (via this Fragment)
@@ -150,7 +146,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 Window window = getActivity().getWindow();
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.setStatusBarColor(Color.BLUE);
+                window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
             }
         } else {
             Log.v("***TESTING***", "In ListingDetailFragment's actionbar setup, and isDualPane is currently: TRUE!");
@@ -187,24 +183,6 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
 
     }
 
-//    // TODO: Rename method, update argument and hook method into UI event
-//    public void onButtonPressed(Uri uri) {
-//        if (mListener != null) {
-//            mListener.onFragmentInteraction(uri);
-//        }
-//    }
-
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if (context instanceof OnDetailFragmentInteractionListener) {
-//            mListener = (OnDetailFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnDetailFragmentInteractionListener");
-//        }
-//    }
-
     @Override
     public void onDetach() {
         super.onDetach();
@@ -223,6 +201,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
 
+        // Inflate the ActionBar using xml layout for the menu
         inflater.inflate(R.menu.action_bar_details, menu);
 
         // Hide Call_the_Listing action if Listing has no associated phone number
@@ -242,7 +221,11 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
                 Intent dialerIntent = new Intent(Intent.ACTION_DIAL);
                 String dialerIntentString = "tel:" + Long.toString(mBundle.getLong(ARG_PHONE_NUMBER));
                 dialerIntent.setData(Uri.parse(dialerIntentString));
-                startActivity(dialerIntent);
+
+                // Check whether an application exists to handle the Intent. If so, pass the Intent.
+                if (dialerIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(dialerIntent);
+                }
 
             case R.id.open_in_browser:
                 // User chose the "Open in Browser" item - launch browser
@@ -250,16 +233,24 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW);
                 String websiteIntentString = mBundle.getString(ARG_WEBSITE);
                 websiteIntent.setData(Uri.parse(websiteIntentString));
-                startActivity(websiteIntent);
+
+                // Check whether an application exists to handle the Intent. If so, pass the Intent.
+                if (websiteIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(websiteIntent);
+                }
 
             case R.id.navigate_to_listing:
                 // User chose the "Navigate to Listing" item - launch navigation
                 // with the address from the currently displayed listing details.
                 String geocoordString = "google.navigation:q=" + mBundle.getString(ARG_GEOCOORDINATES);
                 Uri gmmIntentUri = Uri.parse(geocoordString);
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
-                startActivity(mapIntent);
+                Intent navigationIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                navigationIntent.setPackage("com.google.android.apps.maps");
+
+                // Check whether an application exists to handle the Intent. If so, pass the Intent.
+                if (navigationIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(navigationIntent);
+                }
 
             default:
                 // If we got here, the user's action was not recognized.
@@ -269,6 +260,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
 
     }
 
+    // Callback method invoked when SupportMapFragment's map has been readied.
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
@@ -283,6 +275,12 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
         mapListing(mBundle.getString(ARG_GEOCOORDINATES));
     }
 
+    /**
+     * Adds/replaces a map marker & sets zoom level.
+     * Utilizes a previously-created GoogleMap object.
+     *
+     * @param stringLatLong String. Latitude, longitude. (Separated by a comma).
+     */
     private void mapListing(String stringLatLong) {
 
         // Process latitude, longitude String into separate doubles
@@ -310,12 +308,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
     }
 
     public void updateListingDetails(Bundle bundle) {
-        // TODO: This method is called from MainActivity. The below message IS printed to the log, but then there's a null pointer excception & app crashes...
-        // Using "this" before fields does not solve the problem.
-        Log.v("***TESTING***", "We have entered the updateListingDetails method.");
-        Log.v("***TESTING***", bundle.toString());
 
-        // TODO: ADD CODE TO DYNAMICALLY POPULATE THE VIEWS. [THIS IS A TESTING PLACEHOLDER]...
         // Ensure that required data has been passed via the Bundle before proceeding
         if (bundle != null) {
 
@@ -340,33 +333,25 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
             // Get listing name from bundle and set it on the appropriate TextView
             mListingName.setText(bundle.getString(ARG_LISTING_NAME));
 
+            // Initialize field / global variable with reference to layout's description TextView
+            // Get description text from bundle and set it on the TextView
             mDescription = (TextView) getActivity().findViewById(R.id.detail_description_full);
             mDescription.setText(bundle.getString(ARG_FULL_DESCRIPTION));
 
+            // Initialize field / global variable with reference to layout's hours/dates TextView
+            // Get description text from bundle and set it on the TextView
             mHoursDates = (TextView) getActivity().findViewById(R.id.detail_hours_dates);
             mHoursDates.setText(bundle.getString(ARG_HOURS_DATES));
 
-            // TODO: THE CODE BELOW ADDS A MARKER INSTEAD OF REPLACING THE MARKER!!
-            // Replace mBundle's geocoordinates with the geocoordinates passed into this method
-            mBundle.putString(ARG_GEOCOORDINATES, bundle.getString(ARG_GEOCOORDINATES));
-            // Refresh the map with the new geocoordinates
-            mMapFragment.getMapAsync(this);
-            ;
+            // If NOT in dual pane, then we are in DetailsActivity, which only ever displays a single listing, and map has already been drawn w/ marker.
+            // Otherwise, if in dual pane mode, then map may be updated any number of times within lifecycle of MainActivity.
+            if (isDualPane) {
+                // Replace mBundle's geocoordinates with the geocoordinates passed into this method
+                mBundle.putString(ARG_GEOCOORDINATES, bundle.getString(ARG_GEOCOORDINATES));
+                // Refresh the map with the new geocoordinates
+                mMapFragment.getMapAsync(this);
+            }
         }
     }
 
-//    /**
-//     * This interface must be implemented by activities that contain this
-//     * fragment to allow an interaction in this fragment to be communicated
-//     * to the activity and potentially other fragments contained in that
-//     * activity.
-//     * <p>
-//     * See the Android Training lesson <a href=
-//     * "http://developer.android.com/training/basics/fragments/communicating.html"
-//     * >Communicating with Other Fragments</a> for more information.
-//     */
-//    public interface OnDetailFragmentInteractionListener {
-//        // TODO: Update argument type and name
-//        void onFragmentInteraction(Uri uri);
-//    }
 }
