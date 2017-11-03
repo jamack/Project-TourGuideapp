@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
@@ -24,7 +25,8 @@ public class MainActivity extends AppCompatActivity
 
     // Declare global variable to hold reference to the Activity's ActionBar
     private static ActionBar actionBar = null;
-
+    // Declare global variable to hold reference to the Activity's ToolBar
+    android.support.v7.widget.Toolbar myToolbar;
     // Create global variable to later hold reference to a FragmentManager instance
     FragmentManager fragmentManager = null;
 
@@ -46,6 +48,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.v("***TESTING***", "Entering the MainActivity's onCreate() method...");
+
         // Inflate the layout with a container view (which will be replaced by the fragments)
         setContentView(R.layout.activity_main);
 
@@ -65,7 +70,8 @@ public class MainActivity extends AppCompatActivity
         tabLayout.setupWithViewPager(viewPager);
 
         // Set the toolbar_list as the app bar for this Activity (via this Fragment)
-        android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_list);
+//        android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_list);
+        myToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_list);
         setSupportActionBar(myToolbar);
         actionBar = getSupportActionBar();
 
@@ -78,27 +84,42 @@ public class MainActivity extends AppCompatActivity
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
 
+        Log.v("***TESTING***", "Checking for detail_container to see whether we're in dual pane mode...");
         // Check for current orientation: if R.id.detail_container is present in view hierarchy,
         // then landscape xml layout is being used. If not present, then we are in portrait orientation.
         FrameLayout detailContainer = (FrameLayout) findViewById(R.id.detail_container);
         if (detailContainer != null) {
-
+            Log.v("***TESTING***", "Found the detail_container view, so we are indeed in dual pane mode!");
             // If the detail_container view exists, we need to update the global variable to reflect two-pane mode
             isDualPane = true;
 
             // TODO: Do I need to check whether ListingDetailFragment instance exists?
-            // Create ListingDetailFragment instance and assign to global variable
-            listingDetailFragment = new ListingDetailFragment();
+            listingDetailFragment = (ListingDetailFragment) fragmentManager.findFragmentByTag("detail fragment");
+            if (listingDetailFragment == null) {
+                // Create ListingDetailFragment instance and assign to global variable
+                listingDetailFragment = new ListingDetailFragment();
+            }
 
             // Get data for the first list item from the fragment with that arraylist, in the form of a bundle,
             // and pass that bundle to the detail fragment.
             listingDetailFragment.setArguments(ParksListFragment.getBundle(0));
 
             // Add fragment to the container
-            fragmentManager.beginTransaction().add(R.id.detail_container, listingDetailFragment).commit();
+            fragmentManager.beginTransaction().add(R.id.detail_container, listingDetailFragment, "detail fragment").commit();
+
+//            // TODO: Do I need to check whether ListingDetailFragment instance exists?
+//            // Create ListingDetailFragment instance and assign to global variable
+//            listingDetailFragment = new ListingDetailFragment();
+//
+//            // Get data for the first list item from the fragment with that arraylist, in the form of a bundle,
+//            // and pass that bundle to the detail fragment.
+//            listingDetailFragment.setArguments(ParksListFragment.getBundle(0));
+//
+//            // Add fragment to the container
+//            fragmentManager.beginTransaction().add(R.id.detail_container, listingDetailFragment).commit();
 
         } else {
-
+            Log.v("***TESTING***", "Did NOT find detail_container, so we are NOT in dual pane mode...");
             // If the detail container view does NOT exist, we need to update the global variable to reflect one-pane mode
             isDualPane = false;
 
@@ -106,6 +127,36 @@ public class MainActivity extends AppCompatActivity
             listingDetailFragment = null;
         }
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        listingDetailFragment = null;
+        fragmentManager.beginTransaction().remove(listingDetailFragment).commit();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        fragmentManager = null;
+        myToolbar = null;
+        actionBar = null;
+    }
+
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Log.v("***TESTING***","Entering the MainActivity's onStart() method...");
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Log.v("***TESTING***","Entering the MainActivity's onResume() method...");
+//    }
 
     /**
      * Implemented method for OnParksFragmentInteractionListener interface.
@@ -217,5 +268,15 @@ public class MainActivity extends AppCompatActivity
             startActivity(detailIntent);
         }
     }
+
+
+    //    @Override
+//    protected void onStart() {
+//        super.onStart();
+//
+//        if (findViewById(R.id.fragment_container) != null) {
+//            isDualPane = true;
+//        } else {isDualPane = false;}
+//    }
 
 }

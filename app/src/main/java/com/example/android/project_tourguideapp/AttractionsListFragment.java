@@ -89,7 +89,7 @@ public class AttractionsListFragment extends Fragment {
                 "http://playnwisconsin.com/playn-wisconsin-about-us/open-play/", 6082345600L));
         kidThings.add(new KidThing("Rockin' Jump Trampoline Park", R.drawable.attractions_rockin_jump_01_thumbnail, R.drawable.attractions_rockin_jump_01_3to2,
                 "Indoor trampoline park where you can soar in open jump arenas, play trampoline dodgeball, do flips and somersaults, slam dunk zone, concessions area," +
-                        " kids' parties, etc. Rockin' Tots times: Sat 8am-10pm, Sun 9am-11am, W 9am-12pm. ",
+                        " kids' parties, etc. Rockin' Tots times: Sat 8am-10pm, Sun 9am-11am, W 9am-12pm.",
                 "2700 Novation Pkwy, Madison, WI 53713", "43.0320338,-89.38453870000001", "Sun 9am - 7pm, Tues 4pm - 8pm, W 9am-12-m 4pm-8pm, Thur 4pm - 8pm, F 9am - 12pm 1pm - 10pm, Sat 8am - 10pm",
                 "https://madison.rockinjump.com/", 6088195368L));
         kidThings.add(new KidThing("Sky Zone Trampoline Park", R.drawable.attractions_sky_zone_01_thumbnail, R.drawable.attractions_sky_zone_01_3to2,

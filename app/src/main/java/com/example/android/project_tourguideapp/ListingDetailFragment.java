@@ -55,10 +55,10 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
 
     // Global variable to store reference to fragment's view hierarchy
     View rootView = null;
-
+    // Declare global variable to hold reference to ActionBar
+    ActionBar actionBar;
     // Global variable to store reference to any applicable Bundle used within this Fragment
     private Bundle mBundle = null;
-
     // Create fields that will later hold references to Views
     private TextView mListingName;
     private ImageView mImage;
@@ -138,7 +138,8 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
             //Set the toolbar_list as the app bar for this Activity (via this Fragment)
             android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) getActivity().findViewById(R.id.toolbar_detail);
             ((AppCompatActivity) getActivity()).setSupportActionBar(myToolbar);
-            ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+            actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+//            ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
             actionBar.setTitle("Details");
 
 
@@ -188,6 +189,9 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
         super.onDetach();
 //        mListener = null;
 
+//        myToolbar = null;
+        actionBar = null;
+
         mListingName = null;
         mImage = null;
         mDescription = null;
@@ -195,6 +199,9 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
         mHoursDates = null;
         mWebsite = null;
         mPhoneNumber = null;
+        mGoogleMap = null;
+        mMapFragment = null;
+        mMarker = null;
     }
 
     @Override
@@ -308,13 +315,22 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
     }
 
     public void updateListingDetails(Bundle bundle) {
+        Log.v("***TESTING***", "Entering the updateListingDetails() method...");
+        if (isDualPane == false && (getActivity() instanceof MainActivity)) {
+            Log.v("***TESTING***", "In updateListingDetails. We are in MainActivity + single pane mode. Exiting the method...");
+            return;
+        }
 
         // Ensure that required data has been passed via the Bundle before proceeding
         if (bundle != null) {
 
-            // TODO: ADD IF STATEMENT LATER TO CHECK IF SELECTED ITEM HAS AN IMAGE BEFORE SETTING IT...
+            // Initialize field / global variable with the banner ImageView
             mImage = (ImageView) getActivity().findViewById(R.id.detail_image);
-            mImage.setImageResource(bundle.getInt(ARG_IMAGE_RESOURCE_BANNER));
+            // Check whether selected item has an associated banner image before setting it
+            // If so, get the image from the Bundle and set it on the banner image field / global variable
+            if (mImage != null) {
+                mImage.setImageResource(bundle.getInt(ARG_IMAGE_RESOURCE_BANNER));
+            }
 
             mListingName = (TextView) getActivity().findViewById(R.id.detail_listing_name);
             // TODO: If displayed in dual pane mode, reduce text size slightly so it doesn't wrap
