@@ -51,8 +51,10 @@ public class MainActivity extends AppCompatActivity
 
         Log.v("***TESTING***", "Entering the MainActivity's onCreate() method...");
 
+        Log.v("***TESTING***", "About to inflate the layout...");
         // Inflate the layout with a container view (which will be replaced by the fragments)
         setContentView(R.layout.activity_main);
+        Log.v("***TESTING***", "Layout has been successfully inflated!");
 
         // Get a FragmentManager instance to be used throughout Activity and assign to the global variable.
         fragmentManager = getSupportFragmentManager();
@@ -69,6 +71,18 @@ public class MainActivity extends AppCompatActivity
         // Set the ViewPager on the TabLayout to connect the pager with the tabs
         tabLayout.setupWithViewPager(viewPager);
 
+//        // TODO: CHECK WHETHER PREVIOUS REFERENCE TO TOOLBAR...
+//        // Check whether a Toolbar instance already exists (via savedInstanceState).
+//        // If one does, retrieve its resource ID (integer) from the savedInstanceState bundle, use it to find the Toolbar view, and reassign to the global variable
+//        if (savedInstanceState !=null) {
+//            myToolbar = (android.support.v7.widget.Toolbar) findViewById(savedInstanceState.getInt("KEY_TOOLBAR_ID"));
+//            if (myToolbar == null) {
+//                Log.v("***TESTING***", "Setting Toolbar via savedInstanceState and the current value is null...");
+//            } else {Log.v("***TESTING***", "Setting Toolbar via savedInstanceState and there is a resource id (integer)!");}
+//        } else { // savedInstanceState IS null, so there's no existing instance and we
+//            Log.v("***TESTING***","No savedInstanceState for the Toolbar...");
+//            myToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_list);
+//        }
         // Set the toolbar_list as the app bar for this Activity (via this Fragment)
 //        android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_list);
         myToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_list);
@@ -82,6 +96,17 @@ public class MainActivity extends AppCompatActivity
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
+
+        // TODO: TRY CODE TO CHECK WHETHER SAVEDINSTANCESTATE CONTAINS THE DETAIL_CONTAINER AND REMOVE IT IF SO...
+        if (savedInstanceState != null && findViewById(R.id.detail_container) == null) {
+//            fragmentManager.beginTransaction().remove(listingDetailFragment);
+//            Log.v("***TESTING***","In onCreate() method. Fiddling with savedInstanceState. At this point, value of listingDetailFragment is:" + listingDetailFragment);
+//            getResources().savedInstanceState.getInt("DETAIL_CONTAINER_ID")
+            listingDetailFragment = (ListingDetailFragment) fragmentManager.getFragment(savedInstanceState, "KEY_DETAIL_FRAGMENT_INSTANCE");
+            Log.v("***TESTING***", "Tried to save reassign reference to listingDetailFragment from the savedInstanceState bundle. Current value of listingDetailFragment is: " + listingDetailFragment.toString());
+            fragmentManager.beginTransaction().remove(listingDetailFragment).commit();
+            Log.v("***TESTING***", "Tried to remove listingDetailFragment from the view hierarchy. Current value of listingDetailFragment is: " + listingDetailFragment.toString());
         }
 
         Log.v("***TESTING***", "Checking for detail_container to see whether we're in dual pane mode...");
@@ -129,11 +154,27 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+//        outState.putInt("DETAIL_CONTAINER_ID", R.id.detail_container);
+        outState.putInt("KEY_TOOLBAR_ID", R.id.toolbar_list);
+        if (isDualPane == true) {
+//            fragmentManager.beginTransaction().remove(listingDetailFragment).commit();
+            //Save the fragment's instance
+            fragmentManager.putFragment(outState, "KEY_DETAIL_FRAGMENT_INSTANCE", listingDetailFragment);
+        }
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
 
         listingDetailFragment = null;
-        fragmentManager.beginTransaction().remove(listingDetailFragment).commit();
+//        THE LINE BELOW CRASHES THE APP...
+//        if (isDualPane == true) {
+//            fragmentManager.beginTransaction().remove(listingDetailFragment).commit();
+//        }
 
     }
 
@@ -141,9 +182,9 @@ public class MainActivity extends AppCompatActivity
     protected void onDestroy() {
         super.onDestroy();
 
-        fragmentManager = null;
-        myToolbar = null;
-        actionBar = null;
+//        fragmentManager = null;
+//        myToolbar = null;
+//        actionBar = null;
     }
 
 //    @Override

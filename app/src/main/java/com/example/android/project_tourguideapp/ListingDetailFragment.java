@@ -133,7 +133,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
 
         // Check to see whether we are in dual pane mode. If we are, then MainActivity has already an ActionBar.
         // If not in dual pane mode, we are in the DetailsActivity and we need to obtain an ActionBar instance.
-        if (!isDualPane) {
+        if (!isDualPane && !(getActivity() instanceof MainActivity)) {
             Log.v("***TESTING***", "In ListingDetailFragment's actionbar setup, and  isDualPane is currently: FALSE!");
             //Set the toolbar_list as the app bar for this Activity (via this Fragment)
             android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) getActivity().findViewById(R.id.toolbar_detail);
@@ -210,6 +210,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
 
         // Inflate the ActionBar using xml layout for the menu
         inflater.inflate(R.menu.action_bar_details, menu);
+        Log.v("***TESTING***", "In ListingDetailFragment's onCreateOptionsMenu method. Just inflated the action_bar_details menu...");
 
         // Hide Call_the_Listing action if Listing has no associated phone number
         if (mBundle.getLong(ARG_PHONE_NUMBER) == 0) {
@@ -233,6 +234,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
                 if (dialerIntent.resolveActivity(getActivity().getPackageManager()) != null) {
                     startActivity(dialerIntent);
                 }
+                break;
 
             case R.id.open_in_browser:
                 // User chose the "Open in Browser" item - launch browser
@@ -245,6 +247,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
                 if (websiteIntent.resolveActivity(getActivity().getPackageManager()) != null) {
                     startActivity(websiteIntent);
                 }
+                break;
 
             case R.id.navigate_to_listing:
                 // User chose the "Navigate to Listing" item - launch navigation
@@ -258,12 +261,15 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
                 if (navigationIntent.resolveActivity(getActivity().getPackageManager()) != null) {
                     startActivity(navigationIntent);
                 }
+                break;
 
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
         }
+
+        return true;
 
     }
 
