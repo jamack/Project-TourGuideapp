@@ -3,12 +3,75 @@
 
     <string name="google_maps_key">AIzaSyCTO5oJfc1ufvZqGjh49BLeAbBvNFsuGB0</string>
 
-    <string name="park_westmorland_description">Located on Madison\'s near west side, Westmorland Park has a medium-sized children\'s playground with swingsets (including baby swings), play structure (steps, bridge, climbers, tunnel, etc), slides, merry-go-round, and more. Also features a rock garden, reservable shelter, volleyball court, tennis courts and softball field. Restrooms. Drinking fountain.</string>
+    <string name="park_westmorland_listing_title">Westmorland Park</string>
+    <string name="park_westmorland_description_full">Located on Madison\'s near west side, Westmorland Park has a medium-sized children\'s playground with swingsets (including baby swings), play structure (steps, bridge, climbers, tunnel, etc), slides, merry-go-round, and more. Also features a rock garden, reservable shelter, volleyball court, tennis courts and softball field. Restrooms. Drinking fountain.</string>
     <string name="park_westmorland_address">4114 Tokay Blvd, Madison, WI 53711</string>
+    <string name="park_westmorland_geocoordinates">43.0547939,-89.44500260000001</string>
     <string name="park_westmorland_hours_dates">4am - 10pm</string>
     <string name="park_westmorland_website">http://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1376</string>
-    <string name="park_westmorland_listing_title">Westmorland Park</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="park_nakoma_listing_title">Nakoma Park</string>
+    <string name="park_nakoma_description_full">Medium-sized playground with swingset (including baby swings), play structure (steps, climber, etc), and slide. Drinking fountain. Ball courts/fields. Ice skating.</string>
+    <string name="park_nakoma_address">3801 Cherokee Dr, Madison, WI 53711</string>
+    <string name="park_nakoma_geocoordinates">43.0468182,-89.44156470000001</string>
+    <string name="park_nakoma_hours_dates">4am - 10pm</string>
+    <string name="park_nakoma_website">http://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1270</string>
+
+    <string name="park_odana_hills_east_listing_title">Odana Hills East Park</string>
+    <string name="park_odana_hills_east_description_full">Mini playground with play structure (climber, etc.), slide, and swings (including baby swings). Drinking fountain. Ball courts.</string>
+    <string name="park_odana_hills_east_address">4627 Odana Rd, Madison, WI 53711</string>
+    <string name="park_odana_hills_east_geocoordinates">43.048906,-89.454655</string>
+    <string name="park_odana_hills_east_hours_dates">4am - 10pm</string>
+    <string name="park_odana_hills_east_website">https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1277</string>
+
+    <string name="park_glenwood_childrens_listing_title">Glenwood Children\'s Park</string>
+    <string name="park_glenwood_childrens_description_full">Mini park with play structure (climber, tunnel, etc.), slides, swings, and seesaw. Drinking fountain (a short walk from playground). Ball court.</string>
+    <string name="park_glenwood_childrens_address">602 Glenway St, Madison, WI 53711</string>
+    <string name="park_glenwood_childrens_geocoordinates">43.0547398,-89.4376067</string>
+    <string name="park_glenwood_childrens_hours_dates">4am - 10pm</string>
+    <string name="park_glenwood_childrens_website">https://www.cityofmadison.com/parks/find-a-park/history.cfm?id=1213</string>
+
+    <string name="park_lucia_crest_listing_title">Lucia Crest Park</string>
+    <string name="park_lucia_crest_description_full">Medium-sized playground with play structure (climber, tunnel, etc.), slides, swings (including baby swings), and merry-go-round. Picnic shelter. Drinking fountain. Ball courts.</string>
+    <string name="park_lucia_crest_address">514 N Owen Dr, Madison, WI 53705</string>
+    <string name="park_lucia_crest_geocoordinates">43.0725766,-89.44821589999998</string>
+    <string name="park_lucia_crest_hours_dates">4am - 10pm</string>
+    <string name="park_lucia_crest_website">https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1236</string>
+
+    <string name="park_oak_park_heights_listing_title">Oak Park Heights Park</string>
+    <string name="park_oak_park_heights_description_full">Mini park with play structure (climber, etc.), slides, swings, and jungle gym. Picnic shelter. Drinking fountain. Ball court.</string>
+    <string name="park_oak_park_heights_address">641 Hilltop Dr, Madison, WI 53711</string>
+    <string name="park_oak_park_heights_geocoordinates">43.0513007,-89.4579812</string>
+    <string name="park_oak_park_heights_hours_dates">4am - 10pm</string>
+    <string name="park_oak_park_heights_website">https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1263</string>
+
+    <string name="park_william_slater_listing_title">William Slater Park</string>
+    <string name="park_william_slater_description_full">Mini park with play structure (climber, etc.), slide, and swings. Ball court.</string>
+    <string name="park_william_slater_address">561 S Segoe Rd, Madison, WI 53711</string>
+    <string name="park_william_slater_geocoordinates">43.05390449999999,-89.46402569999998</string>
+    <string name="park_william_slater_hours_dates">4am - 10pm</string>
+    <string name="park_william_slater_website">https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1342</string>
+
+    <string name="park_segoe_listing_title">Segoe Park</string>
+    <string name="park_segoe_description_full">Mini park with play structure (climber, etc.), slide, and swings. Picnic shelter. Drinking fountain. Ball court.</string>
+    <string name="park_segoe_address">502 S Segoe Rd, Madison, WI 53711</string>
+    <string name="park_segoe_geocoordinates">43.0562481,-89.4618845</string>
+    <string name="park_segoe_hours_dates">4am - 10pm</string>
+    <string name="park_segoe_website">https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1327</string>
+
+    <string name="park_zook_listing_title">Zook Park</string>
+    <string name="park_zook_description_full">Mini park with play structure (climber, tunnel, etc.), slide, and  swings. Picnic table.</string>
+    <string name="park_zook_address">950 Pontiac Trail, Madison, WI 53711</string>
+    <string name="park_zook_geocoordinates">43.04206500000001,-89.45710400000002</string>
+    <string name="park_zook_hours_dates">4am - 10pm</string>
+    <string name="park_zook_website">https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1398</string>
+
+    <string name="park_spring_harbor_listing_title">Spring Harbor Park</string>
+    <string name="park_spring_harbor_description_full">Neighborhood park with play structure (climber, tunnel, etc.), slide, and  swings. Restrooms. Drinking fountain. Picnic table. Ball courts. On-leash dog area.</string>
+    <string name="park_spring_harbor_address">5218 Lake Mendota Dr, Madison, WI 53705</string>
+    <string name="park_spring_harbor_geocoordinates">43.080969,-89.47008599999998</string>
+    <string name="park_spring_harbor_hours_dates">4am - 10pm</string>
+    <string name="park_spring_harbor_website">http://www.cityofmadison.com/parks/springharbor/</string>
+
+
 </resources>

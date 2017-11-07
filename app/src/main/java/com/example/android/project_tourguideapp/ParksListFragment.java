@@ -63,38 +63,39 @@ public class ParksListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.kidthing_list, container, false);
 
         // Take our global variable and initialize it with a new ArrayList of KidThings
-        kidThings = new ArrayList<KidThing>();
+        kidThings = new ArrayList<>();
 
         // Populate our ArrayList by constructing and adding new KidThings
-        kidThings.add(new KidThing("Nakoma Park", R.drawable.park_nakoma_01_thumbnail, R.drawable.park_nakoma_01_3to2,
-                "Medium-sized playground with swingset (including baby swings), play structure (steps, climber, etc), and slide. Drinking fountain. Ball courts/fields. Ice skating.", "3801 Cherokee Dr, Madison, WI 53711",
-                "43.0468182,-89.44156470000001", "4am - 10pm", "http://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1270"));
+        kidThings.add(new KidThing(getString(R.string.park_nakoma_listing_title), R.drawable.park_nakoma_01_thumbnail, R.drawable.park_nakoma_01_3to2,
+                getString(R.string.park_nakoma_description_full), getString(R.string.park_nakoma_address),
+                getString(R.string.park_nakoma_geocoordinates), getString(R.string.park_nakoma_hours_dates), getString(R.string.park_nakoma_website)));
         kidThings.add(new KidThing(getString(R.string.park_westmorland_listing_title), R.drawable.westmorland_park_01_thumbnail, R.drawable.westmorland_park_01_3to2,
-                getString(R.string.park_westmorland_description), getString(R.string.park_westmorland_address), "43.0547939,-89.44500260000001", getString(R.string.park_westmorland_hours_dates), getString(R.string.park_westmorland_website)));
-        kidThings.add(new KidThing("Odana Hills East Park", R.drawable.park_odana_hills_east_01_thumbnail, R.drawable.park_odana_hills_east_01_3to2,
-                "Mini playground with play structure (climber, etc.), slide, and swings (including baby swings). Drinking fountain. Ball courts.",
-                "4627 Odana Rd, Madison, WI 53711", "43.048906,-89.454655", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1277"));
-        kidThings.add(new KidThing("Glenwood Children's Park", R.drawable.park_glenwood_childrens_01_thumbnail, R.drawable.park_glenwood_childrens_01_3to2,
-                "Mini park with play structure (climber, tunnel, etc.), slides, swings, and seesaw. Drinking fountain (a short walk from playground). Ball court.",
-                "602 Glenway St, Madison, WI 53711", "43.0547398,-89.4376067", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/history.cfm?id=1213"));
-        kidThings.add(new KidThing("Lucia Crest Park", R.drawable.park_lucia_crest_01_thumbnail, R.drawable.park_lucia_crest_01_3to2,
-                "Medium-sized playground with play structure (climber, tunnel, etc.), slides, swings (including baby swings), and merry-go-round. Picnic shelter. Drinking fountain. Ball courts.",
-                "514 N Owen Dr, Madison, WI 53705", "43.0725766,-89.44821589999998", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1236"));
-        kidThings.add(new KidThing("Oak Park Heights Park", R.drawable.park_oak_park_heights_01_thumbnail, R.drawable.park_oak_park_heights_01_3to2,
-                "Mini park with play structure (climber, etc.), slides, swings, and jungle gym. Picnic shelter. Drinking fountain. Ball court.",
-                "641 Hilltop Dr, Madison, WI 53711", "43.0513007,-89.4579812", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1263"));
-        kidThings.add(new KidThing("William Slater Park", R.drawable.park_william_slater_01_thumbnail, R.drawable.park_william_slater_01_3to2,
-                "Mini park with play structure (climber, etc.), slide, and swings. Ball court.",
-                "561 S Segoe Rd, Madison, WI 53711", "43.05390449999999,-89.46402569999998", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1342"));
-        kidThings.add(new KidThing("Segoe Park", R.drawable.park_segoe_01_thumbnail, R.drawable.park_segoe_01_3to2,
-                "Mini park with play structure (climber, etc.), slide, and swings. Picnic shelter. Drinking fountain. Ball court.",
-                "502 S Segoe Rd, Madison, WI 53711", "43.0562481,-89.4618845", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1327"));
-        kidThings.add(new KidThing("Zook Park", R.drawable.park_zook_01_thumbnail, R.drawable.park_zook_01_3to2,
-                "Mini park with play structure (climber, tunnel, etc.), slide, and  swings. Picnic table.",
-                "950 Pontiac Trail, Madison, WI 53711", "43.04206500000001,-89.45710400000002", "4am - 10pm", "https://www.cityofmadison.com/parks/find-a-park/park.cfm?id=1398"));
-        kidThings.add(new KidThing("Spring Harbor Park", R.drawable.park_spring_harbor_01_thumbnail, R.drawable.park_spring_harbor_01_3to2,
-                "Neighborhood park with play structure (climber, tunnel, etc.), slide, and  swings. Restrooms. Drinking fountain. Picnic table. Ball courts. On-leash dog area.",
-                "5218 Lake Mendota Dr, Madison, WI 53705", "43.080969,-89.47008599999998", "4am - 10pm", "http://www.cityofmadison.com/parks/springharbor/"));
+                getString(R.string.park_westmorland_description_full), getString(R.string.park_westmorland_address),
+                getString(R.string.park_westmorland_geocoordinates), getString(R.string.park_westmorland_hours_dates), getString(R.string.park_westmorland_website)));
+        kidThings.add(new KidThing(getString(R.string.park_odana_hills_east_listing_title), R.drawable.park_odana_hills_east_01_thumbnail, R.drawable.park_odana_hills_east_01_3to2,
+                getString(R.string.park_odana_hills_east_description_full), getString(R.string.park_odana_hills_east_address),
+                getString(R.string.park_odana_hills_east_geocoordinates), getString(R.string.park_odana_hills_east_hours_dates), getString(R.string.park_odana_hills_east_website)));
+        kidThings.add(new KidThing(getString(R.string.park_glenwood_childrens_listing_title), R.drawable.park_glenwood_childrens_01_thumbnail, R.drawable.park_glenwood_childrens_01_3to2,
+                getString(R.string.park_glenwood_childrens_description_full), getString(R.string.park_glenwood_childrens_address),
+                getString(R.string.park_glenwood_childrens_geocoordinates), getString(R.string.park_glenwood_childrens_hours_dates), getString(R.string.park_glenwood_childrens_website)));
+        kidThings.add(new KidThing(getString(R.string.park_lucia_crest_listing_title), R.drawable.park_lucia_crest_01_thumbnail, R.drawable.park_lucia_crest_01_3to2,
+                getString(R.string.park_lucia_crest_description_full), getString(R.string.park_lucia_crest_address),
+                getString(R.string.park_lucia_crest_geocoordinates), getString(R.string.park_lucia_crest_hours_dates), getString(R.string.park_lucia_crest_website)));
+        kidThings.add(new KidThing(getString(R.string.park_oak_park_heights_listing_title), R.drawable.park_oak_park_heights_01_thumbnail, R.drawable.park_oak_park_heights_01_3to2,
+                getString(R.string.park_oak_park_heights_description_full), getString(R.string.park_oak_park_heights_address),
+                getString(R.string.park_oak_park_heights_geocoordinates), getString(R.string.park_oak_park_heights_hours_dates), getString(R.string.park_oak_park_heights_website)));
+        kidThings.add(new KidThing(getString(R.string.park_william_slater_listing_title), R.drawable.park_william_slater_01_thumbnail, R.drawable.park_william_slater_01_3to2,
+                getString(R.string.park_william_slater_description_full), getString(R.string.park_william_slater_address),
+                getString(R.string.park_william_slater_geocoordinates), getString(R.string.park_william_slater_hours_dates), getString(R.string.park_william_slater_website)));
+        kidThings.add(new KidThing(getString(R.string.park_segoe_listing_title), R.drawable.park_segoe_01_thumbnail, R.drawable.park_segoe_01_3to2,
+                getString(R.string.park_segoe_description_full), getString(R.string.park_segoe_address),
+                getString(R.string.park_segoe_geocoordinates), getString(R.string.park_segoe_hours_dates), getString(R.string.park_segoe_website)));
+        kidThings.add(new KidThing(getString(R.string.park_zook_listing_title), R.drawable.park_zook_01_thumbnail, R.drawable.park_zook_01_3to2,
+                getString(R.string.park_zook_description_full), getString(R.string.park_zook_address),
+                getString(R.string.park_zook_geocoordinates), getString(R.string.park_zook_hours_dates), getString(R.string.park_zook_website)));
+        kidThings.add(new KidThing(getString(R.string.park_spring_harbor_listing_title), R.drawable.park_spring_harbor_01_thumbnail, R.drawable.park_spring_harbor_01_3to2,
+                getString(R.string.park_spring_harbor_description_full), getString(R.string.park_spring_harbor_address),
+                getString(R.string.park_spring_harbor_geocoordinates), getString(R.string.park_spring_harbor_hours_dates), getString(R.string.park_spring_harbor_website)));
 
         // Find instance of the list_view ListView and assign to a variable
         ListView listView = (ListView) rootView.findViewById(R.id.list_view);
@@ -164,7 +165,7 @@ public class ParksListFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnParksFragmentInteractionListener {
+    interface OnParksFragmentInteractionListener {
         // Method signature to be executed when user clicks on the ListView.
         // This interface will need to be implemented by MainActivity and have the method completed.
         void onParksFragmentInteraction(int position);

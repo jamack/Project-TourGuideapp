@@ -131,7 +131,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
             updateListingDetails(ParksListFragment.getBundle(0));
         }
 
-        // Check to see whether we are in dual pane mode. If we are, then MainActivity has already an ActionBar.
+        // Check to see whether we are in dual pane mode. If we are, then MainActivity has already got an ActionBar.
         // If not in dual pane mode, we are in the DetailsActivity and we need to obtain an ActionBar instance.
         if (!isDualPane && !(getActivity() instanceof MainActivity)) {
             Log.v("***TESTING***", "In ListingDetailFragment's actionbar setup, and  isDualPane is currently: FALSE!");

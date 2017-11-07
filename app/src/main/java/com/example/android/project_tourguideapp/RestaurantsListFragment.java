@@ -73,7 +73,7 @@ public class RestaurantsListFragment extends Fragment {
         kidThings.add(new KidThing("Ella's Deli & Ice Cream Parlor", R.drawable.restaurant_ellas_deli_01_thumbnail, R.drawable.restaurant_ellas_deli_01_3to2,
                 "Kid-oriented eatery with colorful, animated decor & a carousel offering American food & desserts.",
                 "2902 E Washington Ave, Madison, WI 53704", "43.1035133,-89.34459809999998", "Sun-Th 11:00am – 10:00pm, F-Sat 11:00am – 11:00pm", "http://www.ellasdeli.com", 6082415291L));
-        kidThings.add(new KidThing("Yola's Cafe and Coffee Shop", R.drawable.restaurant_yolas_cafe_01_thumbnail, R.drawable.park_segoe_01_3to2,
+        kidThings.add(new KidThing("Yola's Cafe and Coffee Shop", R.drawable.restaurant_yolas_cafe_01_thumbnail, R.drawable.restaurant_yolas_cafe_01_3to2,
                 "Mellow coffeehouse offering java, pastries & savory dishes plus WiFi, a fireplace & a big patio. Kid's play area. Diaper changing station(s). High chairs. Kids menu.",
                 "494 Commerce Dr, Madison, WI 53719", "43.05542819999999,-89.52318220000001", "Tues-Sat 7:00am – 4:30pm", "http://www.yolascafe.com", 6088275800L));
         kidThings.add(new KidThing("Monty's Blue Plate Diner", R.drawable.restaurant_montys_blue_plate_01_thumbnail, R.drawable.restaurant_montys_blue_plate_01_3to2,

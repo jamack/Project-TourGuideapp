@@ -187,17 +187,17 @@ public class MainActivity extends AppCompatActivity
 //        actionBar = null;
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        Log.v("***TESTING***","Entering the MainActivity's onStart() method...");
-//    }
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        Log.v("***TESTING***","Entering the MainActivity's onResume() method...");
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.v("***TESTING***", "Entering the MainActivity's onStart() method...");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.v("***TESTING***", "Entering the MainActivity's onResume() method...");
+    }
 
     /**
      * Implemented method for OnParksFragmentInteractionListener interface.
