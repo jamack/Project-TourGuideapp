@@ -5,7 +5,7 @@ package com.example.android.project_tourguideapp;
  * or event (storytelling, farmers market, music series, etc.)
  */
 
-public class KidThing {
+class KidThing {
 
     /** Constant value denoting default state of no associated image.
      * Will be overridden if new com.example.android.project_tourguideapp.KidThing object is constructed with an associated image.
@@ -70,31 +70,10 @@ public class KidThing {
      * @param website - url for more detailed info
      * @param phoneNum - phone number to contact
      */
-    public KidThing(String name, int imageIdThumbnail, int imageIdBanner, String description, String address, String geocoordinates, String hoursDates, String website, long phoneNum) {
+    KidThing(String name, int imageIdThumbnail, int imageIdBanner, String description, String address, String geocoordinates, String hoursDates, String website, long phoneNum) {
         mListingName = name;
         mImageThumbnailResourceId = imageIdThumbnail;
         mImageBannerResourceId = imageIdBanner;
-        mDescription = description;
-        mAddress = address;
-        mGeocoordinates = geocoordinates;
-        mHoursDates = hoursDates;
-        mWebsite = website;
-        mPhoneNumber = phoneNum;
-    }
-
-    /**
-     * Create a new com.example.android.project_tourguideapp.KidThing object.
-     * This constructor excludes images.
-     * @param name - event/venue title
-     * @param description - overview of event/venue
-     * @param address - where event/venue is located
-     * @param geocoordinates - address, in geographical coordinate format
-     * @param hoursDates - times when venue is open -or- date(s)/times that event is occurring.
-     * @param website - url for more detailed info
-     * @param phoneNum - phone number to contact
-     */
-    public KidThing(String name, String description, String address, String geocoordinates, String hoursDates, String website, long phoneNum) {
-        mListingName = name;
         mDescription = description;
         mAddress = address;
         mGeocoordinates = geocoordinates;
@@ -115,7 +94,7 @@ public class KidThing {
      * @param hoursDates - times when venue is open -or- date(s)/times that event is occurring.
      * @param website - url for more detailed info
      */
-    public KidThing(String name, int imageIdThumbnail, int imageIdBanner, String description, String address, String geocoordinates, String hoursDates, String website) {
+    KidThing(String name, int imageIdThumbnail, int imageIdBanner, String description, String address, String geocoordinates, String hoursDates, String website) {
         mListingName = name;
         mImageThumbnailResourceId = imageIdThumbnail;
         mImageBannerResourceId = imageIdBanner;
@@ -126,98 +105,79 @@ public class KidThing {
         mWebsite = website;
     }
 
-    /**
-     * Create a new com.example.android.project_tourguideapp.KidThing object.
-     * This constructor excludes image & phone number.
-     * @param name - event/venue title
-     * @param description - overview of event/venue
-     * @param address - where event/venue is located
-     * @param geocoordinates - address, in geographical coordinate format
-     * @param hoursDates - times when venue is open -or- date(s)/times that event is occurring.
-     * @param website - url for more detailed info
-     */
-    public KidThing(String name, String description, String address, String geocoordinates, String hoursDates, String website) {
-        mListingName = name;
-        mDescription = description;
-        mAddress = address;
-        mGeocoordinates = geocoordinates;
-        mHoursDates = hoursDates;
-        mWebsite = website;
-    }
-
     /** Getter method for venue/event title */
-    public String getListingName() {
+    String getListingName() {
         return mListingName;
     }
 
     /** Returns whether or not there is an image for this venue/event */
-    public boolean hasImage() {
+    boolean hasImage() {
         return mImageThumbnailResourceId != NO_IMAGE_PROVIDED;
     }
 
     /**
      * Getter method for any associated thumbnail image resource ID
      */
-    public int getThumbnailImageResourceId() {
+    int getThumbnailImageResourceId() {
         return mImageThumbnailResourceId;
     }
 
     /**
      * Getter method for any associated banner image resource ID
      */
-    public int getBannerImageResourceId() {
+    int getBannerImageResourceId() {
         return mImageBannerResourceId;
     }
 
     /**
      * Getter method for description of venue/event
      */
-    public String getDescription() {
+    String getDescription() {
         return mDescription;
     }
 
     /**
      * Getter method for venue/event's physical address
      */
-    public String getAddress() {
+    String getAddress() {
         return mAddress;
     }
 
     /**
      * Getter method for geocoordinates of venue/event's physical address
      */
-    public String getGeocoordinates() {
+    String getGeocoordinates() {
         return mGeocoordinates;
     }
 
     /** Returns whether or not there are hours/dates for this venue/event */
-    public boolean hasHoursDates() {
+    boolean hasHoursDates() {
         return mHoursDates != NO_HOURS_DATES_PROVIDED;
     }
 
     /**
      * Getter method for any associated hours/dates
      */
-    public String getHoursDates() {
+    String getHoursDates() {
         return mHoursDates;
     }
 
     /**
      * Getter method for venue/event's web address
      */
-    public String getWebsite() {
+    String getWebsite() {
         return mWebsite;
     }
 
     /** Returns whether or not there is a phone number for this venue/event */
-    public boolean hasPhoneNumber() {
+    boolean hasPhoneNumber() {
         return mPhoneNumber != NO_PHONE_NUMBER_PROVIDED;
     }
 
     /**
      * Getter method for any associated phone number
      */
-    public long getPhoneNumber() {
+    long getPhoneNumber() {
         return mPhoneNumber;
     }
 

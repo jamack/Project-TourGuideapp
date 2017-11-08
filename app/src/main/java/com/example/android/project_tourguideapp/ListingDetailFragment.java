@@ -63,10 +63,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
     private TextView mListingName;
     private ImageView mImage;
     private TextView mDescription;
-    private TextView mAddress;
     private TextView mHoursDates;
-    private TextView mWebsite;
-    private TextView mPhoneNumber;
     private SupportMapFragment mMapFragment;
     private GoogleMap mGoogleMap;
     private Marker mMarker;
@@ -195,10 +192,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
         mListingName = null;
         mImage = null;
         mDescription = null;
-        mAddress = null;
         mHoursDates = null;
-        mWebsite = null;
-        mPhoneNumber = null;
         mGoogleMap = null;
         mMapFragment = null;
         mMarker = null;

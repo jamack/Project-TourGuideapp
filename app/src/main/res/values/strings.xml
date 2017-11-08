@@ -73,5 +73,215 @@
     <string name="park_spring_harbor_hours_dates">4am - 10pm</string>
     <string name="park_spring_harbor_website">http://www.cityofmadison.com/parks/springharbor/</string>
 
+    <string name="attractions_madison_childrens_museum_listing_title">Madison Children\'s Museum</string>
+    <string name="attractions_madison_childrens_museum_description_full">With one-of-a-kind interactive exhibits, daily activities, and year-round special events, there is always something to do at Madison Children\'s Museum. Come see where children, newborn through age 12, bring grown-ups for a day of play! $8/child + $8/adult. Annual family membership: $125 - 4 members, $150 - 6 members.</string>
+    <string name="attractions_madison_childrens_museum_address">100 N Hamilton St, Madison, WI 53703</string>
+    <string name="attractions_madison_childrens_museum_geocoordinates">43.0768232,-89.3844752</string>
+    <string name="attractions_madison_childrens_museum_hours_dates">Tues - Sun 9:30am - 5pm</string>
+    <string name="attractions_madison_childrens_museum_website">http://madisonchildrensmuseum.org/</string>
+
+    <string name="attractions_henry_vilas_zoo_listing_title">Henry Vilas Zoo</string>
+    <string name="attractions_henry_vilas_zoo_description_full"><![CDATA[28-acre zoo with no admission or parking fees. Amphibians, birds, fish, insects, mammals, & reptiles. Petting zoo. Childrens play area, including huge play structure, carousel & train rides. Concessions, cafe, gift shop.]]></string>
+    <string name="attractions_henry_vilas_zoo_address">702 S Randall Ave, Madison, WI 53715</string>
+    <string name="attractions_henry_vilas_zoo_geocoordinates">43.06061039999999,-89.410035</string>
+    <string name="attractions_henry_vilas_zoo_hours_dates">Sun-Sat 9:30am - 5pm</string>
+    <string name="attractions_henry_vilas_zoo_website">http://www.vilaszoo.org/</string>
+
+    <string name="attractions_playn_wisconsin_listing_title">PlayN Wisconsin</string>
+    <string name="attractions_playn_wisconsin_description_full">Indoor Play: Our all day, unlimited open gym play sessions allow children the benefits of fun-filled physical activity. Toddlers, tweens and even grandparents will enjoy our brightly decorated, 12,000+ square foot, indoor sock-only facility. Our huge indoor play showroom is filled with more than ten of the safest most durable play systems, basketball hoops, trainers, and the world’s safest trampolines! $7/child weekdays, $9/child weekends. $100 + tax for 1-child annual pass.</string>
+    <string name="attractions_playn_wisconsin_address">3919 Parmenter Street, Middleton, WI 53562</string>
+    <string name="attractions_playn_wisconsin_geocoordinates">43.1184483,-89.51212040000001</string>
+    <string name="attractions_playn_wisconsin_hours_dates"><![CDATA[M & Thurs 10am - 7pm, Tues/W/F 10am - 5pm, Sat & Sun 12pm - 4pm]]></string>
+    <string name="attractions_playn_wisconsin_website">http://playnwisconsin.com/playn-wisconsin-about-us/open-play/</string>
+
+    <string name="attractions_rockin_jump_listing_title">Rockin\' Jump Trampoline Park</string>
+    <string name="attractions_rockin_jump_description_full">Indoor trampoline park where you can soar in open jump arenas, play trampoline dodgeball, do flips and somersaults, slam dunk zone, concessions area, kids\' parties, etc. Rockin\' Tots times: Sat 8am-10pm, Sun 9am-11am, W 9am-12pm.</string>
+    <string name="attractions_rockin_jump_address">2700 Novation Pkwy, Madison, WI 53713</string>
+    <string name="attractions_rockin_jump_geocoordinates">43.0320338,-89.38453870000001</string>
+    <string name="attractions_rockin_jump_hours_dates">Sun 9am - 7pm, Tues 4pm - 8pm, W 9am-12-m 4pm-8pm, Thur 4pm - 8pm, F 9am - 12pm 1pm - 10pm, Sat 8am - 10pm</string>
+    <string name="attractions_rockin_jump_website">https://madison.rockinjump.com/</string>
+
+    <string name="attractions_sky_zone_listing_title">Sky Zone Trampoline Park</string>
+    <string name="attractions_sky_zone_description_full">Indoor trampoline park with freestyle jump, skyslam, ultimate dodgeball, skyjoust, skyladder, drop zone, warped wall, freeclimb, etc. Toddler Time: Sat 9am-10am, Sun 10am-11am, $8/child.</string>
+    <string name="attractions_sky_zone_address">2134 W Beltline Hwy, Madison, WI 53713</string>
+    <string name="attractions_sky_zone_geocoordinates">43.0367226,-89.41472970000001</string>
+    <string name="attractions_sky_zone_hours_dates">Sun 11am - 7pm, Tues-Thurs 4pm - 8pm, F 1:30pm - 11pm, Sat 10am - 11pm</string>
+    <string name="attractions_sky_zone_website">https://www.skyzone.com/madison</string>
+
+    <string name="attractions_pump_it_up_listing_title">Pump It Up of Madison</string>
+    <string name="attractions_pump_it_up_description_full">The Inflatable Party Zone - indoor gigantic inflatable-filled arenas for open play and private parties. Toddler Time: Thurs 2pm-4pm, $10/child.</string>
+    <string name="attractions_pump_it_up_address">2911 Marketplace Dr, Fitchburg, WI 53719</string>
+    <string name="attractions_pump_it_up_geocoordinates">43.0104965,-89.45885329999999</string>
+    <string name="attractions_pump_it_up_hours_dates">Hours vary - see calendar on website.</string>
+    <string name="attractions_pump_it_up_website">https://www.pumpitupparty.com/fitchburg-wi/</string>
+
+    <string name="attractions_olbrich_gardens_listing_title">Olbrich Botanical Gardens</string>
+    <string name="attractions_olbrich_gardens_description_full"><![CDATA[Stroll 16 acres of outdoor gardens featuring stunning landscapes and Midwest-hardy plants. Outdoor Gardens free & open daily. Enjoy the Bolz Conservatory, an indoor tropical paradise, featuring exotic plants, fragrant flowers, and free-flying birds.]]></string>
+    <string name="attractions_olbrich_gardens_address">3330 Atwood Ave, Madison, WI 53704</string>
+    <string name="attractions_olbrich_gardens_geocoordinates">43.09246929999999,-89.33571080000002</string>
+    <string name="attractions_olbrich_gardens_hours_dates">Sun - Sat 8am - 8pm</string>
+    <string name="attractions_olbrich_gardens_website">http://www.olbrich.org/</string>
+
+    <string name="attractions_vitense_golfland_listing_title">Vitense Golfland</string>
+    <string name="attractions_vitense_golfland_description_full">The #1 rated miniature golf courses in WI. Two 18-hole outdoor + one indoor miniature golf courses. Batting cages, climbing wall, arcade, remote-controlled boats, jumpshot, water wars, platform tennis, driving range. Cafe.</string>
+    <string name="attractions_vitense_golfland_address">5501 Schroeder Rd, Madison, WI 53711</string>
+    <string name="attractions_vitense_golfland_geocoordinates">43.04473489999999,-89.47643749999997</string>
+    <string name="attractions_vitense_golfland_hours_dates">Sun - Thur 8am - 10:30pm, F - Sat 8am - 11pm</string>
+    <string name="attractions_vitense_golfland_website">http://www.vitense.com/</string>
+
+    <string name="attractions_arboretum_listing_title">UW-Madison Arboretum</string>
+    <string name="attractions_arboretum_description_full">Arboretum trails invite hours of exploration for thousands of visitors. The nearly 20-mile trail system winds through prairies, savannas, woodlands, and wetlands, offering recreational opportunities for hikers and runners; scientific exploration for birders, botanists, and naturalists; inspiration for artists and photographers; and respite for anyone looking for a place to enjoy the outdoors. Visitors Center with classes.</string>
+    <string name="attractions_arboretum_address">1207 Seminole Hwy, Madison, WI 53711</string>
+    <string name="attractions_arboretum_geocoordinates">43.0392482,-89.44362969999997</string>
+    <string name="attractions_arboretum_hours_dates">Sun - Sat 8am - 8pm</string>
+    <string name="attractions_arboretum_website">https://arboretum.wisc.edu/</string>
+
+    <string name="attractions_spring_harbor_beach_listing_title">Spring Harbor Beach</string>
+    <string name="attractions_spring_harbor_beach_description_full">This a fairly quiet, unknown beach tucked away within a small lakeside community. The water isn\'t the best here, but the general serenity provides a lovely place to relax and soak up some sun. Bathrooms. Water fountain. Picnic table. Swim ropes. Lifeguard 6/10 - 9/03, 12:30pm - 4:30pm</string>
+    <string name="attractions_spring_harbor_beach_address">1918 Norman Way, Madison, WI 53705</string>
+    <string name="attractions_spring_harbor_beach_geocoordinates">43.0827839,-89.46963499999998</string>
+    <string name="attractions_spring_harbor_beach_hours_dates">Sun - Sat 4am - 10pm</string>
+    <string name="attractions_spring_harbor_beach_website">https://www.cityofmadison.com/parks/facilities/beach.cfm?id=10</string>
+
+    <string name="restaurants_chocolate_shoppe_midvale_listing_title">Chocolate Shoppe Ice Cream Co.</string>
+    <string name="restaurants_chocolate_shoppe_midvale_description_full"><![CDATA[Old-fashioned, family-owned store serving up more than 100 flavors of ice cream since 1962. Small play area with toys, child tables/chairs, toy food carts, kitchen set, etc. Jelly beans. Restrooms. Drinking fountain. Indoor & outdoor seating.]]></string>
+    <string name="restaurants_chocolate_shoppe_midvale_address">555 S Midvale Blvd, Madison, WI 53711</string>
+    <string name="restaurants_chocolate_shoppe_midvale_geocoordinates">43.0542777,-89.45083069999998</string>
+    <string name="restaurants_chocolate_shoppe_midvale_hours_dates">11:00am – 10:00pm</string>
+    <string name="restaurants_chocolate_shoppe_midvale_website">http://www.chocolateshoppeicecream.com</string>
+
+    <string name="restaurants_ellas_deli_listing_title"><![CDATA[Ella\'s Deli & Ice Cream Parlor]]></string>
+    <string name="restaurants_ellas_deli_description_full"><![CDATA[Kid-oriented eatery with colorful, animated decor & a carousel offering American food & desserts.]]></string>
+    <string name="restaurants_ellas_deli_address">2902 E Washington Ave, Madison, WI 53704</string>
+    <string name="restaurants_ellas_deli_geocoordinates">43.1035133,-89.34459809999998</string>
+    <string name="restaurants_ellas_deli_hours_dates">Sun-Th 11:00am – 10:00pm, F-Sat 11:00am – 11:00pm</string>
+    <string name="restaurants_ellas_deli_website">http://www.ellasdeli.com</string>
+
+    <string name="restaurants_yolas_cafe_listing_title">Yola\'s Cafe and Coffee Shop</string>
+    <string name="restaurants_yolas_cafe_description_full"><![CDATA[Mellow coffeehouse offering java, pastries & savory dishes plus WiFi, a fireplace & a big patio. Kid\'s play area. Diaper changing station(s). High chairs. Kids menu.]]></string>
+    <string name="restaurants_yolas_cafe_address">494 Commerce Dr, Madison, WI 53719</string>
+    <string name="restaurants_yolas_cafe_geocoordinates">43.05542819999999,-89.52318220000001</string>
+    <string name="restaurants_yolas_cafe_hours_dates">Tues-Sat 7:00am – 4:30pm</string>
+    <string name="restaurants_yolas_cafe_website">http://www.yolascafe.com</string>
+
+    <string name="restaurants_montys_blue_plate_listing_title">Monty\'s Blue Plate Diner</string>
+    <string name="restaurants_montys_blue_plate_description_full"><![CDATA[Retro gas station-turned-neighborhood diner. Varied menu including breakfast all day. Voted one of Madison\'s best restaurants for vegetarians/vegans, with walnut burgers, tofu scrambler, vegan banana walnut pancakes, vegetarian chili, fruit plates, grilled vegetable salads, vegetarian hash, veggie wraps (and more!). Great desserts: shakes/malts, sundaes, pies, cakes, bakery goodies, etc. Beer, wine, & mixed drinks. Fun, throwback diner interior. Easy access from/to bike path.]]></string>
+    <string name="restaurants_montys_blue_plate_address">2089 Atwood Avenue, Madison, WI 53704</string>
+    <string name="restaurants_montys_blue_plate_geocoordinates">43.0923846,-89.35193079999999</string>
+    <string name="restaurants_montys_blue_plate_hours_dates">Sun 7:30am-9pm, M-Thurs 7am-9pm, F 7am-10pm, Sat 7:30am-10pm</string>
+    <string name="restaurants_montys_blue_plate_website">https://montysblueplatediner.com/</string>
+
+    <string name="restaurants_ians_pizza_state_listing_title">Ian\'s Pizza on State</string>
+    <string name="restaurants_ians_pizza_state_description_full">Wisconsin-born chain known for its creative pizzas including its signature mac \'n\' cheese pie. Right off of the Capitol Square, on State Street. Space can be tight, but line usually moves well even when crowded. Many standard and specialty pizzas pre-made for by-the-slice ordering. Friendly staff. College kid favorite, but equally popular with families during downtown events.</string>
+    <string name="restaurants_ians_pizza_state_address">100 State St, Madison, WI 53703</string>
+    <string name="restaurants_ians_pizza_state_geocoordinates">43.0748969,-89.38706460000003</string>
+    <string name="restaurants_ians_pizza_state_hours_dates">Sun-Thurs 11am-2:30am, F 11am-3pm, Sat 11am-2:30am</string>
+    <string name="restaurants_ians_pizza_state_website">https://ianspizza.com/madison/</string>
+
+    <string name="restaurants_zuzu_cafe_listing_title">ZuZu Cafe</string>
+    <string name="restaurants_zuzu_cafe_description_full"><![CDATA[Cheery cafe serving American & Mediterranean fare in a family-friendly venue. Cozy interior space including small tables and a limited number of comfy couches/chairs; outdoor seating for good weather. Kid attractions include small indoor play area and outdoor sandbox with toys. Serves varied breakfasts & lunches, coffee, bakery treats, etc. Also serves as a “market” with beverages and small packaged food items for sale. Adjacent to Henry Vilas Zoo.]]></string>
+    <string name="restaurants_zuzu_cafe_address">1336 Drake St, Madison, WI 53715</string>
+    <string name="restaurants_zuzu_cafe_geocoordinates">43.0623639,-89.40875219999998</string>
+    <string name="restaurants_zuzu_cafe_hours_dates">Sun 8:30am-5pm, M 7:30am-3pm, Tues-W 7am-7pm, Thurs-F 7am-9:30pm, Sat 8:30am-9:30pm</string>
+    <string name="restaurants_zuzu_cafe_website">https://www.yelp.com/biz/zuzu-cafe-and-market-madison</string>
+
+    <string name="restaurants_michaels_custard_monroe_listing_title">Michael\'s Frozen Custard - Monroe St</string>
+    <string name="restaurants_michaels_custard_monroe_description_full">Nationally reknown frozen custard, since 1986. Featuring a flavor-of-the day plus sundaes, malts, shakes, etc. Fries, hamburgers, hot dogs, etc. Outdoor patio seating, plus some indoor seating. Located on the Monroe St. pedestrian corridor, adjacent to Wingra Park, and relatively close to the bike path.</string>
+    <string name="restaurants_michaels_custard_monroe_address">2531 Monroe St, Madison, WI 53711</string>
+    <string name="restaurants_michaels_custard_monroe_geocoordinates">43.0576451,-89.42760579999998</string>
+    <string name="restaurants_michaels_custard_monroe_hours_dates">Sun-Thurs 11am-10pm, F-Sat 11am-10:30pm</string>
+    <string name="restaurants_michaels_custard_monroe_website">http://www.ilovemichaels.com/</string>
+
+    <string name="restaurants_michaels_custard_schroeder_listing_title">Michael\'s Frozen Custard - Schroeder Rd</string>
+    <string name="restaurants_michaels_custard_schroeder_description_full">Nationally reknown frozen custard, since 1986. Featuring a flavor-of-the day plus sundaes, malts, shakes, etc. Fries, hamburgers, hot dogs, etc. Outdoor patio seating only at this location. Located across from Vitense Golfland.</string>
+    <string name="restaurants_michaels_custard_schroeder_address">5602 Schroeder Rd, Madison, WI 53711</string>
+    <string name="restaurants_michaels_custard_schroeder_geocoordinates">43.04674259999999,-89.47580849999997</string>
+    <string name="restaurants_michaels_custard_schroeder_hours_dates">Sun-Thurs 11am-10pm, F-Sat 11am-10:30pm</string>
+    <string name="restaurants_michaels_custard_schroeder_website">http://www.ilovemichaels.com/</string>
+
+    <string name="restaurants_monona_bait_ice_cream_listing_title"><![CDATA[Monona Bait & Ice Cream Shop]]></string>
+    <string name="restaurants_monona_bait_ice_cream_description_full">Down-home institution serving 15 flavors of ice cream, malts/shakes, desserts, pizza, wraps, burgers, subs, and made-to-order sandwiches, plus live bait. Freshly popped popcorn, candy counter, and cooler with bottles of soda including Fanta and Orange Crush. On the Lake Monona bike route/loop, across the street from Schluter Park on the shore of Lake Monona. Cash only, but has an ATM. Seasonal – open late spring to early fall.</string>
+    <string name="restaurants_monona_bait_ice_cream_address">4516 Winnequah Rd, Monona, WI 53716</string>
+    <string name="restaurants_monona_bait_ice_cream_geocoordinates">43.0712896,-89.3337962</string>
+    <string name="restaurants_monona_bait_ice_cream_hours_dates">April-Oct, Sun-Sat 11am-9pm</string>
+    <string name="restaurants_monona_bait_ice_cream_website">http://mononabaiticecream.yolasite.com/</string>
+
+    <string name="restaurants_chuck_e_cheese_listing_title">Chuck E. Cheese\'s</string>
+    <string name="restaurants_chuck_e_cheese_description_full"><![CDATA[Kid-friendly chain known for its arcade games, pizza parties, play zones & mouse mascot. This particular Chuck E Cheese gets terrible reviews, on many fronts. Remove this entry and replace with a more promising one...]]></string>
+    <string name="restaurants_chuck_e_cheese_address">438 Grand Canyon Dr, Madison, WI 53719</string>
+    <string name="restaurants_chuck_e_cheese_geocoordinates">43.0585402,-89.49731209999999</string>
+    <string name="restaurants_chuck_e_cheese_hours_dates">Sun-Thurs 11am-9pm, F 11am-10pm, Sat 10am-10pm</string>
+    <string name="restaurants_chuck_e_cheese_website">https://www.chuckecheese.com/storedetails/wi/madison/604</string>
+
+    <string name="stores_once_upon_a_child_listing_title">Once Upon A Child</string>
+    <string name="stores_once_upon_a_child_description_full"><![CDATA[Chain operation that buys & sells gently used items for children, including clothes, shoes & toys.]]></string>
+    <string name="stores_once_upon_a_child_address">7475 Mineral Point Rd, Madison, WI 53717</string>
+    <string name="stores_once_upon_a_child_geocoordinates">43.0586202,-89.5122609</string>
+    <string name="stores_once_upon_a_child_hours_dates">Sun 10:00am - 5:00pm, M-Sat 10:00am - 7:00pm</string>
+    <string name="stores_once_upon_a_child_website">http://www.onceuponachildmadisonwest.com</string>
+
+    <string name="stores_learning_shop_listing_title">Learning Shop</string>
+    <string name="stores_learning_shop_description_full"><![CDATA[“A zillion toyful wonders!” Not just fun toys, but fun, varied specialty toys with an educational edge, for bonding, discovering, pretending, building, moving, & grooving.]]></string>
+    <string name="stores_learning_shop_address">714 S Gammon Rd, Madison, WI 53719</string>
+    <string name="stores_learning_shop_geocoordinates">43.0493042,-89.50413420000001</string>
+    <string name="stores_learning_shop_hours_dates">Sun 11:00am - 5:00pm, M-F 9:00am - 7:00pm, Sat 10:00am - 5:00 pm</string>
+    <string name="stores_learning_shop_website">http://www.learningshop.com</string>
+
+    <string name="stores_capitol_kids_listing_title">Capitol Kids</string>
+    <string name="stores_capitol_kids_description_full"><![CDATA[Toys & children\'s clothing. Unusual toys that promote creativity, learning, imagination and fun, made from amazing materials and often heirloom quality. For a new baby or a science geek, a kid who is nuts about sparkly stuff, or some adult with a weird and wacky side. Cute, comfortable, and colorful clothing.]]></string>
+    <string name="stores_capitol_kids_address">8 S Carroll St, Madison, WI 53703</string>
+    <string name="stores_capitol_kids_geocoordinates">43.0734921,-89.38518060000001</string>
+    <string name="stores_capitol_kids_hours_dates">Sun 11am-4pm, M-Thurs 10am-5:30pm, F 10am-6pm, Sat 8am-6pm</string>
+    <string name="stores_capitol_kids_website">http://capitolkids.com/</string>
+
+    <string name="stores_playthings_listing_title">Playthings</string>
+    <string name="stores_playthings_description_full">Locally owned and operated specialty toy store with toys, clothing, and gear that will entertain, educate and fascinate all ages!</string>
+    <string name="stores_playthings_address">726 N Midvale Blvd, Madison, WI 53705</string>
+    <string name="stores_playthings_geocoordinates">43.07417780000001,-89.45248579999998</string>
+    <string name="stores_playthings_hours_dates">Sun 11am-6pm, M-Sat 10am-9pm</string>
+    <string name="stores_playthings_website">http://www.playthingstoystore.com/</string>
+
+    <string name="stores_barnes_noble_listing_title"><![CDATA[Barnes & Noble]]></string>
+    <string name="stores_barnes_noble_description_full">Familiar, chain bookstore with children\'s books, toys, a train table, children\'s stage, and cafe with treats. Frequent children\'s events including story time, songs, fingerplays, board games, and more.</string>
+    <string name="stores_barnes_noble_address">7433 Mineral Point Rd, Madison, WI 53717</string>
+    <string name="stores_barnes_noble_geocoordinates">43.058767,-89.51040699999999</string>
+    <string name="stores_barnes_noble_hours_dates">Sun 10am-8pm, M-Sat 9am-10pm</string>
+    <string name="stores_barnes_noble_website">https://stores.barnesandnoble.com/store/2720</string>
+
+    <string name="stores_happy_bambino_listing_title">Happy Bambino</string>
+    <string name="stores_happy_bambino_description_full"><![CDATA[Local shop offering eco-friendly baby products, maternity needs & classes for parents & infants.]]></string>
+    <string name="stores_happy_bambino_address">4116 Monona Dr, Madison, WI 53716</string>
+    <string name="stores_happy_bambino_geocoordinates">43.0788178,-89.32384289999999</string>
+    <string name="stores_happy_bambino_hours_dates">Sat,Sun 11:00am – 4:00pm, M-W 9:00am – 6:00pm, Thur,F 9:00am - 5:00pm</string>
+    <string name="stores_happy_bambino_website">https://www.happybambino.com</string>
+
+    <string name="stores_toys_r_us_listing_title">Toys R Us</string>
+    <string name="stores_toys_r_us_description_full"><![CDATA[Chain retailer providing an assortment of brand-name children\'s toys, games, electronics & gear.]]></string>
+    <string name="stores_toys_r_us_address">7309 W Towne Way, Madison, WI 53719</string>
+    <string name="stores_toys_r_us_geocoordinates">43.054222,-89.50847929999998</string>
+    <string name="stores_toys_r_us_hours_dates">Sun-M 10:00am - 8:00pm, Tues 10:00am - 9:00pm, W-Thur 10:00am - 9:30pm, F 10:00am - 10:00pm, Sat 9:00am - 10:00pm</string>
+    <string name="stores_toys_r_us_website">https://www.toysrus.com</string>
+
+    <string name="stores_tj_maxx_listing_title">T.J. Maxx</string>
+    <string name="stores_tj_maxx_description_full"><![CDATA[Budget retail chain with children\'s clothing, decent toy section, other children\'s items, and seasonal fun like Halloween costumes. Also has brand-name apparel, shoes & accessories, plus housewares.]]></string>
+    <string name="stores_tj_maxx_address">510 Westgate Mall, Madison, WI 53711</string>
+    <string name="stores_tj_maxx_geocoordinates">43.052048,-89.47171300000002</string>
+    <string name="stores_tj_maxx_hours_dates">Sun 11am-8pm, M-Sat 9:30am-9:30pm</string>
+    <string name="stores_tj_maxx_website">https://tjmaxx.tjx.com/store/stores/Madison-WI-53711/233/aboutstore/</string>
+
+    <string name="stores_homegoods_listing_title">HomeGoods</string>
+    <string name="stores_homegoods_description_full"><![CDATA[Home-decor chain with decent children\'s toy section, plus a variety of furnishings, bedding, kitchenware, holiday goods & more.]]></string>
+    <string name="stores_homegoods_address">1661 Deming Way #120, Middleton, WI 53562</string>
+    <string name="stores_homegoods_geocoordinates">43.0919203,-89.52527829999997</string>
+    <string name="stores_homegoods_hours_dates">Sun 11am-8pm, M-Sat 9:30am-9:30pm</string>
+    <string name="stores_homegoods_website">https://www.homegoods.com/tjx/store.aspx?id=596</string>
+
+    <string name="stores_satara_listing_title">Satara Home and Baby</string>
+    <string name="stores_satara_description_full"><![CDATA[Simple shop for mattresses, bedding & towels made from organic materials, plus baby cribs & toys.]]></string>
+    <string name="stores_satara_address">6333 University Ave, Middleton, WI 53562</string>
+    <string name="stores_satara_geocoordinates">43.0927139,-89.49167310000001</string>
+    <string name="stores_satara_hours_dates">M-F 10:00am - 6:00pm, Sat 10:00am - 5:00pm</string>
+    <string name="stores_satara_website">https://www.satarahome.com</string>
+
 
 </resources>

@@ -19,15 +19,15 @@ import java.util.ArrayList;
  * based on a data source, which is a list of {@link KidThing} objects.
  */
 
-public class KidThingAdapter extends ArrayAdapter<KidThing> {
+class KidThingAdapter extends ArrayAdapter<KidThing> {
 
     /**
      * Constructor for KidThingAdapter
      *
-     * @param context
-     * @param kidThings
+     * @param context Context providing interface to application environment.
+     * @param kidThings Object containing data for a child-friendly place/event.
      */
-    public KidThingAdapter(@NonNull Context context, @NonNull ArrayList<KidThing> kidThings) {
+    KidThingAdapter(@NonNull Context context, @NonNull ArrayList<KidThing> kidThings) {
         super(context, 0, kidThings);
     }
 
@@ -35,7 +35,7 @@ public class KidThingAdapter extends ArrayAdapter<KidThing> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        /** Get the {@link KidThing} object located at this position in the list */
+        //Get the {@link KidThing} object located at this position in the list
         KidThing currentKidThing = getItem(position);
 
         // Check if the current view is being reused or needs to be inflated

@@ -5,10 +5,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 /**
- * Created by James on 8/31/2017.
+ * FragmentPagerAdapter, customized to handle this project's fragments with KidThing listviews.
  */
 
-public class KidThingFragmentPagerAdapter extends FragmentPagerAdapter {
+class KidThingFragmentPagerAdapter extends FragmentPagerAdapter {
 
     // Create constant value for the number of screens
     private static final int NUMBER_OF_SCREENS = 4;
@@ -18,7 +18,7 @@ public class KidThingFragmentPagerAdapter extends FragmentPagerAdapter {
      *
      * @param fm - FragmentManager
      */
-    public KidThingFragmentPagerAdapter(FragmentManager fm) {
+    KidThingFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 

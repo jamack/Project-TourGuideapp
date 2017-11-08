@@ -69,7 +69,7 @@ public class ParksListFragment extends Fragment {
         kidThings.add(new KidThing(getString(R.string.park_nakoma_listing_title), R.drawable.park_nakoma_01_thumbnail, R.drawable.park_nakoma_01_3to2,
                 getString(R.string.park_nakoma_description_full), getString(R.string.park_nakoma_address),
                 getString(R.string.park_nakoma_geocoordinates), getString(R.string.park_nakoma_hours_dates), getString(R.string.park_nakoma_website)));
-        kidThings.add(new KidThing(getString(R.string.park_westmorland_listing_title), R.drawable.westmorland_park_01_thumbnail, R.drawable.westmorland_park_01_3to2,
+        kidThings.add(new KidThing(getString(R.string.park_westmorland_listing_title), R.drawable.park_westmorland_01_thumbnail, R.drawable.park_westmorland_01_3to2,
                 getString(R.string.park_westmorland_description_full), getString(R.string.park_westmorland_address),
                 getString(R.string.park_westmorland_geocoordinates), getString(R.string.park_westmorland_hours_dates), getString(R.string.park_westmorland_website)));
         kidThings.add(new KidThing(getString(R.string.park_odana_hills_east_listing_title), R.drawable.park_odana_hills_east_01_thumbnail, R.drawable.park_odana_hills_east_01_3to2,
