@@ -98,7 +98,7 @@ public class RestaurantsListFragment extends Fragment {
                 getString(R.string.restaurants_michaels_custard_schroeder_description_full), getString(R.string.restaurants_michaels_custard_schroeder_address),
                 getString(R.string.restaurants_michaels_custard_schroeder_geocoordinates), getString(R.string.restaurants_michaels_custard_schroeder_hours_dates),
                 getString(R.string.restaurants_michaels_custard_schroeder_website), 6082768100L));
-        kidThings.add(new KidThing(getString(R.string.restaurants_monona_bait_ice_cream_listing_title), R.drawable.restaurant_bait_ice_cream_01_thumbnail, R.drawable.restaurant_bait_ice_cream_01_thumbnail,
+        kidThings.add(new KidThing(getString(R.string.restaurants_monona_bait_ice_cream_listing_title), R.drawable.restaurant_bait_ice_cream_01_thumbnail, R.drawable.restaurant_bait_ice_cream_01_3to2,
                 getString(R.string.restaurants_monona_bait_ice_cream_description_full), getString(R.string.restaurants_monona_bait_ice_cream_address),
                 getString(R.string.restaurants_monona_bait_ice_cream_geocoordinates), getString(R.string.restaurants_monona_bait_ice_cream_hours_dates),
                 getString(R.string.restaurants_monona_bait_ice_cream_website), 6082221944L));

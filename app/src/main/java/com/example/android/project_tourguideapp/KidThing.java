@@ -7,10 +7,11 @@ package com.example.android.project_tourguideapp;
 
 class KidThing {
 
-    /** Constant value denoting default state of no associated image.
+    /**
+     * Constant value denoting default state of no associated image.
      * Will be overridden if new com.example.android.project_tourguideapp.KidThing object is constructed with an associated image.
      */
-     private static final int NO_IMAGE_PROVIDED = -1;
+    private static final int NO_IMAGE_PROVIDED = -1;
 
     /**
      * Constant value denoting default state of no associated hours/dates.
@@ -29,7 +30,9 @@ class KidThing {
      */
     private String mListingName;
 
-    /** IF APPLICABLE, Image Resource ID for a representative image. May not be applicable to some categories. */
+    /**
+     * IF APPLICABLE, Image Resource ID for a representative image. May not be applicable to some categories.
+     */
     private int mImageThumbnailResourceId = NO_IMAGE_PROVIDED;
 
     /**
@@ -37,10 +40,14 @@ class KidThing {
      */
     private int mImageBannerResourceId = NO_IMAGE_PROVIDED;
 
-    /** Overview of the listing. May describe available play equipment, what features make the venue especially child-friendly, etc. */
+    /**
+     * Overview of the listing. May describe available play equipment, what features make the venue especially child-friendly, etc.
+     */
     private String mDescription;
 
-    /** Address for the venue/event */
+    /**
+     * Address for the venue/event
+     */
     private String mAddress;
 
     /**
@@ -48,27 +55,34 @@ class KidThing {
      */
     private String mGeocoordinates;
 
-    /** Hours (& possibly days of the week) that a venue is open -OR- dates (& possibly hours) that an event is occurring. */
+    /**
+     * Hours (& possibly days of the week) that a venue is open -OR- dates (& possibly hours) that an event is occurring.
+     */
     private String mHoursDates = NO_HOURS_DATES_PROVIDED;
 
-    /** IF APPLICABLE, website where user can find more information. */
+    /**
+     * IF APPLICABLE, website where user can find more information.
+     */
     private String mWebsite;
 
-    /** IF APPLICABLE, phone number to contact for more information, reservations, etc. */
+    /**
+     * IF APPLICABLE, phone number to contact for more information, reservations, etc.
+     */
     private long mPhoneNumber = NO_PHONE_NUMBER_PROVIDED;
 
     /**
      * Create a new com.example.android.project_tourguideapp.KidThing object.
      * This constructor includes all fields.
-     * @param name - event/venue title
+     *
+     * @param name             - event/venue title
      * @param imageIdThumbnail - image resource id for representative thumbnail image
-     * @param imageIdBanner - image resource id for representative banner image
-     * @param description - overview of event/venue
-     * @param address - where event/venue is located
-     * @param geocoordinates - address, in geographical coordinate format
-     * @param hoursDates - times when venue is open -or- date(s)/times that event is occurring.
-     * @param website - url for more detailed info
-     * @param phoneNum - phone number to contact
+     * @param imageIdBanner    - image resource id for representative banner image
+     * @param description      - overview of event/venue
+     * @param address          - where event/venue is located
+     * @param geocoordinates   - address, in geographical coordinate format
+     * @param hoursDates       - times when venue is open -or- date(s)/times that event is occurring.
+     * @param website          - url for more detailed info
+     * @param phoneNum         - phone number to contact
      */
     KidThing(String name, int imageIdThumbnail, int imageIdBanner, String description, String address, String geocoordinates, String hoursDates, String website, long phoneNum) {
         mListingName = name;
@@ -85,14 +99,15 @@ class KidThing {
     /**
      * Create a new com.example.android.project_tourguideapp.KidThing object.
      * This constructor excludes phone number.
-     * @param name - event/venue title
+     *
+     * @param name             - event/venue title
      * @param imageIdThumbnail - image resource id for representative thumbnail image
-     * @param imageIdBanner - image resource id for representative banner image
-     * @param description - overview of event/venue
-     * @param address - where event/venue is located
-     * @param geocoordinates - address, in geographical coordinate format
-     * @param hoursDates - times when venue is open -or- date(s)/times that event is occurring.
-     * @param website - url for more detailed info
+     * @param imageIdBanner    - image resource id for representative banner image
+     * @param description      - overview of event/venue
+     * @param address          - where event/venue is located
+     * @param geocoordinates   - address, in geographical coordinate format
+     * @param hoursDates       - times when venue is open -or- date(s)/times that event is occurring.
+     * @param website          - url for more detailed info
      */
     KidThing(String name, int imageIdThumbnail, int imageIdBanner, String description, String address, String geocoordinates, String hoursDates, String website) {
         mListingName = name;
@@ -105,12 +120,16 @@ class KidThing {
         mWebsite = website;
     }
 
-    /** Getter method for venue/event title */
+    /**
+     * Getter method for venue/event title
+     */
     String getListingName() {
         return mListingName;
     }
 
-    /** Returns whether or not there is an image for this venue/event */
+    /**
+     * Returns whether or not there is an image for this venue/event
+     */
     boolean hasImage() {
         return mImageThumbnailResourceId != NO_IMAGE_PROVIDED;
     }
@@ -150,7 +169,9 @@ class KidThing {
         return mGeocoordinates;
     }
 
-    /** Returns whether or not there are hours/dates for this venue/event */
+    /**
+     * Returns whether or not there are hours/dates for this venue/event
+     */
     boolean hasHoursDates() {
         return mHoursDates != NO_HOURS_DATES_PROVIDED;
     }
@@ -169,7 +190,9 @@ class KidThing {
         return mWebsite;
     }
 
-    /** Returns whether or not there is a phone number for this venue/event */
+    /**
+     * Returns whether or not there is a phone number for this venue/event
+     */
     boolean hasPhoneNumber() {
         return mPhoneNumber != NO_PHONE_NUMBER_PROVIDED;
     }

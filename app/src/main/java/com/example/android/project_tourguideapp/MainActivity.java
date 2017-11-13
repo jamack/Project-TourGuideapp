@@ -203,6 +203,7 @@ public class MainActivity extends AppCompatActivity
      * Implemented method for OnParksFragmentInteractionListener interface.
      * Calls getter method in ParksListFragment to get a Bundle with details for the selected listing.
      * Calls showListingDetails method and passes the above Bundle.
+     *
      * @param position Integer. Indicates item (in the parks ListView) selected by the user.
      */
     public void onParksFragmentInteraction(int position) {
@@ -232,6 +233,7 @@ public class MainActivity extends AppCompatActivity
      * Implemented method for OnStoresFragmentInteractionListener interface.
      * Calls getter method in StoresListFragment to get a Bundle with details for the selected listing.
      * Calls showListingDetails method and passes the above Bundle.
+     *
      * @param position Integer. Indicates item (in the parks ListView) selected by the user.
      */
     public void onStoresFragmentInteraction(int position) {
@@ -246,6 +248,7 @@ public class MainActivity extends AppCompatActivity
      * Implemented method for OnRestaurantsFragmentInteractionListener interface.
      * Calls getter method in RestaurantsListFragment to get a Bundle with details for the selected listing.
      * Calls showListingDetails method and passes the above Bundle.
+     *
      * @param position Integer. Indicates item (in the parks ListView) selected by the user.
      */
     public void onRestaurantsFragmentInteraction(int position) {

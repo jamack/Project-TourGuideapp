@@ -67,7 +67,7 @@ public class StoresListFragment extends Fragment {
         kidThings = new ArrayList<>();
 
         // Populate our ArrayList by constructing and adding new KidThings
-        kidThings.add(new KidThing(getString(R.string.stores_once_upon_a_child_listing_title), R.drawable.store_once_upon_a_child_01_thumbnail, R.drawable.placeholder_3to2,
+        kidThings.add(new KidThing(getString(R.string.stores_once_upon_a_child_listing_title), R.drawable.store_once_upon_a_child_01_thumbnail, R.drawable.store_once_upon_a_child_01_3to2,
                 getString(R.string.stores_once_upon_a_child_description_full), getString(R.string.stores_once_upon_a_child_address),
                 getString(R.string.stores_once_upon_a_child_geocoordinates), getString(R.string.stores_once_upon_a_child_hours_dates),
                 getString(R.string.stores_once_upon_a_child_website), 6082039105L));
@@ -75,7 +75,7 @@ public class StoresListFragment extends Fragment {
                 getString(R.string.stores_learning_shop_description_full), getString(R.string.stores_learning_shop_address),
                 getString(R.string.stores_learning_shop_geocoordinates), getString(R.string.stores_learning_shop_hours_dates),
                 getString(R.string.stores_learning_shop_website), 6082778747L));
-        kidThings.add(new KidThing(getString(R.string.stores_capitol_kids_listing_title), R.drawable.store_capitol_kids_01_thumbnail, R.drawable.store_capitol_kids_01_thumbnail,
+        kidThings.add(new KidThing(getString(R.string.stores_capitol_kids_listing_title), R.drawable.store_capitol_kids_01_thumbnail, R.drawable.store_capitol_kids_01_3to2,
                 getString(R.string.stores_capitol_kids_description_full), getString(R.string.stores_capitol_kids_address),
                 getString(R.string.stores_capitol_kids_geocoordinates), getString(R.string.stores_capitol_kids_hours_dates),
                 getString(R.string.stores_capitol_kids_website), 6082800744L));
@@ -103,7 +103,7 @@ public class StoresListFragment extends Fragment {
                 getString(R.string.stores_homegoods_description_full), getString(R.string.stores_homegoods_address),
                 getString(R.string.stores_homegoods_geocoordinates), getString(R.string.stores_homegoods_hours_dates),
                 getString(R.string.stores_homegoods_website), 6088360020L));
-        kidThings.add(new KidThing(getString(R.string.stores_satara_listing_title), R.drawable.store_satara_01_thumbnail, R.drawable.placeholder_3to2,
+        kidThings.add(new KidThing(getString(R.string.stores_satara_listing_title), R.drawable.store_satara_01_thumbnail, R.drawable.store_satara_01_3to2,
                 getString(R.string.stores_satara_description_full), getString(R.string.stores_satara_address),
                 getString(R.string.stores_satara_geocoordinates), getString(R.string.stores_satara_hours_dates),
                 getString(R.string.stores_satara_website), 6082514905L));

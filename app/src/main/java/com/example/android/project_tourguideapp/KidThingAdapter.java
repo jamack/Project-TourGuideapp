@@ -24,7 +24,7 @@ class KidThingAdapter extends ArrayAdapter<KidThing> {
     /**
      * Constructor for KidThingAdapter
      *
-     * @param context Context providing interface to application environment.
+     * @param context   Context providing interface to application environment.
      * @param kidThings Object containing data for a child-friendly place/event.
      */
     KidThingAdapter(@NonNull Context context, @NonNull ArrayList<KidThing> kidThings) {
