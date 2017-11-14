@@ -145,12 +145,6 @@ public class ParksListFragment extends Fragment {
             // Call setter method in MainActivity to update ActionBar's title for this fragment
             MainActivity.setActionBarTitle("Parks & Playgrounds");
 
-            // TODO: FIGURE OUT WHY THIS CODE CRASHES THE APP, BUT IS FINE IN ALL THE OTHER CATEGORY FRAGMENTS...
-            // If in dual pane mode, call method (in MainActivity) to make sure details fragment is updated to show default (first) Parks listing.
-            // Pass method an integer corresponding to this category's value in the KidThingFragmentPagerAdapter's getItem() method.
-//            if(getActivity().findViewById(R.id.listing_container) != null) {
-//                ((MainActivity) getActivity()).displayDefaultDetails(0);
-//            }
         }
     }
 

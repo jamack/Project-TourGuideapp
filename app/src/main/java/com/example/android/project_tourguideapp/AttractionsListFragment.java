@@ -30,8 +30,6 @@ public class AttractionsListFragment extends Fragment {
         // Required empty public constructor
     }
 
-    // TODO: THIS CODE IS REPEATED IN ALL MY LIST FRAGMENTS. SHOULD I CREATE A MASTER CLASS AND INHERIT FROM THAT?
-
     /**
      * Takes a position on a listview (either selected position or default first item)
      * and puts all the data for the corresponding KidThing ArrayList entry into a bundle.

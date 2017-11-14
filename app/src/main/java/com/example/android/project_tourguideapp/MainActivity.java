@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
@@ -19,9 +18,7 @@ public class MainActivity extends AppCompatActivity
         implements ParksListFragment.OnParksFragmentInteractionListener,
         StoresListFragment.OnStoresFragmentInteractionListener,
         RestaurantsListFragment.OnRestaurantsFragmentInteractionListener,
-        AttractionsListFragment.OnAttractionsFragmentInteractionListener
-//        ,KidThingFragmentPagerAdapter.OnDisplayFragmentInPager
-{
+        AttractionsListFragment.OnAttractionsFragmentInteractionListener {
 
     // Declare global variable to hold reference to the Activity's ActionBar
     private static ActionBar actionBar = null;
@@ -49,12 +46,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.v("***TESTING***", "Entering the MainActivity's onCreate() method...");
-
-        Log.v("***TESTING***", "About to inflate the layout...");
         // Inflate the layout with a container view (which will be replaced by the fragments)
         setContentView(R.layout.activity_main);
-        Log.v("***TESTING***", "Layout has been successfully inflated!");
 
         // Get a FragmentManager instance to be used throughout Activity and assign to the global variable.
         fragmentManager = getSupportFragmentManager();
@@ -71,25 +64,11 @@ public class MainActivity extends AppCompatActivity
         // Set the ViewPager on the TabLayout to connect the pager with the tabs
         tabLayout.setupWithViewPager(viewPager);
 
-//        // TODO: CHECK WHETHER PREVIOUS REFERENCE TO TOOLBAR...
-//        // Check whether a Toolbar instance already exists (via savedInstanceState).
-//        // If one does, retrieve its resource ID (integer) from the savedInstanceState bundle, use it to find the Toolbar view, and reassign to the global variable
-//        if (savedInstanceState !=null) {
-//            myToolbar = (android.support.v7.widget.Toolbar) findViewById(savedInstanceState.getInt("KEY_TOOLBAR_ID"));
-//            if (myToolbar == null) {
-//                Log.v("***TESTING***", "Setting Toolbar via savedInstanceState and the current value is null...");
-//            } else {Log.v("***TESTING***", "Setting Toolbar via savedInstanceState and there is a resource id (integer)!");}
-//        } else { // savedInstanceState IS null, so there's no existing instance and we
-//            Log.v("***TESTING***","No savedInstanceState for the Toolbar...");
-//            myToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_list);
-//        }
-        // Set the toolbar_list as the app bar for this Activity (via this Fragment)
-//        android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_list);
+        // Reference Toolbar widget for toolbar instance, then get actionbar
         myToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_list);
         setSupportActionBar(myToolbar);
         actionBar = getSupportActionBar();
 
-        // TODO: SET MY STATUS BAR COLOR. (IS IT THE BEST PLACE TO PLACE THIS CODE?)
         // Check whether device's version of Android support the following code.
         // If so, set the status bar color
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -99,26 +78,22 @@ public class MainActivity extends AppCompatActivity
         }
 
         // TODO: TRY CODE TO CHECK WHETHER SAVEDINSTANCESTATE CONTAINS THE DETAIL_CONTAINER AND REMOVE IT IF SO...
+        // If there is a savedInstanceState bundle (i.e. we've changed orientation or there's been another configuration change) and detail_container is present in the view hierarchy,
+        // then retrieve the detail fragment instance via reference in savedInstanceState bundle and remove that fragment so we can start fresh.
         if (savedInstanceState != null && findViewById(R.id.detail_container) == null) {
-//            fragmentManager.beginTransaction().remove(listingDetailFragment);
-//            Log.v("***TESTING***","In onCreate() method. Fiddling with savedInstanceState. At this point, value of listingDetailFragment is:" + listingDetailFragment);
-//            getResources().savedInstanceState.getInt("DETAIL_CONTAINER_ID")
             listingDetailFragment = (ListingDetailFragment) fragmentManager.getFragment(savedInstanceState, "KEY_DETAIL_FRAGMENT_INSTANCE");
-            Log.v("***TESTING***", "Tried to save reassign reference to listingDetailFragment from the savedInstanceState bundle. Current value of listingDetailFragment is: " + listingDetailFragment.toString());
             fragmentManager.beginTransaction().remove(listingDetailFragment).commit();
-            Log.v("***TESTING***", "Tried to remove listingDetailFragment from the view hierarchy. Current value of listingDetailFragment is: " + listingDetailFragment.toString());
         }
 
-        Log.v("***TESTING***", "Checking for detail_container to see whether we're in dual pane mode...");
         // Check for current orientation: if R.id.detail_container is present in view hierarchy,
         // then landscape xml layout is being used. If not present, then we are in portrait orientation.
         FrameLayout detailContainer = (FrameLayout) findViewById(R.id.detail_container);
         if (detailContainer != null) {
-            Log.v("***TESTING***", "Found the detail_container view, so we are indeed in dual pane mode!");
             // If the detail_container view exists, we need to update the global variable to reflect two-pane mode
             isDualPane = true;
 
             // TODO: Do I need to check whether ListingDetailFragment instance exists?
+            // Check whether a detail fragment already exists. If not, create a new instance and store reference in a global variable/field
             listingDetailFragment = (ListingDetailFragment) fragmentManager.findFragmentByTag("detail fragment");
             if (listingDetailFragment == null) {
                 // Create ListingDetailFragment instance and assign to global variable
@@ -132,19 +107,7 @@ public class MainActivity extends AppCompatActivity
             // Add fragment to the container
             fragmentManager.beginTransaction().add(R.id.detail_container, listingDetailFragment, "detail fragment").commit();
 
-//            // TODO: Do I need to check whether ListingDetailFragment instance exists?
-//            // Create ListingDetailFragment instance and assign to global variable
-//            listingDetailFragment = new ListingDetailFragment();
-//
-//            // Get data for the first list item from the fragment with that arraylist, in the form of a bundle,
-//            // and pass that bundle to the detail fragment.
-//            listingDetailFragment.setArguments(ParksListFragment.getBundle(0));
-//
-//            // Add fragment to the container
-//            fragmentManager.beginTransaction().add(R.id.detail_container, listingDetailFragment).commit();
-
         } else {
-            Log.v("***TESTING***", "Did NOT find detail_container, so we are NOT in dual pane mode...");
             // If the detail container view does NOT exist, we need to update the global variable to reflect one-pane mode
             isDualPane = false;
 
@@ -157,46 +120,11 @@ public class MainActivity extends AppCompatActivity
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-//        outState.putInt("DETAIL_CONTAINER_ID", R.id.detail_container);
         outState.putInt("KEY_TOOLBAR_ID", R.id.toolbar_list);
         if (isDualPane == true) {
-//            fragmentManager.beginTransaction().remove(listingDetailFragment).commit();
             //Save the fragment's instance
             fragmentManager.putFragment(outState, "KEY_DETAIL_FRAGMENT_INSTANCE", listingDetailFragment);
         }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        listingDetailFragment = null;
-//        THE LINE BELOW CRASHES THE APP...
-//        if (isDualPane == true) {
-//            fragmentManager.beginTransaction().remove(listingDetailFragment).commit();
-//        }
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-//        fragmentManager = null;
-//        myToolbar = null;
-//        actionBar = null;
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.v("***TESTING***", "Entering the MainActivity's onStart() method...");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.v("***TESTING***", "Entering the MainActivity's onResume() method...");
     }
 
     /**
@@ -312,15 +240,5 @@ public class MainActivity extends AppCompatActivity
             startActivity(detailIntent);
         }
     }
-
-
-    //    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//        if (findViewById(R.id.fragment_container) != null) {
-//            isDualPane = true;
-//        } else {isDualPane = false;}
-//    }
 
 }

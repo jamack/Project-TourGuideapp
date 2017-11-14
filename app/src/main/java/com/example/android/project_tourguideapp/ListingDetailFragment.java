@@ -1,7 +1,6 @@
 package com.example.android.project_tourguideapp;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,8 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -72,18 +69,6 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
         // Required empty public constructor
     }
 
-    // Convert dimensions in pixel format into density-independent-pixel format
-    public static int pxToDp(int px) {
-        return (int) (px / Resources.getSystem().getDisplayMetrics().density);
-    }
-
-    // Convert dimensions in density-independent-pixel format into pixel format
-    public static int dpToPx(int dp) {
-        DisplayMetrics displayMetrics = Resources.getSystem().getDisplayMetrics();
-        int px = Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-        return px;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -116,77 +101,43 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
         }
 
         // TODO: MOSTLY WORKING...BUT I STILL HAVE CRASHES WHEN GOING FROM LANDSCAPE ORIENTATION TO PORTRAIT ORIENTATION
+        // If savedInstanceState is NOT null, then there has been a configuration change and the previously-displayed listing details need to be restored,
+        // by saving the data into the mBundle global variable/field
+        // detail fragment is either being passed a listing's details in a Bundle
+        // or
         if (savedInstanceState != null) {
             mBundle = savedInstanceState;
             updateListingDetails(mBundle);
-        } else if (getArguments() != null) {
-            Log.v("***TESTING***", "In ListingDetailFragment's onViewCreated method; savedInstanceState is null, but getArguments bundle is NOT!");
+        } else if (getArguments() != null) { // If no savedInstanceState but there ARE arguments, then fragment is being passed a Bundle with a listing's details and we will save the data into the mBundle global variable/field.
             mBundle = getArguments();
             updateListingDetails(mBundle);
-        } else {
-            Log.v("***TESTING***", "In ListingDetailFragment's onViewCreated method; savedInstanceState and getArguments bundles are BOTH null...");
+        } else { // If neither of the above conditions is true, then detail fragment is being displayed without a specific listing being selected. In this case, we will display the first item and save its data into the mBundle global variable/field.
             updateListingDetails(ParksListFragment.getBundle(0));
         }
 
         // Check to see whether we are in dual pane mode. If we are, then MainActivity has already got an ActionBar.
         // If not in dual pane mode, we are in the DetailsActivity and we need to obtain an ActionBar instance.
         if (!isDualPane && !(getActivity() instanceof MainActivity)) {
-            Log.v("***TESTING***", "In ListingDetailFragment's actionbar setup, and  isDualPane is currently: FALSE!");
             //Set the toolbar_list as the app bar for this Activity (via this Fragment)
             android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) getActivity().findViewById(R.id.toolbar_detail);
             ((AppCompatActivity) getActivity()).setSupportActionBar(myToolbar);
             actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-//            ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
             actionBar.setTitle("Details");
 
 
-            // TODO: SET MY STATUS BAR COLOR. (IS IT THE BEST PLACE TO PLACE THIS CODE?)
+            // Set the status bar color
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 Window window = getActivity().getWindow();
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
             }
-        } else {
-            Log.v("***TESTING***", "In ListingDetailFragment's actionbar setup, and isDualPane is currently: TRUE!");
         }
-
-        // Get pixels for current screen and save in a DisplayMetrics object
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        // Check whether display is in portrait or landscape mode. (X & Y will be swapped if in landscape).
-        int height;
-        int width;
-        if (!isDualPane) {
-            height = displayMetrics.heightPixels;
-            width = displayMetrics.widthPixels;
-        } else {
-            height = displayMetrics.widthPixels;
-            width = displayMetrics.heightPixels;
-        }
-
-        // TODO: I DON'T ACTUALLY NEED THIS FOR MY BANNER IMAGE...BUT MIGHT USE IT FOR THE GOOGLE MAP
-//        // Set width & height (3:2) for banner image based on whether device is in portrait or landscape orientation
-//        if (!isDualPane) {
-//            mImage.getLayoutParams().width = width;
-//            mImage.getLayoutParams().height = (int) (width * 2f/3f);
-//            Log.v("***STRING***", "Trying to set actual height in portrait. Expression evaluates to: " + Integer.toString((int) (width * 2f/3f)));
-//            mImage.setScaleType(ImageView.ScaleType.FIT_XY);
-//        } else {
-//            mImage.getLayoutParams().width = width;
-//            mImage.getLayoutParams().height = (int) (width * 2f/3f);
-//            Log.v("***STRING***", "Trying to set actual height in dual display. Expression evaluates to: " + Integer.toString((int) (width * 2f/3f)));
-//            mImage.setScaleType(ImageView.ScaleType.FIT_XY);
-//        }
-
-
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-//        mListener = null;
 
-//        myToolbar = null;
         actionBar = null;
 
         mListingName = null;
@@ -204,7 +155,6 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
 
         // Inflate the ActionBar using xml layout for the menu
         inflater.inflate(R.menu.action_bar_details, menu);
-        Log.v("***TESTING***", "In ListingDetailFragment's onCreateOptionsMenu method. Just inflated the action_bar_details menu...");
 
         // Hide Call_the_Listing action if Listing has no associated phone number
         if (mBundle.getLong(ARG_PHONE_NUMBER) == 0) {
@@ -315,9 +265,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
     }
 
     public void updateListingDetails(Bundle bundle) {
-        Log.v("***TESTING***", "Entering the updateListingDetails() method...");
         if (isDualPane == false && (getActivity() instanceof MainActivity)) {
-            Log.v("***TESTING***", "In updateListingDetails. We are in MainActivity + single pane mode. Exiting the method...");
             return;
         }
 
@@ -333,19 +281,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
             }
 
             mListingName = (TextView) getActivity().findViewById(R.id.detail_listing_name);
-            // TODO: If displayed in dual pane mode, reduce text size slightly so it doesn't wrap
-            if (isDualPane) {
-                float initialTextSize = mListingName.getTextSize();
-//                mListingName.setTextSize(initialTextSize);
-//                initialTextSize = (float) pxToDp((int) initialTextSize);
 
-//                // getTextSize returns actual pixels, so convert that into scaled pixels,
-//                // which is what setTextSize takes as an argument
-//                initialTextSize = initialTextSize / getResources().getDisplayMetrics().scaledDensity;
-//                mListingName.setTextSize(TypedValue.COMPLEX_UNIT_SP, initialTextSize * ((float) 0.67));
-
-//                mListingName.setTextSize(initialTextSize * 2f / 3f);
-            }
             // Get listing name from bundle and set it on the appropriate TextView
             mListingName.setText(bundle.getString(ARG_LISTING_NAME));
 

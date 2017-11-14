@@ -191,13 +191,6 @@ class KidThing {
     }
 
     /**
-     * Returns whether or not there is a phone number for this venue/event
-     */
-    boolean hasPhoneNumber() {
-        return mPhoneNumber != NO_PHONE_NUMBER_PROVIDED;
-    }
-
-    /**
      * Getter method for any associated phone number
      */
     long getPhoneNumber() {
