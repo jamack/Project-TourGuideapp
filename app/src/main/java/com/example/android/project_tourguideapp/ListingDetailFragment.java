@@ -123,6 +123,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
             ((AppCompatActivity) getActivity()).setSupportActionBar(myToolbar);
             actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
             actionBar.setTitle(R.string.details_actionbar_title_text);
+            actionBar.setDisplayHomeAsUpEnabled(true);
 
 
             // Set the status bar color
