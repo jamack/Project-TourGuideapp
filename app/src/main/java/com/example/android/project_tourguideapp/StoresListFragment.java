@@ -154,7 +154,7 @@ public class StoresListFragment extends Fragment {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) { // Your fragment is visible
             // Caller setter method in MainActivity to update ActionBar's title for this fragment
-            MainActivity.setActionBarTitle("Stores with Children's Items");
+            MainActivity.setActionBarTitle(getString(R.string.stores_actionbar_title_text));
 
             // If in dual pane mode, call method (in MainActivity) to make sure details fragment is updated to show default (first) Stores listing.
             // Pass method an integer corresponding to this category's value in the KidThingFragmentPagerAdapter's getItem() method.

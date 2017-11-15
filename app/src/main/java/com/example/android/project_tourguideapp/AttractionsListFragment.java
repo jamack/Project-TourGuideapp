@@ -154,7 +154,7 @@ public class AttractionsListFragment extends Fragment {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) { // Your fragment is visible
             // Caller setter method in MainActivity to update ActionBar's title for this fragment
-            MainActivity.setActionBarTitle("Activities");
+            MainActivity.setActionBarTitle(getString(com.example.android.project_tourguideapp.R.string.attractions_actionbar_title_text));
 
             // If in dual pane mode, call method (in MainActivity) to make sure details fragment is updated to show default (first) Attractions listing.
             // Pass method an integer corresponding to this category's value in the KidThingFragmentPagerAdapter's getItem() method.

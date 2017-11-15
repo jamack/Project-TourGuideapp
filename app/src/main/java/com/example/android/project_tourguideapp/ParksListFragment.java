@@ -144,7 +144,6 @@ public class ParksListFragment extends Fragment {
         if (isVisibleToUser) { // Your fragment is visible
             // Call setter method in MainActivity to update ActionBar's title for this fragment
             MainActivity.setActionBarTitle("Parks & Playgrounds");
-
         }
     }
 

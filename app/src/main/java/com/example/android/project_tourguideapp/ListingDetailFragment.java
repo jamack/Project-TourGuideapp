@@ -122,7 +122,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
             android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) getActivity().findViewById(R.id.toolbar_detail);
             ((AppCompatActivity) getActivity()).setSupportActionBar(myToolbar);
             actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-            actionBar.setTitle("Details");
+            actionBar.setTitle(R.string.details_actionbar_title_text);
 
 
             // Set the status bar color
@@ -256,7 +256,7 @@ public class ListingDetailFragment extends Fragment implements OnMapReadyCallbac
 
         // Add a marker at the listing's location,
         mMarker = mGoogleMap.addMarker(new MarkerOptions().position(listingLatLng)
-                .title("Location X"));
+                .title(mBundle.getString(ARG_LISTING_NAME)));
         // Set the desired zoom level
         Float zoomLevel = (float) 12;
         // Update the Google Map with the above marker location and zoom level

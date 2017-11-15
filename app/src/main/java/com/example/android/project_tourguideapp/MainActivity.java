@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity
         // Get the xml layout's ViewPager widget and assign to a variable
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         // Create a new KidThingFragmentAdapter instance via its constructor, passing it a FragmentManager instance
-        KidThingFragmentPagerAdapter adapter = new KidThingFragmentPagerAdapter(fragmentManager);
+        KidThingFragmentPagerAdapter adapter = new KidThingFragmentPagerAdapter(fragmentManager, this);
         // Hook the adapter up to the viewpager
         viewPager.setAdapter(adapter);
 

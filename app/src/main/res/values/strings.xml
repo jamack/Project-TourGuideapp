@@ -283,5 +283,15 @@
     <string name="stores_satara_hours_dates">M-F 10:00am - 6:00pm, Sat 10:00am - 5:00pm</string>
     <string name="stores_satara_website">https://www.satarahome.com</string>
 
+    <string name="attractions_actionbar_title_text">Activities</string>
+    <string name="parks_actionbar_title_text"><![CDATA[Parks & Playgrounds]]></string>
+    <string name="restaurants_actionbar_title_text">Child-Friendly Restaurants</string>
+    <string name="stores_actionbar_title_text">Stores with Children\'s Items</string>
+    <string name="details_actionbar_title_text">Details</string>
+
+    <string name="tablayout_tab_title_parks">Play</string>
+    <string name="tablayout_tab_title_attractions">Do</string>
+    <string name="tablayout_tab_title_restaurants">Eat</string>
+    <string name="tablayout_tab_title_stores">Shop</string>
 
 </resources>
