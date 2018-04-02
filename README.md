@@ -1,0 +1,5 @@
+6th project in Udacity's Android Basics Nanodegree course.
+
+Project Description: Create a tour guide app which presents relevant information to a user who’s visiting the student's city. The app can list top attractions, restaurants, public places, or events for the city. It can contain all the best known secrets that only locals know. Up to student to decide which categories to provide, as well as what information to provide in each category - app will be unique to student's city, life, and interests. Goals for this project: 1) Planning app design and navigation before coding; 2) Selecting proper data structures to store lists of information; 3) Building layouts to display those lists of data (at least one must includes photos); 4) Navigating between those lists using intents and multiple Activities or a ViewPager; 5) Creating custom classes; 6) Properly handling images or audio (if applicable). All strings must be extracted to a resource file and all images must be stored in drawables folders at multiple densities.
+
+Project Rubric: https://review.udacity.com/#!/rubrics/161/view
